@@ -14,10 +14,10 @@
         public int height = 20;
         public float cellSize = 1f;
 
-        private GridCell[,] _grid;
+        public GridCell[,] Grid { get; private set; }
 
         private void Awake() {
-            _grid = new GridCell[width, height];
+            Grid = new GridCell[width, height];
             for (var x = 0; x < width; x++) {
                 for (var y = 0; y < height; y++) {
                     var worldPos = transform.position + new Vector3(
@@ -25,7 +25,7 @@
                         0,
                         y * cellSize + cellSize / 2f
                     );
-                    _grid[x, y] = new GridCell {
+                    Grid[x, y] = new GridCell {
                         coordinates = new Vector2Int(x, y),
                         worldPosition = worldPos,
                         walkable = true
@@ -41,14 +41,14 @@
             var y = Mathf.FloorToInt(localPos.z / cellSize);
 
             if (x >= 0 && x < width && y >= 0 && y < height) {
-                return _grid[x, y];
+                return Grid[x, y];
             }
             return null;
         }
 
 
         private void OnDrawGizmos() {
-            if (_grid == null) return;
+            if (Grid == null) return;
             Gizmos.color = Color.gray;
             for (var x = 0; x < width; x++) {
                 for (var y = 0; y < height; y++) {
