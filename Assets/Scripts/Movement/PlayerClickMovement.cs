@@ -41,6 +41,7 @@ namespace Movement
         private void OnDisable() {
             controls.Gameplay.Interact.performed -= OnClick;
             controls.Gameplay.Disable();
+            Shader.SetGlobalInteger("_IsWalking", 0);
         }
 
         private void Update() {
@@ -108,14 +109,14 @@ namespace Movement
                 GridCell goal = gridManager.GetCell(hit.point);
 
                 if (start != goal) {
-                    Shader.SetGlobalInteger("_IsWalking", 1);
-                    Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)goal.worldPosition);
 
                     var newPath = pathfinder.FindPath(start, goal);
                     if (newPath != null && newPath.Count > 0) {
                         if (newPath[0] == start) newPath.RemoveAt(0);
                         path = new Queue<GridCell>(newPath);
                         moving = path.Count > 0;
+                        Shader.SetGlobalInteger("_IsWalking", 1);
+                        Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)goal.worldPosition);
                     }
                 }
             }
