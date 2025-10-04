@@ -6,7 +6,7 @@ public class ClientPlayerMove : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private WASDMovement m_WASDMovement;
 
-    void Start()
+    private void Awake()
     {
         m_WASDMovement.enabled = false;
     }
