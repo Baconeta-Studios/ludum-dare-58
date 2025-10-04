@@ -2,6 +2,7 @@
 
 namespace Movement
 {
+    using Unity.VisualScripting.Dependencies.Sqlite;
     using UnityEngine;
 
     [System.Serializable]
@@ -15,14 +16,17 @@ namespace Movement
 
     [ExecuteAlways]
     public class GridManager : MonoBehaviour {
-        public int width = 20;
-        public int height = 20;
+        [Range(2, 50)] public int width = 20;
+        [Range(2, 50)] public int height = 20;
         public float cellSize = 1f;
+        [SerializeField] [Range(0, 1f)] private float cellTransparency = 0.8f;
+        [SerializeField] [Range(0, 1f)] private float gridTransparency = 0.8f;
 
         [SerializeField] private List<GridCell> cells = new List<GridCell>();
         public GridCell[,] Grid { get; private set; }
 
         private void OnValidate() {
+            RestrictWidthHeight();
             BuildGrid();
         }
 
@@ -30,16 +34,33 @@ namespace Movement
             BuildGrid();
         }
 
+        // Width or Height should always be an even number for simplicity.
+        void RestrictWidthHeight()
+        {
+            if(width % 2 != 0) {
+                width += 1;
+            }
+
+            if(height % 2 != 0) { 
+                height += 1;
+            }
+        }
+
+        [ContextMenu("Build Grid")]
         public void BuildGrid() {
             // Ensure we always have the right number of cells
             if (cells.Count != width * height) {
                 cells.Clear();
                 for (int x = 0; x < width; x++) {
                     for (int y = 0; y < height; y++) {
+
+                        // Offset by half the size so that the game object is centered.
+                        Vector2 offset = new Vector2(x - width / 2, y - height / 2) * cellSize;
+
                         var worldPos = transform.position + new Vector3(
-                            x * cellSize + cellSize / 2f,
+                            offset.x + cellSize / 2f,
                             0,
-                            y * cellSize + cellSize / 2f
+                            offset.y + cellSize / 2f
                         );
 
                         cells.Add(new GridCell {
@@ -64,12 +85,14 @@ namespace Movement
         public GridCell GetCell(Vector3 worldPos) {
             if (Grid == null) return null;
 
-            var localPos = worldPos - transform.position;
+            var localPos = transform.InverseTransformPoint(worldPos);
             int x = Mathf.FloorToInt(localPos.x / cellSize);
             int y = Mathf.FloorToInt(localPos.z / cellSize);
 
-            if (x >= 0 && x < width && y >= 0 && y < height) {
-                return Grid[x, y];
+            int xIndex = x + width / 2;
+            int yIndex = y + height / 2;
+            if (xIndex >= 0 && xIndex < width && yIndex >= 0 && yIndex < height) {
+                return Grid[xIndex, yIndex];
             }
             return null;
         }
@@ -80,9 +103,14 @@ namespace Movement
             foreach (var cell in cells) {
                 if (cell == null) continue;
 
-                Gizmos.color = cell.walkable ? GetRoomColor(cell.roomID) : Color.black;
+                Color cellColour = cell.walkable ? GetRoomColor(cell.roomID) : Color.black;
+                cellColour.a = cellTransparency;
+                Gizmos.color = cellColour;
                 Gizmos.DrawCube(cell.worldPosition, new Vector3(cellSize, 0.05f, cellSize));
-                Gizmos.color = Color.white;
+
+                Color gridColour = Color.white;
+                gridColour.a = gridTransparency;
+                Gizmos.color = gridColour;
                 Gizmos.DrawWireCube(cell.worldPosition, new Vector3(cellSize, 0.05f, cellSize));
             }
         }
