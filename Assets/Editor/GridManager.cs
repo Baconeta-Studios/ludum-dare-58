@@ -13,12 +13,12 @@
         }
 
         private void OnSceneGUI() {
-            Event e = Event.current;
+            var e = Event.current;
 
-            if (e.type == EventType.MouseDown && (e.button == 0 || e.button == 1)) {
-                Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit, 200f)) {
-                    GridCell cell = _gridManager.GetCell(hit.point);
+            if (e.type == EventType.MouseDown && e.button is 0 or 1) {
+                var ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
+                if (Physics.Raycast(ray, out var hit, 200f)) {
+                    var cell = _gridManager.GetCell(hit.point);
                     if (cell != null) {
                         Undo.RecordObject(_gridManager, "Edit Grid Cell");
 
