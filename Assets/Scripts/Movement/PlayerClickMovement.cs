@@ -83,10 +83,13 @@ namespace Movement
                 // Reached target
                 path.Dequeue();
                 isJumping = false;
-                Shader.SetGlobalInteger("_IsWalking", 0);
-                Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)invalidWalkingPosition);
 
-                if (path.Count == 0) moving = false;
+                if (path.Count == 0)
+                {
+                    moving = false;
+                    Shader.SetGlobalInteger("_IsWalking", 0);
+                    Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)invalidWalkingPosition);
+                }
             }
         }
 
@@ -111,14 +114,17 @@ namespace Movement
                 GridCell start = gridManager.GetCell(transform.position);
                 GridCell goal = gridManager.GetCell(hit.point);
 
-                Shader.SetGlobalInteger("_IsWalking", 1);
-                Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)goal.worldPosition);
+                if(start != goal)
+                {
+                    Shader.SetGlobalInteger("_IsWalking", 1);
+                    Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)goal.worldPosition);
 
-                var newPath = pathfinder.FindPath(start, goal);
-                if (newPath != null && newPath.Count > 0) {
-                    if (newPath[0] == start) newPath.RemoveAt(0);
-                    path = new Queue<GridCell>(newPath);
-                    moving = path.Count > 0;
+                    var newPath = pathfinder.FindPath(start, goal);
+                    if (newPath != null && newPath.Count > 0) {
+                        if (newPath[0] == start) newPath.RemoveAt(0);
+                        path = new Queue<GridCell>(newPath);
+                        moving = path.Count > 0;
+                    }
                 }
             }
         }
