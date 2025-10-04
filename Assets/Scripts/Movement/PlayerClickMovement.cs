@@ -24,6 +24,9 @@ namespace Movement
 
         private Vector3 invalidWalkingPosition = new Vector3(9999, 9999, 9999);
 
+        public GridPathfinder pathfinder;
+        private Queue<GridCell> path = new Queue<GridCell>();
+
         private void Awake() {
             controls = new PlayerControls();
         }
@@ -31,6 +34,8 @@ namespace Movement
         private void OnEnable() {
             controls.Gameplay.Enable();
             controls.Gameplay.Interact.performed += OnClick;
+            Debug.Log("Enable!");
+
         }
 
         private void OnDisable() {
@@ -62,7 +67,6 @@ namespace Movement
         
         private void HandleJumpMovement() {
             if (!isJumping) {
-                // Start new jump
                 jumpStart = transform.position;
                 jumpEnd = path.Peek().worldPosition;
                 jumpProgress = 0f;
@@ -72,20 +76,15 @@ namespace Movement
             jumpProgress += Time.deltaTime * jumpSpeed;
             float t = Mathf.Clamp01(jumpProgress);
 
-            // Horizontal movement (linear)
             Vector3 horizontal = Vector3.Lerp(jumpStart, jumpEnd, t);
-
-            // Vertical arc (parabola)
             float height = Mathf.Sin(t * Mathf.PI) * jumpHeight;
             transform.position = new Vector3(horizontal.x, horizontal.y + height, horizontal.z);
 
             if (t >= 1f) {
-                // Reached target
                 path.Dequeue();
                 isJumping = false;
 
-                if (path.Count == 0)
-                {
+                if (path.Count == 0) {
                     moving = false;
                     Shader.SetGlobalInteger("_IsWalking", 0);
                     Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)invalidWalkingPosition);
@@ -93,29 +92,22 @@ namespace Movement
             }
         }
 
-
-        public GridPathfinder pathfinder;
-        private Queue<GridCell> path = new Queue<GridCell>();
-
         private void OnClick(InputAction.CallbackContext ctx) {
-            Vector2 screenPos = Mouse.current != null
-                ? Mouse.current.position.ReadValue()
-                : Touchscreen.current.primaryTouch.position.ReadValue();
+            Debug.Log("Click!");
+            // Get the pointer position from the separate action
+            Vector2 screenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
 
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
 
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask)) {
-                // cancel any active jump
                 isJumping = false;
                 jumpProgress = 0f;
                 transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
 
-                // now build the new path as usual
                 GridCell start = gridManager.GetCell(transform.position);
                 GridCell goal = gridManager.GetCell(hit.point);
 
-                if(start != goal)
-                {
+                if (start != goal) {
                     Shader.SetGlobalInteger("_IsWalking", 1);
                     Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)goal.worldPosition);
 
@@ -129,9 +121,7 @@ namespace Movement
             }
         }
 
-        // Highlights a given cell with the hover colour,
-        private void HoverHighlightCell(GridCell hoveredCell)
-        {
+        private void HoverHighlightCell(GridCell hoveredCell) {
             Shader.SetGlobalInteger("_IsHovering", 1);
             Shader.SetGlobalVector("_HoverWorldPosition", (Vector4)hoveredCell.worldPosition);
         }
