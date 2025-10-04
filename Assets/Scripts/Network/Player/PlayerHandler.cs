@@ -13,7 +13,7 @@ public class PlayerHandler : MonoBehaviour
 
     private void Awake()
     {
-        _bridge = FindObjectOfType<CoherenceBridge>();
+        _bridge = FindFirstObjectByType<CoherenceBridge>();
         if (_bridge == null)
         {
             Debug.LogError("CoherenceBridge not found in the scene.");
