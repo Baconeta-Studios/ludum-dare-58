@@ -22,6 +22,8 @@ namespace Movement
         private Vector3 targetPosition;
         private bool moving = false;
 
+        private Vector3 invalidWalkingPosition = new Vector3(9999, 9999, 9999);
+
         private void Awake() {
             controls = new PlayerControls();
         }
@@ -44,6 +46,8 @@ namespace Movement
                     HandleSmoothMovement();
                 }
             }
+
+            HoverHighlightCell(gridManager.GetCell(Vector3.zero));
         }
 
         private void HandleSmoothMovement() {
@@ -79,6 +83,9 @@ namespace Movement
                 // Reached target
                 path.Dequeue();
                 isJumping = false;
+                Shader.SetGlobalInteger("_IsWalking", 0);
+                Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)invalidWalkingPosition);
+
                 if (path.Count == 0) moving = false;
             }
         }
@@ -104,6 +111,9 @@ namespace Movement
                 GridCell start = gridManager.GetCell(transform.position);
                 GridCell goal = gridManager.GetCell(hit.point);
 
+                Shader.SetGlobalInteger("_IsWalking", 1);
+                Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)goal.worldPosition);
+
                 var newPath = pathfinder.FindPath(start, goal);
                 if (newPath != null && newPath.Count > 0) {
                     if (newPath[0] == start) newPath.RemoveAt(0);
@@ -111,6 +121,13 @@ namespace Movement
                     moving = path.Count > 0;
                 }
             }
+        }
+
+        // Highlights a given cell with the hover colour,
+        private void HoverHighlightCell(GridCell hoveredCell)
+        {
+            Shader.SetGlobalInteger("_IsHovering", 1);
+            Shader.SetGlobalVector("_HoverWorldPosition", (Vector4)hoveredCell.worldPosition);
         }
     }
 }

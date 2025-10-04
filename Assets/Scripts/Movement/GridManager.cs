@@ -28,6 +28,9 @@ namespace Movement
         private void OnValidate() {
             RestrictWidthHeight();
             BuildGrid();
+
+            Shader.SetGlobalFloat("_HalfCellSize", cellSize / 2);
+
         }
 
         private void Awake() {
