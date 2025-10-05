@@ -5,6 +5,7 @@ namespace Movement
 {
     public class AiMovementController : MonoBehaviour
     {
+        [Header("Grid Movement")]
         public GridManager gridManager;
         public GridPathfinder pathfinder;
         public float moveSpeed = 2f;
@@ -36,7 +37,6 @@ namespace Movement
                 // Idle → maybe pick a new destination after a delay
                 if (Random.value < 0.01f)
                 {
-                    // 1% chance per frame TODO adjust or expose
                     PickNewDestination();
                 }
             }
@@ -49,7 +49,6 @@ namespace Movement
             var candidates = new List<GridCell>();
             foreach (var cell in gridManager.Grid)
             {
-                // Currently only finds cells in the current room. Can be adjusted later
                 if (cell is { walkable: true } && cell.roomID == current.roomID)
                 {
                     candidates.Add(cell);
@@ -62,7 +61,6 @@ namespace Movement
             var newPath = pathfinder.FindPath(current, target);
             if (newPath is { Count: > 1 })
             {
-                // skip starting cell
                 if (newPath[0] == current) newPath.RemoveAt(0);
                 _path = new Queue<GridCell>(newPath);
                 _moving = true;
