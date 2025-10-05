@@ -8,10 +8,11 @@ namespace Movement
         public GridManager gridManager;
         public LayerMask groundMask;
         public float moveSpeed = 3f;
-        
         public bool useJumpAnimation = false;
         public float jumpHeight = 0.5f;
         public float jumpSpeed = 5f;
+        public bool useRotation = false;
+        public float rotateSpeed = 5f;
 
         private bool isJumping = false;
         private Vector3 jumpStart;
@@ -50,14 +51,17 @@ namespace Movement
                     HandleSmoothMovement();
                 }
             }
-
             HoverHighlightCell(gridManager.GetCell(Vector3.zero));
         }
 
         private void HandleSmoothMovement() {
-            Vector3 target = path.Peek().worldPosition;
+            var target = path.Peek().worldPosition;
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
-
+            var direction = (target - transform.position).normalized;
+            if (useRotation && direction.sqrMagnitude > 0.001f) {
+                var lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+            }
             if (Vector3.Distance(transform.position, target) < 0.01f) {
                 path.Dequeue();
                 if (path.Count == 0) moving = false;
@@ -71,18 +75,19 @@ namespace Movement
                 jumpProgress = 0f;
                 isJumping = true;
             }
-
             jumpProgress += Time.deltaTime * jumpSpeed;
-            float t = Mathf.Clamp01(jumpProgress);
-
-            Vector3 horizontal = Vector3.Lerp(jumpStart, jumpEnd, t);
-            float height = Mathf.Sin(t * Mathf.PI) * jumpHeight;
+            var t = Mathf.Clamp01(jumpProgress);
+            var horizontal = Vector3.Lerp(jumpStart, jumpEnd, t);
+            var height = Mathf.Sin(t * Mathf.PI) * jumpHeight;
             transform.position = new Vector3(horizontal.x, horizontal.y + height, horizontal.z);
-
+            var direction = (jumpEnd - jumpStart).normalized;
+            if (useRotation && direction.sqrMagnitude > 0.001f) {
+                var lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+            }
             if (t >= 1f) {
                 path.Dequeue();
                 isJumping = false;
-
                 if (path.Count == 0) {
                     moving = false;
                     Shader.SetGlobalInteger("_IsWalking", 0);
@@ -92,20 +97,15 @@ namespace Movement
         }
 
         private void OnClick(InputAction.CallbackContext ctx) {
-            Vector2 screenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
-
-            Ray ray = Camera.main.ScreenPointToRay(screenPos);
-
+            var screenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
+            var ray = Camera.main.ScreenPointToRay(screenPos);
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask)) {
                 isJumping = false;
                 jumpProgress = 0f;
                 transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-
-                GridCell start = gridManager.GetCell(transform.position);
-                GridCell goal = gridManager.GetCell(hit.point);
-
+                var start = gridManager.GetCell(transform.position);
+                var goal = gridManager.GetCell(hit.point);
                 if (start != goal) {
-
                     var newPath = pathfinder.FindPath(start, goal);
                     if (newPath != null && newPath.Count > 0) {
                         if (newPath[0] == start) newPath.RemoveAt(0);
