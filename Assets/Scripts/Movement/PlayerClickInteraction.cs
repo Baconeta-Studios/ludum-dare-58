@@ -62,7 +62,7 @@ namespace Movement
             pathfinder ??= FindFirstObjectByType<GridPathfinder>();
         }
 
-        // TODO this will only work for prototype single-player
+        // TODO this will only work for prototype single-player (or will it?)
         private void Start() {
             FindFirstObjectByType<CardUIManager>().Init(this);
         }
