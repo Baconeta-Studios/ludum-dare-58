@@ -20,8 +20,9 @@ public class AiInventory : MonoBehaviour
 
     [Header("Particles")] 
     public ParticleSystem inspectionParticles;
-
     private Coroutine inspectionCoroutine;
+    public GameObject bloodSpatter;
+
     private void Awake(){
         if (possibleItems.Length == 0)
         {
@@ -79,5 +80,26 @@ public class AiInventory : MonoBehaviour
         heldItem.SetActive(false);
         inspectionCoroutine = null;
         yield return null;
+    }
+
+    public void DropCollectable()
+    {
+        if(inspectionCoroutine != null)
+        {
+            StopCoroutine(inspectionCoroutine);
+        }
+        heldItem.transform.position = transform.position;
+        heldItem.transform.rotation = Quaternion.identity;
+        heldItem.transform.localScale = Vector3.one;
+        heldItem.transform.SetParent(null);
+        heldItem.SetActive(true);
+
+        bloodSpatter.transform.position = transform.position + Vector3.up * 0.01f;
+        bloodSpatter.transform.rotation = Quaternion.Euler(new Vector3(90, 0,  0));
+        bloodSpatter.transform.localScale = Vector3.one * 2;
+        bloodSpatter.transform.SetParent(null);
+        bloodSpatter.SetActive(true);
+
+        // TODO Add held item knowlage its been dropped maybe do an animation.
     }
 }

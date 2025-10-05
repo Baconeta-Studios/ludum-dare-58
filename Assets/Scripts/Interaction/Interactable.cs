@@ -45,25 +45,26 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    private void OnScare(GameObject initiatingPlayer){
+    protected virtual void OnScare(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Scared {name}");
         // TODO behaviour for Scare.
         // Tell the AI Movement Controller to move to another room
     }
 
-    private void OnMurder(GameObject initiatingPlayer){
+    protected virtual void OnMurder(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
         // TODO behaviour for Murder
         // .... murders them?
+
     }
 
-    private void OnInspect(GameObject initiatingPlayer){
+    protected virtual void OnInspect(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
         // TODO behaviour for inspect
         GetComponent<AiInventory>()?.OnInspect();
     }
 
-    private void OnCollect(GameObject initiatingPlayer){
+    protected virtual void OnCollect(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
         // TODO behaviour for collect
     }
