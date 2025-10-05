@@ -30,7 +30,6 @@ namespace Movement
         private PlayerControls controls;
         private Vector3 targetPosition;
         private bool moving = false;
-        private bool ignoreWorldClicks = false;
 
         private Vector3 _invalidWalkingPosition = new Vector3(9999, 9999, 9999);
 
@@ -53,12 +52,14 @@ namespace Movement
         [Tooltip("Maximum radius to interact with objects")] 
         public int interactionRadius = 1;
 
+        private bool clickQueued;
+        private Vector2 queuedScreenPos;
+
         private void Awake() {
             controls = new PlayerControls();
 
             gridManager ??= FindFirstObjectByType<GridManager>();
             pathfinder ??= FindFirstObjectByType<GridPathfinder>();
-            
         }
 
         // TODO this will only work for prototype single-player
@@ -88,7 +89,19 @@ namespace Movement
 
             HoverHighlightCell(gridManager.GetCell(Vector3.zero));
 
-            ignoreWorldClicks = CheckIfOnUIObject();
+            // process queued clicks AFTER EventSystem has updated
+            if (clickQueued) {
+                clickQueued = false;
+
+                if (CheckIfOnUIObject())
+                    return;
+
+                Ray ray = Camera.main.ScreenPointToRay(queuedScreenPos);
+
+                if (!TryInteract(ray)) {
+                    TryMove(ray);
+                }
+            }
         }
 
         private void HandleSmoothMovement() {
@@ -102,20 +115,17 @@ namespace Movement
             }
             if (Vector3.Distance(transform.position, target) < 0.01f) {
                 path.Dequeue();
-                if (path.Count == 0)
-                {
+                if (path.Count == 0) {
                     ArrivedAtTarget();
                 }
             }
         }
         
         private void HandleJumpMovement() {
-            if (targetInteractable && targetInteractable.doesMove)
-            {
+            if (targetInteractable && targetInteractable.doesMove) {
                 GridCell nearestCell = GetNearestCell(targetInteractable.transform.position);
                 
-                if (nearestCell != path.Last())
-                {
+                if (nearestCell != path.Last()) {
                     PathToCell(nearestCell);
                 }
             }
@@ -144,8 +154,7 @@ namespace Movement
                 path.Dequeue();
                 isJumping = false;
 
-                if (path.Count == 0)
-                {
+                if (path.Count == 0) {
                     ArrivedAtTarget();
                 }
             }
@@ -156,59 +165,42 @@ namespace Movement
             Shader.SetGlobalInteger("_IsWalking", 0);
             Shader.SetGlobalVector("_WalkingWorldPosition", (Vector4)_invalidWalkingPosition);
                 
-            if (targetInteractable)
-            {
+            if (targetInteractable) {
                 InteractWithTarget();
             }
         }
 
         private void OnClick(InputAction.CallbackContext ctx) {
-            if (ignoreWorldClicks)
-            {
-                return;
-            }
-            
-            Vector2 screenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
-
-            Ray ray = Camera.main.ScreenPointToRay(screenPos);
-
-            if (!TryInteract(ray))
-            {
-                TryMove(ray);
-            }
+            // just queue the click, don’t process world logic yet
+            queuedScreenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
+            clickQueued = true;
         }
 
-        private static bool CheckIfOnUIObject()
-        {
-            if (Pointer.current != null) {
-                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                    return true;
-            }
+        private static bool CheckIfOnUIObject() {
+            if (EventSystem.current == null) return false;
 
-            // Touch case
+            // Mouse
+            if (Pointer.current != null && EventSystem.current.IsPointerOverGameObject())
+                return true;
+
+            // Touch
             if (Touchscreen.current != null) {
-                foreach (var touch in Touchscreen.current.touches) {
-                    if (touch.isInProgress) {
-                        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.touchId.ReadValue()))
-                            return true;
-                    }
-                }
+                var touch = Touchscreen.current.primaryTouch;
+                if (touch.isInProgress &&
+                    EventSystem.current.IsPointerOverGameObject(touch.touchId.ReadValue()))
+                    return true;
             }
 
             return false;
         }
 
         private bool TryInteract(Ray ray){
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f, interactableMask))
-            {
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f, interactableMask)) {
                 targetInteractable = hit.collider.GetComponent<Interactable>();
                 
-                if (Vector3.Distance(transform.position, targetInteractable.transform.position) > interactionRadius)
-                {
+                if (Vector3.Distance(transform.position, targetInteractable.transform.position) > interactionRadius) {
                     PathToCell(GetNearestCell(hit.point));
-                }
-                else
-                {
+                } else {
                     InteractWithTarget();
                 }
                 return true;
@@ -227,8 +219,7 @@ namespace Movement
             return nearestGoal;
         }
 
-        private bool TryMove(Ray ray)
-        {
+        private bool TryMove(Ray ray) {
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask)) {
                 GridCell goal = gridManager.GetCell(hit.point);
                 PathToCell(goal);
@@ -238,8 +229,7 @@ namespace Movement
             return false;
         }
 
-        private void PathToCell(GridCell goalCell)
-        {
+        private void PathToCell(GridCell goalCell) {
             isJumping = false;
             jumpProgress = 0f;
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
@@ -247,7 +237,6 @@ namespace Movement
             GridCell start = gridManager.GetCell(transform.position);
 
             if (start != goalCell) {
-
                 var newPath = pathfinder.FindPath(start, goalCell);
                 if (newPath != null && newPath.Count > 0) {
                     if (newPath[0] == start) newPath.RemoveAt(0);
