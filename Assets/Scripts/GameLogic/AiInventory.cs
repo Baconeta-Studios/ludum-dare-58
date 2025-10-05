@@ -84,22 +84,36 @@ public class AiInventory : MonoBehaviour
 
     public void DropCollectable()
     {
-        if(inspectionCoroutine != null)
+        if (inspectionCoroutine != null)
         {
             StopCoroutine(inspectionCoroutine);
         }
-        heldItem.transform.position = transform.position;
-        heldItem.transform.rotation = Quaternion.identity;
-        heldItem.transform.localScale = Vector3.one;
-        heldItem.transform.SetParent(null);
-        heldItem.SetActive(true);
 
-        bloodSpatter.transform.position = transform.position + Vector3.up * 0.01f;
-        bloodSpatter.transform.rotation = Quaternion.Euler(new Vector3(90, 0,  0));
-        bloodSpatter.transform.localScale = Vector3.one * 2;
-        bloodSpatter.transform.SetParent(null);
-        bloodSpatter.SetActive(true);
+        // drop the held collectable
+        DropItem(heldItem, Vector3.zero);
 
-        // TODO Add held item knowlage its been dropped maybe do an animation.
+        // drop the COLLECTABLE evidence (blood spatter)
+        DropItem(bloodSpatter, new Vector3(90, 0, 0));
+
+    }
+
+    private void DropItem(GameObject thingToDrop, Vector3 orientation)
+    {
+        // Set the position of the COLLECTABLE item.
+        thingToDrop.transform.position = transform.position;
+        thingToDrop.transform.rotation = Quaternion.Euler(orientation);
+        thingToDrop.transform.localScale = Vector3.one;
+        thingToDrop.transform.SetParent(null);
+        thingToDrop.SetActive(true);
+        Collider collider = thingToDrop.GetComponent<Collider>();
+        if (collider)
+        {
+            collider.enabled = true;
+        }
+        Interactable interactComponent = thingToDrop.GetComponent<Interactable>();
+        if (interactComponent)
+        {
+            interactComponent.canBeInteracted = true;
+        }
     }
 }

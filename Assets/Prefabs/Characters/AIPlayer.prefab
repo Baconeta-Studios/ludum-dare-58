@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8558872791946681679}
   - component: {fileID: 2544031687234526756}
   - component: {fileID: 8732485303989299666}
-  m_Layer: 0
+  - component: {fileID: 6379046287019923938}
+  m_Layer: 11
   m_Name: Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,11 +108,27 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6379046287019923938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769806385750478476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233df6b6776cadc4d80de502fc9932dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  canBeInteracted: 1
+  supportedInteractions: 00000000
+  doesMove: 0
+  occupiesCell: 0
 --- !u!1 &2997589419186998681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5237,7 +5254,7 @@ MonoBehaviour:
   OnRigidbody3DRotationUpdate:
     m_PersistentCalls:
       m_Calls: []
-  coherenceSyncConfig: {fileID: 11400000, guid: 3a3641dc908201d41a3d80c3cad79633, type: 2}
+  coherenceSyncConfig: {fileID: 11400000, guid: 22cedc79345d73a46863c35b2a137c38, type: 2}
   archetype:
     lodLevels:
     - distance: 0
@@ -5349,6 +5366,8 @@ MonoBehaviour:
     - component: {fileID: 2544031687234526756}
       lodStepsActive: 1
     - component: {fileID: 8732485303989299666}
+      lodStepsActive: 1
+    - component: {fileID: 6379046287019923938}
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
@@ -5528,7 +5547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3739840581
+  GlobalObjectIdHash: 475155521
   InScenePlacedSourceGlobalObjectIdHash: 1464590102
   DeferredDespawnTick: 0
   Ownership: 1
@@ -5599,6 +5618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7825cc75e8f471f4ba2dc6a74588bd19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiInteractable
+  canBeInteracted: 1
   supportedInteractions: 010000000200000003000000
   doesMove: 1
   occupiesCell: 1

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Movement;
 using UnityEngine;
-using InteractionType = Movement.PlayerClickInteraction.InteractionType;
 
 
 public class Interactable : MonoBehaviour
 {
-    public InteractionType[] supportedInteractions;
+    public bool canBeInteracted = true;
+    public PlayerClickInteraction.InteractionType[] supportedInteractions;
     public bool doesMove = false;
     public bool occupiesCell;
     
@@ -19,26 +19,30 @@ public class Interactable : MonoBehaviour
         }
     }
     
-    public void Interact(GameObject initiatingPlayer, InteractionType interactionType){
+    public void Interact(GameObject initiatingPlayer, PlayerClickInteraction.InteractionType interactionType){
 
+        if(!canBeInteracted)
+        {
+            return;
+        }
         // TODO Fix this array to list - my editor was playing up and was GUI erroring everywhere (even rebooted editor)
         if (supportedInteractions.ToList().Contains(interactionType))
         {
             switch (interactionType)
             {
-                case InteractionType.Collect:
+                case PlayerClickInteraction.InteractionType.Collect:
                     OnCollect(initiatingPlayer);
                     break;
                 
-                case InteractionType.Inspect:
+                case PlayerClickInteraction.InteractionType.Inspect:
                     OnInspect(initiatingPlayer);
                     break;
                 
-                case InteractionType.Murder:
+                case PlayerClickInteraction.InteractionType.Murder:
                     OnMurder(initiatingPlayer);
                     break;
                 
-                case InteractionType.Scare:
+                case PlayerClickInteraction.InteractionType.Scare:
                     OnScare(initiatingPlayer);
                     break;
             }
@@ -61,11 +65,30 @@ public class Interactable : MonoBehaviour
     protected virtual void OnInspect(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
         // TODO behaviour for inspect
-        GetComponent<AiInventory>()?.OnInspect();
+        AiInventory inventory = GetComponent<AiInventory>();
+        if(inventory)
+        {
+            inventory.OnInspect();
+        }
     }
 
     protected virtual void OnCollect(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
         // TODO behaviour for collect
+
+        Animator animator = GetComponent<Animator>();
+        if (animator)
+        {
+            animator.Play("Collect");
+        }
+        else
+        {
+            Destroy();
+        }
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
