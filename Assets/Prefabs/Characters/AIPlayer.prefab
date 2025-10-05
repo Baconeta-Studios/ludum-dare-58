@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6886020198657681471}
   - component: {fileID: 7104447409461630440}
   - component: {fileID: 8645383270410824151}
+  - component: {fileID: 1257551429079169668}
   m_Layer: 0
   m_Name: AIPlayer
   m_TagString: Untagged
@@ -78,6 +79,29 @@ MonoBehaviour:
   jumpSpeed: 2
   rotateSpeed: 5
 --- !u!114 &8645383270410824151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c13adf29986457daf99dc75cfec8249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameLogic.AiSight
+  viewRange: 6
+  viewAngle: 90
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 1
+  rotateSpeed: 5
+  canSeePlayer: 0
+  currentTarget: {fileID: 0}
+--- !u!114 &1257551429079169668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

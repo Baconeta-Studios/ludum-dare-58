@@ -2114,61 +2114,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1600872467}
-    - targetCorrespondingSourceObject: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1600872470}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
---- !u!1 &1600872466 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
-  m_PrefabInstance: {fileID: 1600872465}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1600872467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600872466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159adf42b53fe9a49add86fe9f4098aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Movement.AiMovementController
-  gridManager: {fileID: 1489810016}
-  pathfinder: {fileID: 1489810018}
-  moveSpeed: 2
-  useJumpAnimation: 1
-  jumpHeight: 0.2
-  jumpSpeed: 2
-  rotateSpeed: 5
---- !u!114 &1600872470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600872466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c13adf29986457daf99dc75cfec8249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameLogic.AiSight
-  viewRange: 6
-  viewAngle: 90
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 1
-  rotateSpeed: 5
-  canSeePlayer: 0
-  currentTarget: {fileID: 0}
 --- !u!1 &1640801476
 GameObject:
   m_ObjectHideFlags: 0
