@@ -80,7 +80,7 @@ MonoBehaviour:
   useJumpAnimation: 1
   jumpHeight: 0.2
   jumpSpeed: 3
-  useRotation: 0
+  useRotation: 1
   rotateSpeed: 5
   pathfinder: {fileID: 0}
   currentInteractionType: 0
