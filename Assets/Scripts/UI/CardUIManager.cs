@@ -10,12 +10,16 @@ public class CardUIManager : MonoBehaviour {
     [Header("Available Cards")]
     public CardData[] allCards;
 
-    public void Init(PlayerClickInteraction p, List<CardData> allCards) {
+    public void Init(PlayerClickInteraction p) {
         _player = p;
+
         handSlot.SetCard(allCards[0], OnHandChanged);
-        for (int i = 1; i < allCards.Count; i++) {
-            leftSlots[i-1].SetCard(allCards[i], OnLeftCardClicked);
+
+        for (var i = 1; i < allCards.Length; i++) {
+            leftSlots[i - 1].SetCard(allCards[i], OnLeftCardClicked);
         }
+
+        _player.SetInteraction(handSlot.Card.interactionType);
     }
 
     private void OnLeftCardClicked(CardSlot clickedSlot) {

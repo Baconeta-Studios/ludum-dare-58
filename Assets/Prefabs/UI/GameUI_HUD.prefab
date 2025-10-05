@@ -118,9 +118,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CardUIManager
   leftSlots:
   - {fileID: 9010767854432301753}
-  - {fileID: 4662269313392694319}
-  - {fileID: 1915745706749763123}
-  handSlot: {fileID: 3796609656897467229}
+  - {fileID: 0}
+  - {fileID: 0}
+  handSlot: {fileID: 0}
   allCards:
   - {fileID: 11400000, guid: d8e13b85861459b4f88637a5f286f012, type: 2}
   - {fileID: 11400000, guid: 16283522eda5cd14695d786a6364361a, type: 2}
@@ -456,17 +456,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
---- !u!114 &4662269313392694319 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7118205087222754002, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
-  m_PrefabInstance: {fileID: 2484655404151455485}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf9d8c099a4484784bbe0a3e541d5de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardSlot
 --- !u!114 &6294257170337773884 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8440578449869080513, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
@@ -600,17 +589,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8692712616415631122, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
   m_PrefabInstance: {fileID: 6230929705965099407}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3796609656897467229 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7118205087222754002, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
-  m_PrefabInstance: {fileID: 6230929705965099407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf9d8c099a4484784bbe0a3e541d5de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardSlot
 --- !u!1001 &8673626401578349793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,14 +706,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!114 &1915745706749763123 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7118205087222754002, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
-  m_PrefabInstance: {fileID: 8673626401578349793}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf9d8c099a4484784bbe0a3e541d5de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CardSlot
