@@ -2,16 +2,13 @@
 using Movement;
 using UnityEngine;
 
-[System.Serializable] [CreateAssetMenu(fileName = "CardData", menuName = "Cards/New Card")]
-public class CardData : ScriptableObject {
-    public PlayerClickInteraction.InteractionType interactionType;
-    public Sprite cardSprite;
-}
-
 public class CardUIManager : MonoBehaviour {
     public CardSlot[] leftSlots;
     public CardSlot handSlot;
     private PlayerClickInteraction _player;
+    
+    [Header("Available Cards")]
+    public CardData[] allCards;
 
     public void Init(PlayerClickInteraction p, List<CardData> allCards) {
         _player = p;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7118205087222754002}
   - component: {fileID: 8440578449869080513}
   m_Layer: 5
-  m_Name: CollectSlot
+  m_Name: CardSot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
