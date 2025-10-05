@@ -244,7 +244,7 @@ MonoBehaviour:
   adjustSimulationFrameByPing: 0
   enableClientConnections: 1
   createGlobalQuery: 1
-  ClientConnectionEntry: {fileID: 11400000, guid: 9f029acc8d8f9cb439591d0451eabd30, type: 2}
+  ClientConnectionEntry: {fileID: 0}
   SimulatorConnectionEntry: {fileID: 0}
   mainBridge: 1
   useBuildIndexAsId: 0
@@ -272,8 +272,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   uniqueId: 
-  autoLoginAsGuest: 0
-  playerAccount: 1
+  autoLoginAsGuest: 1
+  playerAccount: 3
 --- !u!4 &656202008
 Transform:
   m_ObjectHideFlags: 0
@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomJoinHandler
   bridge: {fileID: 656202007}
+  sceneToLoad: {fileID: 102900000, guid: c56066eb4ffd8354c9626ad32fdb2d09, type: 3}
 --- !u!4 &1277673922
 Transform:
   m_ObjectHideFlags: 0
@@ -682,6 +683,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7300550018610163683, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000015258789
+      objectReference: {fileID: 0}
     - target: {fileID: 7410436684582398122, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
       propertyPath: m_Name
       value: UI
@@ -692,6 +697,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429996265202418019, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429996265202418019, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7734235527741861920, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
