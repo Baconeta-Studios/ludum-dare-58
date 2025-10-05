@@ -23,20 +23,31 @@ public class CardUIManager : MonoBehaviour {
     }
 
     private void OnLeftCardClicked(CardSlot clickedSlot) {
-        var handPos = handSlot.transform.position;
-        var clickedPos = clickedSlot.transform.position;
+        var handVisual = handSlot.CardVisual;
+        var leftVisual = clickedSlot.CardVisual;
 
-        // Animate them to each other’s positions
-        handSlot.transform.DOMove(clickedPos, 0.2f).OnComplete(() => {
+        Vector3 handTarget = clickedSlot.transform.position;
+        Vector3 leftTarget = handSlot.transform.position;
+
+        var seq = DOTween.Sequence();
+
+        // Animate visuals to each other’s positions
+        seq.Join(handVisual.DOMove(handTarget, 0.25f).SetEase(Ease.InOutQuad));
+        seq.Join(leftVisual.DOMove(leftTarget, 0.25f).SetEase(Ease.InOutQuad));
+
+        seq.OnComplete(() => {
+            // Swap card data AFTER animation finishes
             var temp = handSlot.Card;
             handSlot.SetCard(clickedSlot.Card, OnHandChanged);
             clickedSlot.SetCard(temp, OnLeftCardClicked);
+
+            // Snap visuals back to their slots
+            handSlot.RefreshVisual();
+            clickedSlot.RefreshVisual();
+
+            // Update player
+            _player.SetInteraction(handSlot.Card.interactionType);
         });
-        clickedSlot.transform.DOMove(handPos, 0.2f);
-    }
-    
-    public void AnimateMoveTo(Vector3 targetPosition, float duration = 0.2f) {
-        transform.DOMove(targetPosition, duration).SetEase(Ease.InOutQuad);
     }
     
     private void OnHandChanged(CardSlot slot) {

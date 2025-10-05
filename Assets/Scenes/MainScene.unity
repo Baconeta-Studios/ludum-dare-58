@@ -1728,6 +1728,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 155420322578829318, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
+      propertyPath: m_Spacing
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 155420322578829318, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 155420322578829318, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
+      propertyPath: m_Padding.m_Right
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 912394926622333516, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 340
+      objectReference: {fileID: 0}
     - target: {fileID: 4691099442264197243, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
       propertyPath: m_Name
       value: GameUI_HUD
