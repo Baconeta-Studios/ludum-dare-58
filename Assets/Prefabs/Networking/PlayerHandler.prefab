@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0969fffb017af4db5df7c1760d7d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHandler
-  prefabToSpawn: {fileID: 360526842860715186, guid: 7e9402e2df170e64aa22038d338efe79, type: 3}
+  prefabToSpawn: {fileID: 3100423844219738655, guid: 1d3d32715f6d180429f58bb57f415d3b, type: 3}
   initialPosition: {x: 0, y: 0, z: 0}
   localCameraPrefab: {fileID: 8836429081160699245, guid: 523f767fabec9014f89898527578ab8f, type: 3}

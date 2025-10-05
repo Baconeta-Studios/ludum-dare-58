@@ -268,19 +268,11 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 1527650246609643777}
       lodStepsActive: 1
-    - component: {fileID: 7649281688651725679}
-      lodStepsActive: 1
-    - component: {fileID: 5072369244667068753}
-      lodStepsActive: 1
-    - component: {fileID: 390852880218102423}
-      lodStepsActive: 1
-    - component: {fileID: 424806457164115960}
-      lodStepsActive: 1
-    - component: {fileID: 8602695638331593056}
-      lodStepsActive: 1
-    - component: {fileID: 5383094757257164449}
-      lodStepsActive: 1
     - component: {fileID: 256703456595951638}
+      lodStepsActive: 1
+    - component: {fileID: 7803118539643023496}
+      lodStepsActive: 1
+    - component: {fileID: 7200163702083526233}
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
@@ -487,29 +479,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
---- !u!65 &390852880218102423 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 6656916275277930636, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
-  m_PrefabInstance: {fileID: 6417216648350251547}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &424806457164115960 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6695656044022765027, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
-  m_PrefabInstance: {fileID: 6417216648350251547}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1527650246609643777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5493764018484482842, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
   m_PrefabInstance: {fileID: 6417216648350251547}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &5072369244667068753 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2263661889082686282, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
-  m_PrefabInstance: {fileID: 6417216648350251547}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5383094757257164449 stripped
+--- !u!114 &7200163702083526233 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1421466927292157114, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4243118964470326338, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
   m_PrefabInstance: {fileID: 6417216648350251547}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -518,13 +495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9248896188924a040842a6a6084f826a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
---- !u!33 &7649281688651725679 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 3686545534855659892, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
-  m_PrefabInstance: {fileID: 6417216648350251547}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &8602695638331593056 stripped
+--- !u!108 &7803118539643023496 stripped
 Light:
-  m_CorrespondingSourceObject: {fileID: 3345156994149198715, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3838393385921301139, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
   m_PrefabInstance: {fileID: 6417216648350251547}
   m_PrefabAsset: {fileID: 0}
