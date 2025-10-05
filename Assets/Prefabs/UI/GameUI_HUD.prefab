@@ -499,6 +499,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HandSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7118205087222754002, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8692712616415631122, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -579,7 +583,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2695748998231484834, guid: bf1710fdc13e5584e97ec0bad251b197, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

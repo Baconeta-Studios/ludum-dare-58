@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
 using Movement;
 using UnityEngine;
 
@@ -23,12 +23,22 @@ public class CardUIManager : MonoBehaviour {
     }
 
     private void OnLeftCardClicked(CardSlot clickedSlot) {
-        var temp = handSlot.Card;
-        handSlot.SetCard(clickedSlot.Card, OnHandChanged);
-        clickedSlot.SetCard(temp, OnLeftCardClicked);
-        _player.currentInteractionType = handSlot.Card.interactionType;
-    }
+        var handPos = handSlot.transform.position;
+        var clickedPos = clickedSlot.transform.position;
 
+        // Animate them to each other’s positions
+        handSlot.transform.DOMove(clickedPos, 0.2f).OnComplete(() => {
+            var temp = handSlot.Card;
+            handSlot.SetCard(clickedSlot.Card, OnHandChanged);
+            clickedSlot.SetCard(temp, OnLeftCardClicked);
+        });
+        clickedSlot.transform.DOMove(handPos, 0.2f);
+    }
+    
+    public void AnimateMoveTo(Vector3 targetPosition, float duration = 0.2f) {
+        transform.DOMove(targetPosition, duration).SetEase(Ease.InOutQuad);
+    }
+    
     private void OnHandChanged(CardSlot slot) {
         _player.currentInteractionType = slot.Card.interactionType;
     }

@@ -17,6 +17,10 @@ public class CardSlot : MonoBehaviour {
 
         if (cardImage != null) cardImage.sprite = data.cardSprite;
 
+        if (button == null)
+        {
+            return;
+        }
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => _onClick?.Invoke(this));
     }

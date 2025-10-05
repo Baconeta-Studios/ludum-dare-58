@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Movement
@@ -29,6 +30,7 @@ namespace Movement
         private PlayerControls controls;
         private Vector3 targetPosition;
         private bool moving = false;
+        private bool ignoreWorldClicks = false;
 
         private Vector3 _invalidWalkingPosition = new Vector3(9999, 9999, 9999);
 
@@ -85,6 +87,8 @@ namespace Movement
             }
 
             HoverHighlightCell(gridManager.GetCell(Vector3.zero));
+
+            ignoreWorldClicks = CheckIfOnUIObject();
         }
 
         private void HandleSmoothMovement() {
@@ -159,6 +163,11 @@ namespace Movement
         }
 
         private void OnClick(InputAction.CallbackContext ctx) {
+            if (ignoreWorldClicks)
+            {
+                return;
+            }
+            
             Vector2 screenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
 
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
@@ -167,6 +176,26 @@ namespace Movement
             {
                 TryMove(ray);
             }
+        }
+
+        private static bool CheckIfOnUIObject()
+        {
+            if (Pointer.current != null) {
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                    return true;
+            }
+
+            // Touch case
+            if (Touchscreen.current != null) {
+                foreach (var touch in Touchscreen.current.touches) {
+                    if (touch.isInProgress) {
+                        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.touchId.ReadValue()))
+                            return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private bool TryInteract(Ray ray){
