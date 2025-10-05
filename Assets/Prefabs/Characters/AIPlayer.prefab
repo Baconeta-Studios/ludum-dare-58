@@ -5387,7 +5387,11 @@ MonoBehaviour:
   coherenceUUID: 
   assetVersion: 
   coherenceTag: 
-  componentActions: []
+  componentActions:
+  - rid: 2835214013039116385
+  - rid: 2835214013039116386
+  - rid: 2835214013039116387
+  - rid: 2835214013039116388
   floatingOriginMode: 0
   floatingOriginParentedMode: 1
   references:
@@ -5530,6 +5534,22 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 2835214013039116385
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 7104447409461630440}
+    - rid: 2835214013039116386
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 2185722752081631778}
+    - rid: 2835214013039116387
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 8645383270410824151}
+    - rid: 2835214013039116388
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 7187185018167391222}
 --- !u!114 &7187185018167391222
 MonoBehaviour:
   m_ObjectHideFlags: 0
