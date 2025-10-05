@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Coherence.Toolkit;
 using Managers;
 using UnityEngine;
 
@@ -7,17 +9,25 @@ namespace Movement
     public class PlayerLogic : MonoBehaviour
     {
         private List<string> _myObjectives;
+
         private void Start()
         {
-            Debug.Log("Start player spawning system");
-            GameManager.Instance.OnPlayerSpawned(name, gameObject);
-            
-            Invoke(nameof(GetObjectives), 1f);
+            if (TryGetComponent<CoherenceSync>(out var sync) && sync.HasStateAuthority)
+            {
+                Debug.Log("Sync object found- start player spawning system");
+                GameManager.Instance.OnPlayerSpawned(name, gameObject);
+                
+                Invoke(nameof(SetupPlayer), 1f);
+            }
         }
 
-        private void GetObjectives()
+        private void SetupPlayer()
         {
-            _myObjectives = GameManager.Instance.GetMyObjectives(name);
+            string playerId = name;
+            
+            _myObjectives = GameManager.Instance.GetMyObjectives(playerId);
+
+            Debug.Log($"Player {playerId} objectives: {string.Join(", ", _myObjectives)}");
         }
     }
 }
