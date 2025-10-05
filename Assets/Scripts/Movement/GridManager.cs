@@ -2,7 +2,6 @@
 
 namespace Movement
 {
-    using Unity.VisualScripting.Dependencies.Sqlite;
     using UnityEngine;
 
     [System.Serializable]
@@ -97,6 +96,82 @@ namespace Movement
             if (xIndex >= 0 && xIndex < width && yIndex >= 0 && yIndex < height) {
                 return Grid[xIndex, yIndex];
             }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the nearest walkable cell to the target within a radius.
+        /// </summary>
+        /// <param name="targetWorldPos">World position of the target</param>
+        /// <param name="originWorldPos">World position of the origin</param>
+        /// <param name="maxDistance">Maximum radius (circular)</param>
+        /// <param name="canOccupySameCell">If the nearest walkable cell can be the same as the target cell</param>
+        /// <param name="nearestWithinRadius">Whether to get the nearest cell to the *origin* within the radius.</param>
+        /// <returns></returns>
+        public GridCell GetNearestWalkableCell(Vector3 targetWorldPos, Vector3 originWorldPos, int maxDistance, bool canOccupySameCell, bool nearestWithinRadius) {
+            if (Grid == null) return null;
+            
+            GridCell targetCell = GetCell(targetWorldPos);
+            
+            if (canOccupySameCell && targetCell != null && targetCell.walkable)
+            {
+                // Return origin cell if its walkable
+                return targetCell;
+            }
+            else
+            {
+                // Search for nearby walkable cells.
+                List<GridCell> nearbyWalkableCells = new List<GridCell>();
+
+                for (int currentSearchRadius = 1; currentSearchRadius <= maxDistance; currentSearchRadius++)
+                {
+                    bool foundWalkableCellThisRadius = false;
+                    
+                    int radiusSquared = currentSearchRadius * currentSearchRadius;
+
+                    for (int x = -currentSearchRadius; x <= currentSearchRadius; x++)
+                    {
+                        // Get the max Y for this X so that xSquared + ySquared ≤ radiusSquared
+                        int maxY = (int) Mathf.Floor(Mathf.Sqrt(radiusSquared - (x * x)));
+
+                        for (int y = -maxY; y <= maxY; y++)
+                        {
+                            GridCell cell = GetCell(targetWorldPos + new Vector3(x, 0, y));
+                            if (cell != null && cell.walkable && cell != targetCell)
+                            {
+                                nearbyWalkableCells.Add(cell);
+                                foundWalkableCellThisRadius = true;
+                            }
+                        }
+                    }
+
+                    if (!nearestWithinRadius && foundWalkableCellThisRadius)
+                    {
+                        break;
+                    }
+                }
+
+                if (nearbyWalkableCells.Count > 0)
+                {
+                    // Find the closest nearby cell    
+                    GridCell closestCell = nearbyWalkableCells[0];
+                    float closestDistance = Vector3.Distance(closestCell.worldPosition, originWorldPos);
+
+                    foreach (var cell in nearbyWalkableCells)
+                    {
+                        float distance = Vector3.Distance(cell.worldPosition, originWorldPos);
+                        if (distance < closestDistance)
+                        {
+                            closestCell = cell;
+                            closestDistance = distance;
+                        }
+                    }
+                    
+                    return closestCell;
+                }
+            }
+
+            // There is no walkable tile within the distance.
             return null;
         }
 
