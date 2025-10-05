@@ -234,5 +234,9 @@ namespace Movement
             Shader.SetGlobalInteger("_IsHovering", 1);
             Shader.SetGlobalVector("_HoverWorldPosition", (Vector4)hoveredCell.worldPosition);
         }
+        
+        public void SetInteraction(InteractionType type) {
+            currentInteractionType = type;
+        }
     }
 }
