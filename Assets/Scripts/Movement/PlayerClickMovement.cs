@@ -46,8 +46,6 @@ namespace Movement
         private void OnEnable() {
             controls.Gameplay.Enable();
             controls.Gameplay.Interact.performed += OnClick;
-            Debug.Log("Enable!");
-
         }
 
         private void OnDisable() {
@@ -129,8 +127,6 @@ namespace Movement
         }
 
         private void OnClick(InputAction.CallbackContext ctx) {
-            Debug.Log("Click!");
-            // Get the pointer position from the separate action
             Vector2 screenPos = controls.Gameplay.InteractPosition.ReadValue<Vector2>();
 
             Ray ray = Camera.main.ScreenPointToRay(screenPos);
