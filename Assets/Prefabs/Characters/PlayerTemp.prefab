@@ -332,6 +332,7 @@ MonoBehaviour:
   componentActions:
   - rid: 3824195019474206838
   - rid: 3824195019474206839
+  - rid: 3824195020224987246
   floatingOriginMode: 0
   floatingOriginParentedMode: 1
   references:
@@ -437,6 +438,10 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 3824195020224987246
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 3195892257274726233}
 --- !u!1001 &3072232405886425364
 PrefabInstance:
   m_ObjectHideFlags: 0
