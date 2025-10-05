@@ -2069,7 +2069,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
       propertyPath: m_Name
-      value: AIPlayer
+      value: AI_Character
       objectReference: {fileID: 0}
     - target: {fileID: 3153024374868625782, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
       propertyPath: pathfinder
@@ -35770,7 +35770,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3100423844219738655, guid: 1d3d32715f6d180429f58bb57f415d3b, type: 3}
       propertyPath: m_Name
-      value: Capsule
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3195892257274726233, guid: 1d3d32715f6d180429f58bb57f415d3b, type: 3}
       propertyPath: pathfinder
@@ -35780,6 +35780,10 @@ PrefabInstance:
       propertyPath: gridManager
       value: 
       objectReference: {fileID: 1489810016}
+    - target: {fileID: 3195892257274726233, guid: 1d3d32715f6d180429f58bb57f415d3b, type: 3}
+      propertyPath: interactableMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 3723853178183722643, guid: 1d3d32715f6d180429f58bb57f415d3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
