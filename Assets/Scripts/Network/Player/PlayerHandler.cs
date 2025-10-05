@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerHandler : MonoBehaviour
 {
-    [Header("Player Settings")]
-    public GameObject prefabToSpawn;
+    [Header("Player Settings")] public GameObject prefabToSpawn;
     public Vector3 initialPosition = Vector3.zero;
 
     private CoherenceBridge _bridge;
     private GameObject _player;
+    public GameObject localCameraPrefab;
 
     private void Awake()
     {
@@ -19,6 +19,7 @@ public class PlayerHandler : MonoBehaviour
             Debug.LogError("CoherenceBridge not found in the scene.");
             return;
         }
+
         this.OnConnection(_bridge);
         _bridge.onConnected.AddListener(OnConnection);
         Debug.LogWarning("Bridge Mounted On Connection listener");
@@ -47,6 +48,7 @@ public class PlayerHandler : MonoBehaviour
         DespawnPlayer();
     }
 
+
     private void SpawnPlayer()
     {
         Debug.LogWarning("Spawning player....");
@@ -62,9 +64,19 @@ public class PlayerHandler : MonoBehaviour
             return;
         }
 
+        // Spawn the networked avatar
         _player = Instantiate(prefabToSpawn, initialPosition, Quaternion.identity);
+
+        // Attach local-only camera
+        if (_player.TryGetComponent<CoherenceSync>(out var sync) && sync.HasStateAuthority)
+        {
+            var cameraRig = Instantiate(localCameraPrefab);
+            cameraRig.GetComponent<CameraFollow>().target = _player.transform;
+        }
+
         Debug.LogWarning("Player Spawned");
     }
+
 
     private void DespawnPlayer()
     {
