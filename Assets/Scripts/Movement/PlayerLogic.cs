@@ -15,9 +15,13 @@ namespace Movement
             if (TryGetComponent<CoherenceSync>(out var sync) && sync.HasStateAuthority)
             {
                 Debug.Log("Sync object found- start player spawning system");
-                GameManager.Instance.OnPlayerSpawned(name, gameObject);
+                GameManager.Instance.OnPlayerSpawned(name);
                 
                 Invoke(nameof(SetupPlayer), 1f);
+            }
+            else if (sync == null)
+            {
+                GameManager.Instance.OnPlayerSpawned(name);
             }
         }
 

@@ -35,7 +35,7 @@ namespace Managers
                       " | Enemies: " + string.Join(", ", allEnemyIds));
         }
 
-        public void OnPlayerSpawned(string playerId, GameObject playerObj)
+        public void OnPlayerSpawned(string playerId)
         {
             if (!IsAuthority())
                 return;
