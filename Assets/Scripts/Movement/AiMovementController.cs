@@ -1,3 +1,4 @@
+using Coherence.Toolkit;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,10 +23,12 @@ namespace Movement
         private bool _isJumping = false;
         private Vector3 _jumpStart, _jumpEnd;
         private float _jumpProgress;
+        private CoherenceSync coherenceSync;
 
         private void Awake(){
             gridManager ??= FindFirstObjectByType<GridManager>();
             pathfinder ??= FindFirstObjectByType<GridPathfinder>();
+            coherenceSync = GetComponent<CoherenceSync>();
         }
 
         private void Start()
@@ -35,16 +38,19 @@ namespace Movement
 
         private void Update()
         {
-            if (_moving && _path.Count > 0)
+            if(coherenceSync && coherenceSync.HasStateAuthority)
             {
-                if (useJumpAnimation) HandleJump();
-                else HandleSmooth();
-            }
-            else if (!_moving)
-            {
-                if (Random.value < 0.01f)
+                if (_moving && _path.Count > 0)
                 {
-                    PickNewDestination();
+                    if (useJumpAnimation) HandleJump();
+                    else HandleSmooth();
+                }
+                else if (!_moving)
+                {
+                    if (Random.value < 0.01f)
+                    {
+                        PickNewDestination();
+                    }
                 }
             }
         }
