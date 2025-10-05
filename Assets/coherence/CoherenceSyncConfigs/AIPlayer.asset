@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
-  m_Name: AIPlayer 1
+  m_Name: AIPlayer
   m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceSyncConfig
   id: a1fa7cddf5d5ef94b8bacf8838c9a6fa
-  selfId: 3a3641dc908201d41a3d80c3cad79633
+  selfId: 22cedc79345d73a46863c35b2a137c38
   editorTarget: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
   includeInSchema: 1
   objectProvider:
-    rid: 878349384412037298
+    rid: 878349384838284108
   objectInstantiator:
-    rid: 878349384412037299
+    rid: 878349384838284109
   references:
     version: 2
     RefIds:
-    - rid: 878349384412037298
+    - rid: 878349384838284108
       type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
         prefab: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
-    - rid: 878349384412037299
+    - rid: 878349384838284109
       type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data: 

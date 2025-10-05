@@ -46,11 +46,15 @@ namespace Movement
             Murder,
             Scare
         }
-        
         public LayerMask interactableMask;
+        
+        [Space(5), Header("Interaction Radius")] 
+        public int CollectRange = 1;
+        public int InspectRange = 3;
+        public int MurderRange = 1;
+        public int ScareRange = 3;
 
-        [Tooltip("Maximum radius to interact with objects")] 
-        public int interactionRadius = 1;
+
 
         private bool clickQueued;
         private Vector2 queuedScreenPos;
@@ -198,7 +202,7 @@ namespace Movement
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, interactableMask)) {
                 targetInteractable = hit.collider.GetComponent<Interactable>();
                 
-                if (Vector3.Distance(transform.position, targetInteractable.transform.position) > interactionRadius) {
+                if (Vector3.Distance(transform.position, targetInteractable.transform.position) > GetCurrentInteractionRange()) {
                     PathToCell(GetNearestCell(hit.point));
                 } else {
                     InteractWithTarget();
@@ -212,7 +216,7 @@ namespace Movement
         private GridCell GetNearestCell(Vector3 worldPosition){
             GridCell nearestGoal = gridManager.GetNearestWalkableCell(worldPosition,
                 transform.position,
-                interactionRadius,
+                GetCurrentInteractionRange(),
                 !targetInteractable.occupiesCell,
                 targetInteractable.doesMove);
             
@@ -251,6 +255,23 @@ namespace Movement
         private void InteractWithTarget(){
             targetInteractable.Interact(gameObject, currentInteractionType);
             targetInteractable = null;
+        }
+
+        private int GetCurrentInteractionRange()
+        {
+            switch(currentInteractionType)
+            {
+                case InteractionType.Collect:
+                    return CollectRange;
+                case InteractionType.Murder:
+                    return MurderRange;
+                case InteractionType.Inspect:
+                    return InspectRange;
+                case InteractionType.Scare:
+                    return ScareRange;
+                default:
+                    return 1;
+            }
         }
 
         private void HoverHighlightCell(GridCell hoveredCell) {
