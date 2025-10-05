@@ -53,11 +53,13 @@ namespace Managers
         private List<string> AssignObjectives()
         {
             var result = new List<string>();
+            var pool = new List<string>(allItemIds);
 
-            for (var i = 0; i < objectivesPerPlayer; i++)
+            for (var i = 0; i < objectivesPerPlayer && pool.Count > 0; i++)
             {
-                var index = Random.Range(0, allItemIds.Count);
-                result.Add(allItemIds[index]); // allow overlap
+                int index = Random.Range(0, pool.Count);
+                result.Add(pool[index]);
+                pool.RemoveAt(index); // ensure no duplicates
             }
 
             return result;
