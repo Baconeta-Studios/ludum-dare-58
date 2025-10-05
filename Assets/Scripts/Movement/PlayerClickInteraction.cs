@@ -59,6 +59,11 @@ namespace Movement
             
         }
 
+        // TODO this will only work for prototype single-player
+        private void Start() {
+            FindFirstObjectByType<CardUIManager>().Init(this);
+        }
+
         private void OnEnable() {
             controls.Gameplay.Enable();
             controls.Gameplay.Interact.performed += OnClick;
