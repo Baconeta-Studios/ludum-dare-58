@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 8645383270410824151}
   - component: {fileID: 3329711444901238119}
   - component: {fileID: 2185722752081631778}
+  - component: {fileID: 6988564652342590065}
+  - component: {fileID: 5627142117652192589}
+  - component: {fileID: 8012432404010225848}
   m_Layer: 11
   m_Name: AIPlayer
   m_TagString: Untagged
@@ -179,6 +182,400 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   inspectionParticles: {fileID: 0}
+--- !u!114 &6988564652342590065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff62c046a053f416a8dc48ad6483a25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceSync
+  OnAuthorityRequest:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNetworkedInstantiation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeforeNetworkedInstantiation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNetworkedDestruction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStateRemote:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInputRemote:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStateAuthority:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInputAuthority:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAuthorityRequestRejected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAuthTransferComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNetworkedParentChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnInputSimulatorConnected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRigidbody2DPositionUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRigidbody3DPositionUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRigidbody2DRotationUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRigidbody3DRotationUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  coherenceSyncConfig: {fileID: 11400000, guid: 3a3641dc908201d41a3d80c3cad79633, type: 2}
+  archetype:
+    lodLevels:
+    - distance: 0
+    boundComponents:
+    - component: {fileID: 3723853178183722643}
+      lodStepsActive: 1
+    - component: {fileID: 6886020198657681471}
+      lodStepsActive: 1
+    - component: {fileID: 7104447409461630440}
+      lodStepsActive: 1
+    - component: {fileID: 8645383270410824151}
+      lodStepsActive: 1
+    - component: {fileID: 3329711444901238119}
+      lodStepsActive: 1
+    - component: {fileID: 2185722752081631778}
+      lodStepsActive: 1
+    - component: {fileID: 2221551919628552685}
+      lodStepsActive: 1
+    - component: {fileID: 6495988609065447616}
+      lodStepsActive: 1
+    - component: {fileID: 6182304633256973839}
+      lodStepsActive: 1
+    - component: {fileID: 2246801964786835898}
+      lodStepsActive: 1
+    - component: {fileID: 3253915991572686103}
+      lodStepsActive: 1
+    - component: {fileID: 9050080633275663443}
+      lodStepsActive: 1
+    - component: {fileID: 7847777578476357628}
+      lodStepsActive: 1
+    - component: {fileID: 2344993387933787196}
+      lodStepsActive: 1
+    - component: {fileID: 5306054700990169572}
+      lodStepsActive: 1
+    - component: {fileID: 4247727511347566880}
+      lodStepsActive: 1
+    - component: {fileID: 6568925618414958154}
+      lodStepsActive: 1
+    - component: {fileID: 8573247560641129711}
+      lodStepsActive: 1
+    - component: {fileID: 1797214918581189248}
+      lodStepsActive: 1
+    - component: {fileID: 8683524623937839069}
+      lodStepsActive: 1
+    - component: {fileID: 8786734739489447261}
+      lodStepsActive: 1
+    - component: {fileID: 3536378667723613006}
+      lodStepsActive: 1
+    - component: {fileID: 6788782481087345161}
+      lodStepsActive: 1
+    - component: {fileID: 6363446208332614091}
+      lodStepsActive: 1
+    - component: {fileID: 3579583777304020217}
+      lodStepsActive: 1
+    - component: {fileID: 842901684885659573}
+      lodStepsActive: 1
+    - component: {fileID: 4988819454224185853}
+      lodStepsActive: 1
+    - component: {fileID: 8546118704351732599}
+      lodStepsActive: 1
+    - component: {fileID: 8364153182199925614}
+      lodStepsActive: 1
+    - component: {fileID: 697205524994304618}
+      lodStepsActive: 1
+    - component: {fileID: 6851014100207670877}
+      lodStepsActive: 1
+    - component: {fileID: 6392701651754859674}
+      lodStepsActive: 1
+    - component: {fileID: 729710464768883730}
+      lodStepsActive: 1
+    - component: {fileID: 8148646630540619792}
+      lodStepsActive: 1
+    - component: {fileID: 3424778511746158814}
+      lodStepsActive: 1
+    - component: {fileID: 6268503666427038039}
+      lodStepsActive: 1
+    - component: {fileID: 6437916121477179270}
+      lodStepsActive: 1
+    - component: {fileID: 3345566915269172809}
+      lodStepsActive: 1
+    - component: {fileID: 7848258481897119816}
+      lodStepsActive: 1
+    - component: {fileID: 7512127615230048393}
+      lodStepsActive: 1
+    - component: {fileID: 7442681466183950492}
+      lodStepsActive: 1
+    - component: {fileID: 1221533766350508667}
+      lodStepsActive: 1
+    - component: {fileID: 5953939995819679356}
+      lodStepsActive: 1
+    - component: {fileID: 978250679712878815}
+      lodStepsActive: 1
+    - component: {fileID: 5627142117652192589}
+      lodStepsActive: 1
+    - component: {fileID: 8012432404010225848}
+      lodStepsActive: 1
+    GeneratesArchetypeDefinition: 0
+  interpolationLocation: 1
+  RigidbodyUpdateMode: 0
+  bakedScriptType: Coherence.Generated.CoherenceSync_a1fa7cddf5d5ef94b8bacf8838c9a6fa,
+    Assembly-CSharp
+  isGlobal: 0
+  approveAuthorityTransferRequests: 1
+  simulationType: 0
+  authorityTransferConfig: 0
+  orphanedBehavior: 0
+  lifetimeType: 0
+  uniquenessType: 0
+  replacementStrategy: 0
+  unsyncedNetworkEntityPriority: 0
+  preserveChildren: 0
+  bindings:
+  - rid: 878349384412037296
+  - rid: 878349384412037300
+  - rid: 878349384838283968
+  scenePrefabInstanceUUID: 
+  coherenceUUID: 
+  assetVersion: 
+  coherenceTag: 
+  componentActions: []
+  floatingOriginMode: 0
+  floatingOriginParentedMode: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 878349384412037296
+      type: {class: PositionBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 878349384412037297
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: edf258fa46fb4f78a654625e915cb376
+        archetypeData:
+          type: 7
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 7
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 3723853178183722643}
+        coherenceSync: {fileID: 6988564652342590065}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 878349384412037297
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: position
+        monoAssemblyType: UnityEngine.Vector3, UnityEngine
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 64
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.TransformBindings.PositionBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 878349384412037300
+      type: {class: RotationBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 878349384412037301
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: a34c951388e04e818055659166b9cbe4
+        archetypeData:
+          type: 8
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 8
+            bits: 32
+            precision: 0.00000008381903171539307
+            floatCompression: 0
+        unityComponent: {fileID: 3723853178183722643}
+        coherenceSync: {fileID: 6988564652342590065}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 878349384412037301
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: rotation
+        monoAssemblyType: UnityEngine.Quaternion, UnityEngine
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 64
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.TransformBindings.RotationBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 878349384838283968
+      type: {class: ScaleBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 878349384838283969
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 3114baa235fc449799701e4869099570
+        archetypeData:
+          type: 7
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 7
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 3723853178183722643}
+        coherenceSync: {fileID: 6988564652342590065}
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 878349384838283969
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: localScale
+        monoAssemblyType: UnityEngine.Vector3, UnityEngine
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 64
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.TransformBindings.ScaleBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+--- !u!114 &5627142117652192589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 475155521
+  InScenePlacedSourceGlobalObjectIdHash: 1464590102
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &8012432404010225848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 1
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &7443973468421945849
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,14 +683,174 @@ PrefabInstance:
       addedObject: {fileID: 3424778511746158814}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+--- !u!33 &697205524994304618 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -8002113183021480852, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &729710464768883730 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -7818738222562913772, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &842901684885659573 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1363647666642317747, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &1221533766350508667 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 697480368819207293, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1797214918581189248 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -9102111587885312890, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2221551919628552685 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 805538d925d31864a83990d3b28a147e, type: 3}
   m_PrefabInstance: {fileID: 1827952160704392710}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &2246801964786835898 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8759485101547089988, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2344993387933787196 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4167280743394806330, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3253915991572686103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3780221669983275793, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3345566915269172809 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5245594413394399153, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3536378667723613006 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6319239227303391928, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3579583777304020217 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2950716151392660223, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4247727511347566880 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6652725513331149018, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &4988819454224185853 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -2565389245545555973, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &5306054700990169572 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -3387599253219119134, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5953939995819679356 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5475977129296654458, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &6182304633256973839 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 5518534076853254153, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &6363446208332614091 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 4688722556252432333, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6392701651754859674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4473973808820661604, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6495988609065447616 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4861728118628753094, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6568925618414958154 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4789494391660566604, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6788782481087345161 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4077823109998420977, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6851014100207670877 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4157524182732408741, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7442681466183950492 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -137492200640065894, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7512127615230048393 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8151023354082563727, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7847777578476357628 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -741166567707203078, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &7848258481897119816 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 8481594556345601614, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8148646630540619792 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1707992212735795690, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8364153182199925614 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7876023681238672744, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8546118704351732599 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8054645467197574513, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8573247560641129711 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -1178680907678170391, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8683524623937839069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2171821968081456677, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &8786734739489447261 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 6966770102509974363, guid: 805538d925d31864a83990d3b28a147e, type: 3}
+  m_PrefabInstance: {fileID: 1827952160704392710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &9050080633275663443 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -1961765496202679723, guid: 805538d925d31864a83990d3b28a147e, type: 3}
   m_PrefabInstance: {fileID: 1827952160704392710}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7186202037251621828
@@ -358,3 +915,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5493764018484482842, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
   m_PrefabInstance: {fileID: 7186202037251621828}
   m_PrefabAsset: {fileID: 0}
+--- !u!108 &6268503666427038039 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 3838393385921301139, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
+  m_PrefabInstance: {fileID: 7186202037251621828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6437916121477179270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4243118964470326338, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
+  m_PrefabInstance: {fileID: 7186202037251621828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9248896188924a040842a6a6084f826a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
