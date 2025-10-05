@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 0}
-  offset: {x: 0, y: 3, z: -6}
+  offset: {x: 0.0181, y: 11.64, z: -4.9}
+  rotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
   followSpeed: 10
-  rotationSpeed: 70
-  allowOrbit: 1
