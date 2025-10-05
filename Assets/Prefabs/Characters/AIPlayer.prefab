@@ -5039,6 +5039,7 @@ GameObject:
   - component: {fileID: 6988564652342590065}
   - component: {fileID: 7187185018167391222}
   - component: {fileID: 8174208910537896391}
+  - component: {fileID: 1507178751440715471}
   m_Layer: 11
   m_Name: AIPlayer
   m_TagString: Untagged
@@ -5370,10 +5371,10 @@ MonoBehaviour:
     Assembly-CSharp
   isGlobal: 0
   approveAuthorityTransferRequests: 1
-  simulationType: 0
-  authorityTransferConfig: 0
-  orphanedBehavior: 0
-  lifetimeType: 0
+  simulationType: 3
+  authorityTransferConfig: 2
+  orphanedBehavior: 1
+  lifetimeType: 1
   uniquenessType: 0
   replacementStrategy: 0
   unsyncedNetworkEntityPriority: 0
@@ -5568,6 +5569,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1507178751440715471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc97a814921d461188a38ca20db6787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceInput
+  InitialBufferSize: 32
+  InitialInputDelay: 3
+  DisconnectOnTimeReset: 0
+  DestroyOnInputAuthorityDisconnected: 1
+  UseFixedSimulationFrames: 0
+  fields: []
 --- !u!1 &7443973468421945849
 GameObject:
   m_ObjectHideFlags: 0

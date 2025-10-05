@@ -277,6 +277,10 @@ namespace Coherence.Generated
 
         public unsafe IEntityInput GetInput(UInt32 type, IntPtr data, Int32 dataSize)
         {
+            switch (type)
+            {
+                  case 0: return _a1fa7cddf5d5ef94b8bacf8838c9a6fa.FromInterop(data, dataSize);
+            }
             throw new ArgumentException($"Unknown input type {type}", nameof(type));
         }
 
@@ -355,6 +359,20 @@ namespace Coherence.Generated
         public unsafe void SendInput(INativeCoreInputSender sender, InteropEntity entity, long frame, IEntityInput input)
         {
             var type = input.GetComponentType();
+            var inputData = (InputData)input;
+            switch (type)
+            {
+                case 0:
+                {
+                    var orig = (_a1fa7cddf5d5ef94b8bacf8838c9a6fa)inputData.Input;
+                    var val = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa.Interop();
+
+
+                    sender.SendInput(entity, frame, type, val, 0);
+
+                    return;
+                }
+            }
 
             throw new NotImplementedException($"Failed to send an input with type {type}.");
         }
