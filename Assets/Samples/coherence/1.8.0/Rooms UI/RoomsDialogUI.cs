@@ -510,8 +510,17 @@ namespace Coherence.Samples.RoomsDialog
             var createdRoom = requestResponse.Result;
             if (joinNextCreatedRoom)
             {
+                var (roomEndpoint, isEndpointValid, validationErrorMessage) = RoomData.GetRoomEndpointData(createdRoom);
+
+                if (CoherenceBridgeStore.TryGetBridge(gameObject.scene, out var bridge))
+                {
+                    bridge.onConnected.AddListener(OnConnected);
+                    bridge.ConnectAsHost(roomEndpoint);
+
+                    void OnConnected(CoherenceBridge bridge) => Debug.Log($"Connected! IsHost: {bridge.IsSimulatorOrHost}");
+                }
                 joinNextCreatedRoom = false;
-                JoinRoom(createdRoom);
+                // JoinRoom(createdRoom);
             }
             else
             {
