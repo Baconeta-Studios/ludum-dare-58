@@ -13,6 +13,9 @@ namespace Movement
         public float jumpHeight = 0.5f;
         public float jumpSpeed = 5f;
 
+        [Header("Rotation")]
+        public float rotateSpeed = 5f;   // new: how quickly they turn
+
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
 
@@ -34,7 +37,6 @@ namespace Movement
             }
             else if (!_moving)
             {
-                // Idle → maybe pick a new destination after a delay
                 if (Random.value < 0.01f)
                 {
                     PickNewDestination();
@@ -72,6 +74,13 @@ namespace Movement
             var target = _path.Peek().worldPosition;
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
 
+            var direction = (target - transform.position).normalized;
+            if (direction.sqrMagnitude > 0.001f)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+            }
+
             if (Vector3.Distance(transform.position, target) < 0.01f)
             {
                 _path.Dequeue();
@@ -102,6 +111,13 @@ namespace Movement
             var horizontal = Vector3.Lerp(_jumpStart, _jumpEnd, t);
             var height = Mathf.Sin(t * Mathf.PI) * jumpHeight;
             transform.position = new Vector3(horizontal.x, horizontal.y + height, horizontal.z);
+
+            var direction = (_jumpEnd - _jumpStart).normalized;
+            if (direction.sqrMagnitude > 0.001f)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+            }
 
             if (t >= 1f)
             {
