@@ -1728,18 +1728,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 541167629689510937, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
-      propertyPath: handSlot
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 541167629689510937, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
-      propertyPath: 'leftSlots.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 541167629689510937, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
-      propertyPath: 'leftSlots.Array.data[2]'
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4691099442264197243, guid: 6a5f6f0d492942f45bef8e495e2273ab, type: 3}
       propertyPath: m_Name
       value: GameUI_HUD
