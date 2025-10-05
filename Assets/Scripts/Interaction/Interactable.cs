@@ -60,6 +60,7 @@ public class Interactable : MonoBehaviour
     private void OnInspect(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
         // TODO behaviour for inspect
+        GetComponent<AiInventory>()?.OnInspect();
     }
 
     private void OnCollect(GameObject initiatingPlayer){
