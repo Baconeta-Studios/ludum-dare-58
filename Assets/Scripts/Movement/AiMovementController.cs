@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Movement
 {
@@ -16,7 +14,7 @@ namespace Movement
         public float jumpSpeed = 5f;
 
         [Header("Rotation")]
-        public float rotateSpeed = 5f;   // new: how quickly they turn
+        public float rotateSpeed = 5f;   // How quickly the pawn turn
 
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
