@@ -124,5 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233df6b6776cadc4d80de502fc9932dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Interactable
+  supportedInteractions: 0000000001000000
   doesMove: 0
   occupiesCell: 1

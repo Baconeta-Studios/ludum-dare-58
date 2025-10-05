@@ -226,7 +226,7 @@ namespace Movement
         }
 
         private void InteractWithTarget(){
-            targetInteractable.Interact();
+            targetInteractable.Interact(gameObject, currentInteractionType);
             targetInteractable = null;
         }
 
