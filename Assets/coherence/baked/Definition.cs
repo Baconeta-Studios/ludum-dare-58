@@ -20,7 +20,7 @@ namespace Coherence.Generated
 
     public class Definition : IDefinition
     {
-        public const string schemaId = "2df6c3f5be4b05afc407f017cd497d8af3b7185d";
+        public const string schemaId = "800949209149e794dbb97e31a254e1e7e89d6d8d";
         public const uint InternalWorldPosition = 0;
         public const uint InternalWorldOrientation = 1;
         public const uint InternalLocalUserComponent = 2;
@@ -45,6 +45,7 @@ namespace Coherence.Generated
         public const uint InternalAdoptOrphan = 3;
         public const uint InternalPersistenceReady = 4;
         public const uint InternalSceneIndexChanged = 5;
+        public const uint Internal_a1fa7cddf5d5ef94b8bacf8838c9a6fa = 0;
 
         private static readonly Dictionary<uint, string> componentNamesForTypeIds = new Dictionary<uint, string>()
         {
@@ -212,6 +213,8 @@ namespace Coherence.Generated
         {
             switch (inputType)
             {
+                case Definition.Internal_a1fa7cddf5d5ef94b8bacf8838c9a6fa:
+                    return _a1fa7cddf5d5ef94b8bacf8838c9a6fa.Deserialize(bitStream, entity, frame);
                 default:
                     throw new System.ArgumentOutOfRangeException(nameof(inputType),
                         $"Missing serialization implementation for an input: {inputType}");
@@ -306,6 +309,9 @@ namespace Coherence.Generated
 
             switch (inputType)
             {
+                case Definition.Internal_a1fa7cddf5d5ef94b8bacf8838c9a6fa:
+                    _a1fa7cddf5d5ef94b8bacf8838c9a6fa.Serialize((_a1fa7cddf5d5ef94b8bacf8838c9a6fa)inputData.Input, bitStream);
+                    break;
                 default:
                     logger.Error(Coherence.Log.Error.DefinitionMissingInputImplementation, ("input", inputType));
                     break;
