@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomJoinHandler
   bridge: {fileID: 656202007}
-  sceneToLoad: {fileID: 102900000, guid: 3103ce63cfa9d6240a57f4aa0e653025, type: 3}
+  sceneToLoad: {fileID: 102900000, guid: 6222c472e64d1284aa9aaf89031085e2, type: 3}
 --- !u!4 &1277673922
 Transform:
   m_ObjectHideFlags: 0
