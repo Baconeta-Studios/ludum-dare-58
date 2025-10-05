@@ -1,3 +1,4 @@
+using Coherence.Toolkit;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace Movement
         public float jumpSpeed = 5f;
 
         [Header("Rotation")]
-        public float rotateSpeed = 5f;
+        public float rotateSpeed = 5f;   // How quickly the pawn turn
 
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
@@ -22,17 +23,12 @@ namespace Movement
         private bool _isJumping = false;
         private Vector3 _jumpStart, _jumpEnd;
         private float _jumpProgress;
+        private CoherenceSync coherenceSync;
 
-        private void Awake()
-        {
-            if (gridManager == null)
-            {
-                gridManager = FindFirstObjectByType<GridManager>();
-            }
-            if (pathfinder == null)
-            {
-                pathfinder = FindFirstObjectByType<GridPathfinder>();
-            }
+        private void Awake(){
+            gridManager ??= FindFirstObjectByType<GridManager>();
+            pathfinder ??= FindFirstObjectByType<GridPathfinder>();
+            coherenceSync = GetComponent<CoherenceSync>();
         }
 
         private void Start()
@@ -42,16 +38,19 @@ namespace Movement
 
         private void Update()
         {
-            if (_moving && _path.Count > 0)
+            if(coherenceSync && coherenceSync.HasStateAuthority)
             {
-                if (useJumpAnimation) HandleJump();
-                else HandleSmooth();
-            }
-            else if (!_moving)
-            {
-                if (Random.value < 0.01f)
+                if (_moving && _path.Count > 0)
                 {
-                    PickNewDestination();
+                    if (useJumpAnimation) HandleJump();
+                    else HandleSmooth();
+                }
+                else if (!_moving)
+                {
+                    if (Random.value < 0.01f)
+                    {
+                        PickNewDestination();
+                    }
                 }
             }
         }
