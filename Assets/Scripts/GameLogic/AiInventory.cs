@@ -20,8 +20,9 @@ public class AiInventory : MonoBehaviour
 
     [Header("Particles")] 
     public ParticleSystem inspectionParticles;
-
     private Coroutine inspectionCoroutine;
+    public GameObject bloodSpatter;
+
     private void Awake(){
         if (possibleItems.Length == 0)
         {
@@ -79,5 +80,40 @@ public class AiInventory : MonoBehaviour
         heldItem.SetActive(false);
         inspectionCoroutine = null;
         yield return null;
+    }
+
+    public void DropCollectable()
+    {
+        if (inspectionCoroutine != null)
+        {
+            StopCoroutine(inspectionCoroutine);
+        }
+
+        // drop the held collectable
+        DropItem(heldItem, Vector3.zero);
+
+        // drop the COLLECTABLE evidence (blood spatter)
+        DropItem(bloodSpatter, new Vector3(90, 0, 0));
+
+    }
+
+    private void DropItem(GameObject thingToDrop, Vector3 orientation)
+    {
+        // Set the position of the COLLECTABLE item.
+        thingToDrop.transform.position = transform.position;
+        thingToDrop.transform.rotation = Quaternion.Euler(orientation);
+        thingToDrop.transform.localScale = Vector3.one;
+        thingToDrop.transform.SetParent(null);
+        thingToDrop.SetActive(true);
+        Collider collider = thingToDrop.GetComponent<Collider>();
+        if (collider)
+        {
+            collider.enabled = true;
+        }
+        Interactable interactComponent = thingToDrop.GetComponent<Interactable>();
+        if (interactComponent)
+        {
+            interactComponent.canBeInteracted = true;
+        }
     }
 }
