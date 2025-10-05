@@ -31,7 +31,7 @@ namespace Managers
          * Submit a user's score to the leaderboard server.
          * Starts a coroutine to make the request.
          */
-        public async void SubmitScore(ScoreType scoreType, string user, ulong score)
+        public async void SubmitScore(ScoreType scoreType, ScoreEntry scoreEntry)
         {
             try
             {
@@ -40,20 +40,20 @@ namespace Managers
                     return;
                 }
 
-                if (string.IsNullOrEmpty(user))
+                if (string.IsNullOrEmpty(scoreEntry.user))
                 {
                     Debug.Log("Not submitting a score as there is no player name.");
                     return;
                 }
 
-                if (double.IsNaN(score))
+                if (double.IsNaN(scoreEntry.score))
                 {
                     Debug.Log("Not submitting the score as there is no score.");
                     return;
                 }
 
                 string endpoint = GetEndpoint(true, scoreType);
-                string uri = string.Format(endpoint, user, score);
+                string uri = string.Format(endpoint, scoreEntry.user, scoreEntry.score);
 
                 using UnityWebRequest request = UnityWebRequest.PostWwwForm(uri, "");
                 var operation = request.SendWebRequest();
