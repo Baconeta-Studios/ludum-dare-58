@@ -1,11 +1,12 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class RoomJoinHandler : MonoBehaviour
 {
     public CoherenceBridge bridge;
-
+    public SceneAsset sceneToLoad;
     void Awake()
     {
         bridge.onConnected.AddListener(OnBridgeConnected);
@@ -25,6 +26,6 @@ public class RoomJoinHandler : MonoBehaviour
     {
         Debug.Log("Bridge connected — likely in room now");
         // Optionally verify room state here
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(sceneToLoad.name);
     }
 }
