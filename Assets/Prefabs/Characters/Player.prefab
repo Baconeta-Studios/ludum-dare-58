@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7543286884493165807}
   - component: {fileID: 3609391790403875649}
   - component: {fileID: 7955879011431117328}
+  - component: {fileID: 2372818860811811706}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -548,6 +549,8 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 6742062723146474386}
       lodStepsActive: 1
+    - component: {fileID: 2372818860811811706}
+      lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
   RigidbodyUpdateMode: 0
@@ -683,6 +686,18 @@ MonoBehaviour:
       type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
       data:
         component: {fileID: 3195892257274726233}
+--- !u!114 &2372818860811811706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9b3b96a4104dbda095d796891fa62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Movement.PlayerLogic
 --- !u!1001 &1307806160390010622
 PrefabInstance:
   m_ObjectHideFlags: 0
