@@ -31,7 +31,7 @@
                             else cell.roomID = (cell.roomID + 1) % 6; // 6 sample colours
                         }
 
-                        EditorUtility.SetDirty(_gridManager);
+                        // EditorUtility.SetDirty(_gridManager);
                     }
                 }
                 e.Use(); // mark event as used so Unity doesn't also select things
