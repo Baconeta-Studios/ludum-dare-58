@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Movement
 {
@@ -22,6 +24,11 @@ namespace Movement
         private bool _isJumping = false;
         private Vector3 _jumpStart, _jumpEnd;
         private float _jumpProgress;
+
+        private void Awake(){
+            gridManager ??= FindFirstObjectByType<GridManager>();
+            pathfinder ??= FindFirstObjectByType<GridPathfinder>();
+        }
 
         private void Start()
         {

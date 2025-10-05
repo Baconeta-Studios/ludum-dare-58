@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -41,8 +42,12 @@ namespace Movement
 
         private void Awake() {
             controls = new PlayerControls();
-        }
 
+            gridManager ??= FindFirstObjectByType<GridManager>();
+            pathfinder ??= FindFirstObjectByType<GridPathfinder>();
+            
+        }
+        
         private void OnEnable() {
             controls.Gameplay.Enable();
             controls.Gameplay.Interact.performed += OnClick;

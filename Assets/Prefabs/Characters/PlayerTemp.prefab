@@ -171,6 +171,10 @@ MonoBehaviour:
   jumpHeight: 0.2
   jumpSpeed: 3
   pathfinder: {fileID: 0}
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  interactionRadius: 2
 --- !u!1001 &3072232405886425364
 PrefabInstance:
   m_ObjectHideFlags: 0
