@@ -13,10 +13,10 @@ namespace Managers
         public bool doYouReallyWantToSubmitInEditor;
 
         private const string RootUri = "";
-        private const string SubmitScoreUriSingleplayer = RootUri + "/api/leaderboards/singleplayer?user={0}&score={1}";
-        private const string SubmitScoreUriMultiplayer = RootUri + "/api/leaderboards/multiplayer?user={0}&score={1}";
         private const string GetScoresUriSingleplayer = RootUri + "/api/leaderboards/singleplayer";
         private const string GetScoresUriMultiplayer = RootUri + "/api/leaderboards/multiplayer";
+        private const string SubmitScoreUriSingleplayer = RootUri + "/api/leaderboards/singleplayer?user={0}&score={1}";
+        private const string SubmitScoreUriMultiplayer = RootUri + "/api/leaderboards/multiplayer?user={0}&score={1}";
 
         public ScoreCollection singleplayerScores;
         public ScoreCollection multiplayerScores;
@@ -26,6 +26,55 @@ namespace Managers
 
         public static event Action<ScoreCollection> OnSingleplayerScoresUpdated;
         public static event Action<ScoreCollection> OnMultiplayerScoresUpdated;
+
+        private static string GetEndpoint(bool submit, ScoreType scoreType)
+        {
+            return scoreType switch
+            {
+                ScoreType.Singleplayer => submit ? SubmitScoreUriSingleplayer : GetScoresUriSingleplayer,
+                ScoreType.Multiplayer => submit ? SubmitScoreUriMultiplayer : GetScoresUriMultiplayer,
+                _ => ""
+            };
+        }
+
+        // Get a list of scores from the leaderboard server.
+        private async Task<ScoreCollection> GetScores(ScoreType scoreType)
+        {
+            string endpoint = GetEndpoint(true, scoreType);
+            using UnityWebRequest req = UnityWebRequest.Get(endpoint);
+            var operation = req.SendWebRequest();
+
+            // This is not a busy-loop, control is yielded back to the main-thread until the operation is complete.
+            while (!operation.isDone)
+            {
+                await Task.Yield();
+            }
+
+            switch (req.result)
+            {
+                case UnityWebRequest.Result.Success:
+                    // Query succeeded. Convert from JSON string to objects, and then execute the callback.
+                    string data = req.downloadHandler.text;
+                    return JsonUtility.FromJson<ScoreCollection>("{\"highScores\": " + data + "}");
+                case UnityWebRequest.Result.ConnectionError:
+                    Debug.Log("A connection error occurred during the leaderboard request.");
+                    Debug.Log(req.responseCode);
+                    Debug.Log(req.error);
+                    throw new WebException("A protocol error occurred during the leaderboard request.");
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.Log("A protocol error occurred during the leaderboard request.");
+                    Debug.Log(req.responseCode);
+                    Debug.Log(req.error);
+                    throw new WebException("A protocol error occurred during the leaderboard request.");
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.Log("A data processing error occurred during the leaderboard request.");
+                    throw new WebException("A data processing error occurred during the leaderboard request.");
+                case UnityWebRequest.Result.InProgress:
+                default:
+                    Debug.Log("A error occurred during the leaderboard request: " + req.result + ".");
+                    throw new WebException("A error occurred during the leaderboard request: " + req.result + ".");
+            }
+        }
 
         /**
          * Submit a user's score to the leaderboard server.
@@ -95,55 +144,6 @@ namespace Managers
             {
                 Debug.LogException(e);
             }
-        }
-
-        // Get a list of scores from the leaderboard server.
-        private async Task<ScoreCollection> GetScores(ScoreType scoreType)
-        {
-            string endpoint = GetEndpoint(true, scoreType);
-            using UnityWebRequest req = UnityWebRequest.Get(endpoint);
-            var operation = req.SendWebRequest();
-
-            // This is not a busy-loop, control is yielded back to the main-thread until the operation is complete.
-            while (!operation.isDone)
-            {
-                await Task.Yield();
-            }
-
-            switch (req.result)
-            {
-                case UnityWebRequest.Result.Success:
-                    // Query succeeded. Convert from JSON string to objects, and then execute the callback.
-                    string data = req.downloadHandler.text;
-                    return JsonUtility.FromJson<ScoreCollection>("{\"highScores\": " + data + "}");
-                case UnityWebRequest.Result.ConnectionError:
-                    Debug.Log("A connection error occurred during the leaderboard request.");
-                    Debug.Log(req.responseCode);
-                    Debug.Log(req.error);
-                    throw new WebException("A protocol error occurred during the leaderboard request.");
-                case UnityWebRequest.Result.ProtocolError:
-                    Debug.Log("A protocol error occurred during the leaderboard request.");
-                    Debug.Log(req.responseCode);
-                    Debug.Log(req.error);
-                    throw new WebException("A protocol error occurred during the leaderboard request.");
-                case UnityWebRequest.Result.DataProcessingError:
-                    Debug.Log("A data processing error occurred during the leaderboard request.");
-                    throw new WebException("A data processing error occurred during the leaderboard request.");
-                case UnityWebRequest.Result.InProgress:
-                default:
-                    Debug.Log("A error occurred during the leaderboard request: " + req.result + ".");
-                    throw new WebException("A error occurred during the leaderboard request: " + req.result + ".");
-            }
-        }
-
-        private static string GetEndpoint(bool submit, ScoreType scoreType)
-        {
-            return scoreType switch
-            {
-                ScoreType.Singleplayer => submit ? SubmitScoreUriSingleplayer : GetScoresUriSingleplayer,
-                ScoreType.Multiplayer => submit ? SubmitScoreUriMultiplayer : GetScoresUriMultiplayer,
-                _ => ""
-            };
         }
 
         /**
