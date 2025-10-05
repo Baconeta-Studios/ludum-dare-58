@@ -14,7 +14,7 @@ namespace Movement
         public float jumpSpeed = 5f;
 
         [Header("Rotation")]
-        public float rotateSpeed = 5f;
+        public float rotateSpeed = 5f;   // How quickly the pawn turn
 
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
@@ -23,16 +23,9 @@ namespace Movement
         private Vector3 _jumpStart, _jumpEnd;
         private float _jumpProgress;
 
-        private void Awake()
-        {
-            if (gridManager == null)
-            {
-                gridManager = FindFirstObjectByType<GridManager>();
-            }
-            if (pathfinder == null)
-            {
-                pathfinder = FindFirstObjectByType<GridPathfinder>();
-            }
+        private void Awake(){
+            gridManager ??= FindFirstObjectByType<GridManager>();
+            pathfinder ??= FindFirstObjectByType<GridPathfinder>();
         }
 
         private void Start()
