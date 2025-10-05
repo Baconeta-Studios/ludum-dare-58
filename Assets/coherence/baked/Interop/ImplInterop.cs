@@ -42,11 +42,6 @@ namespace Coherence.Generated
                 case 15: return Scene.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 16: return AssetId.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 17: return GenericScale.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 18: return _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2185722752081631778.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 19: return _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3329711444901238119.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 20: return _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6886020198657681471.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 21: return _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7104447409461630440.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 22: return _a1fa7cddf5d5ef94b8bacf8838c9a6fa_8645383270410824151.FromInterop(data, dataSize, simFrames, simFramesCount);
             }
 
             throw new ArgumentException($"Unkown component type {type}", nameof(type));
@@ -257,86 +252,6 @@ namespace Coherence.Generated
                     val.value = orig.value;
 
                     updater.UpdateComponent(entity, componentType, val, 12, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 18:
-                {
-                    var orig = (_a1fa7cddf5d5ef94b8bacf8838c9a6fa_2185722752081631778)component;
-                    var val = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2185722752081631778.Interop();
-
-                    val.heldItem = orig.heldItem;
-                    val.inspectOrigin = orig.inspectOrigin;
-                    val.inspectionDuration = orig.inspectionDuration;
-                    val.inspectionRotationAmount = orig.inspectionRotationAmount;
-                    val.enabled = orig.enabled ? (System.Byte)1 : (System.Byte)0;
-
-                    updater.UpdateComponent(entity, componentType, val, 17, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 19:
-                {
-                    var orig = (_a1fa7cddf5d5ef94b8bacf8838c9a6fa_3329711444901238119)component;
-                    var val = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3329711444901238119.Interop();
-
-                    val.doesMove = orig.doesMove ? (System.Byte)1 : (System.Byte)0;
-                    val.occupiesCell = orig.occupiesCell ? (System.Byte)1 : (System.Byte)0;
-                    val.enabled = orig.enabled ? (System.Byte)1 : (System.Byte)0;
-
-                    updater.UpdateComponent(entity, componentType, val, 3, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 20:
-                {
-                    var orig = (_a1fa7cddf5d5ef94b8bacf8838c9a6fa_6886020198657681471)component;
-                    var val = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6886020198657681471.Interop();
-
-                    val.center = orig.center;
-                    val.radius = orig.radius;
-                    val.height = orig.height;
-                    val.direction = orig.direction;
-                    val.enabled = orig.enabled ? (System.Byte)1 : (System.Byte)0;
-                    val.isTrigger = orig.isTrigger ? (System.Byte)1 : (System.Byte)0;
-                    val.contactOffset = orig.contactOffset;
-                    val.hasModifiableContacts = orig.hasModifiableContacts ? (System.Byte)1 : (System.Byte)0;
-                    val.providesContacts = orig.providesContacts ? (System.Byte)1 : (System.Byte)0;
-                    val.layerOverridePriority = orig.layerOverridePriority;
-
-                    updater.UpdateComponent(entity, componentType, val, 36, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 21:
-                {
-                    var orig = (_a1fa7cddf5d5ef94b8bacf8838c9a6fa_7104447409461630440)component;
-                    var val = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7104447409461630440.Interop();
-
-                    val.moveSpeed = orig.moveSpeed;
-                    val.useJumpAnimation = orig.useJumpAnimation ? (System.Byte)1 : (System.Byte)0;
-                    val.jumpHeight = orig.jumpHeight;
-                    val.jumpSpeed = orig.jumpSpeed;
-                    val.rotateSpeed = orig.rotateSpeed;
-                    val.enabled = orig.enabled ? (System.Byte)1 : (System.Byte)0;
-
-                    updater.UpdateComponent(entity, componentType, val, 18, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 22:
-                {
-                    var orig = (_a1fa7cddf5d5ef94b8bacf8838c9a6fa_8645383270410824151)component;
-                    var val = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_8645383270410824151.Interop();
-
-                    val.viewRange = orig.viewRange;
-                    val.viewAngle = orig.viewAngle;
-                    val.rotateSpeed = orig.rotateSpeed;
-                    val.canSeePlayer = orig.canSeePlayer ? (System.Byte)1 : (System.Byte)0;
-                    val.currentTarget = orig.currentTarget;
-                    val.enabled = orig.enabled ? (System.Byte)1 : (System.Byte)0;
-
-                    updater.UpdateComponent(entity, componentType, val, 18, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
