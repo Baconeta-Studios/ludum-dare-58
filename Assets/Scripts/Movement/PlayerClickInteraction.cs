@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Movement
 {
-    public class PlayerClickMovement : MonoBehaviour {
+    public class PlayerClickInteraction : MonoBehaviour {
         [Header("Grid and Masks")]
         public GridManager gridManager;
         public LayerMask groundMask;
         private Interactable targetInteractable;
         
-        [Header("Movement"), Space(20)]
+        [Space(20), Header("Movement")]
         public float moveSpeed = 3f;
         
         public bool useJumpAnimation = false;
@@ -31,11 +32,20 @@ namespace Movement
 
         private Vector3 _invalidWalkingPosition = new Vector3(9999, 9999, 9999);
 
-        [Header("Path Finding"), Space(20)]
+        [Space(20), Header("Path Finding")]
         public GridPathfinder pathfinder;
         private Queue<GridCell> path = new Queue<GridCell>();
 
-        [Header("Interaction"), Space(20)] 
+        [Space(20), Header("Interaction")]
+        public InteractionType currentInteractionType = InteractionType.Collect;
+        [Serializable]public enum InteractionType
+        {
+            Collect,
+            Inspect,
+            Murder,
+            Scare
+        }
+        
         public LayerMask interactableMask;
 
         [Tooltip("Maximum radius to interact with objects")] 
