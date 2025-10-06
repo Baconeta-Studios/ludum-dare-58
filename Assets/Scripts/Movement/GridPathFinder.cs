@@ -30,10 +30,8 @@ public class GridPathfinder : MonoBehaviour {
             foreach (GridCell neighbor in GetNeighbors(current)) {
                 if (!neighbor.walkable || closedSet.Contains(neighbor)) continue;
 
-                // float stepCost = (neighbor.coordinates.x != current.coordinates.x &&
-                //                   neighbor.coordinates.y != current.coordinates.y) ? 1.414f : 1f;
-                
-                float stepCost = 1f;
+                float stepCost = (neighbor.coordinates.x == current.coordinates.x ||
+                                  neighbor.coordinates.y == current.coordinates.y) ? 1f : 1.414f;
 
                 float tentativeG = gScore[current] + stepCost;
 
