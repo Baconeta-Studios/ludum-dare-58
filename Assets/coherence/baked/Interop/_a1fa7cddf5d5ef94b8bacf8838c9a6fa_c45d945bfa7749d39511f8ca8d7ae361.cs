@@ -17,25 +17,29 @@ namespace Coherence.Generated
     using System.Runtime.InteropServices;
     using UnityEngine;
 
-    public struct _a1fa7cddf5d5ef94b8bacf8838c9a6fa_b65fb4b4758c43beabf70babde3aa1b5 : IEntityCommand
+    public struct _a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361 : IEntityCommand
     {
         [StructLayout(LayoutKind.Explicit)]
         public struct Interop
         {
+            [FieldOffset(0)]
+            public Entity initiatingPlayer;
         }
 
-        public static unsafe _a1fa7cddf5d5ef94b8bacf8838c9a6fa_b65fb4b4758c43beabf70babde3aa1b5 FromInterop(System.IntPtr data, System.Int32 dataSize) 
+        public static unsafe _a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361 FromInterop(System.IntPtr data, System.Int32 dataSize) 
         {
-            if (dataSize != 0) {
-                throw new System.Exception($"Given data size is not equal to the struct size. ({dataSize} != 0) " +
+            if (dataSize != 4) {
+                throw new System.Exception($"Given data size is not equal to the struct size. ({dataSize} != 4) " +
                     "for command with ID 36");
             }
 
-            var orig = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_b65fb4b4758c43beabf70babde3aa1b5();
+            var orig = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361();
             var comp = (Interop*)data;
+            orig.initiatingPlayer = comp->initiatingPlayer;
             return orig;
         }
 
+        public Entity initiatingPlayer;
         
         public Entity Entity { get; set; }
         public Coherence.ChannelID ChannelID { get; set; }
@@ -62,6 +66,13 @@ namespace Coherence.Generated
                 return err;
             }
             Entity = absoluteEntity;
+            err = mapper.MapToAbsoluteEntity(initiatingPlayer, false, out absoluteEntity);
+            if (err != IEntityMapper.Error.None)
+            {
+                return err;
+            }
+            this.initiatingPlayer = absoluteEntity;
+            
             return IEntityMapper.Error.None;
         }
         
@@ -73,29 +84,60 @@ namespace Coherence.Generated
                 return err;
             }
             Entity = relativeEntity;
+            err = mapper.MapToRelativeEntity(initiatingPlayer, false, out relativeEntity);
+            if (err != IEntityMapper.Error.None)
+            {
+                return err;
+            }
+            this.initiatingPlayer = relativeEntity;
+            
             return IEntityMapper.Error.None;
         }
 
         public HashSet<Entity> GetEntityRefs() {
-            return default;
+            return new HashSet<Entity> {
+                this.initiatingPlayer,
+            };
         }
 
         public void NullEntityRefs(Entity entity) {
+            if (this.initiatingPlayer == entity) {
+                this.initiatingPlayer = Entity.InvalidRelative;
+            }
         }
         
-        
-        public static void Serialize(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_b65fb4b4758c43beabf70babde3aa1b5 commandData, IOutProtocolBitStream bitStream)
+        public _a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361(
+            Entity entity,
+            Entity initiatingPlayer
+        )
         {
+            Entity = entity;
+            ChannelID = Coherence.ChannelID.Default;
+            Target = default;
+            Routing = MessageTarget.All;
+            SenderParticipant = 0;
+            SenderClientID = default;
+            Frame = 0;
+            UsesMeta = false;
+
+            this.initiatingPlayer = initiatingPlayer; 
         }
         
-        public static _a1fa7cddf5d5ef94b8bacf8838c9a6fa_b65fb4b4758c43beabf70babde3aa1b5 Deserialize(IInProtocolBitStream bitStream, Entity entity, MessageTarget target)
+        public static void Serialize(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361 commandData, IOutProtocolBitStream bitStream)
         {
+            bitStream.WriteEntity(commandData.initiatingPlayer);
+        }
+        
+        public static _a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361 Deserialize(IInProtocolBitStream bitStream, Entity entity, MessageTarget target)
+        {
+            var datainitiatingPlayer = bitStream.ReadEntity();
     
-            return new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_b65fb4b4758c43beabf70babde3aa1b5()
+            return new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_c45d945bfa7749d39511f8ca8d7ae361()
             {
                 Entity = entity,
                 Routing = target,
                 Target = target,
+                initiatingPlayer = datainitiatingPlayer
             };   
         }
     }

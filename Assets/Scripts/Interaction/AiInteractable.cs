@@ -1,6 +1,7 @@
 using Coherence.Toolkit;
 using Movement;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AiInteractable : Interactable
 {
@@ -13,10 +14,6 @@ public class AiInteractable : Interactable
         movement = GetComponent<AiMovementController>();
         animator = GetComponent<Animator>();
     }
-    //protected override void OnMurder(GameObject initiatingPlayer) 
-    //{
-    //    _sync.SendCommand<AiInteractable>(nameof(RequestMurder), Coherence.MessageTarget.AuthorityOnly);
-    //}
 
     public void PlaySmokePoof()
     {
@@ -30,17 +27,57 @@ public class AiInteractable : Interactable
     }
 
     [Command]
-    public void RequestMurder()
+    public override void OnInspect(CoherenceSync initiatingPlayerSync)
     {
-        // Owner decides to actually broadcast - here always broadcast
-        //_sync.SendCommand<AiInteractable>(nameof(RpcOnMurder), Coherence.MessageTarget.All);
+        //base.OnInspect(initiatingPlayerSync);
+        GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
+        Debug.Log("Inspecting the AI");
+
+        // TODO behaviour for inspect
+        AiInventory inventory = GetComponent<AiInventory>();
+        if (inventory)
+        {
+            inventory.OnInspect();
+        }
     }
 
     [Command]
-    public void RpcOnMurder()
+    public override void OnCollect(CoherenceSync initiatingPlayerSync)
     {
+        GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
+        //base.OnCollect(initiatingPlayerSync);
+        // Should be impossible to get here anyhow.
+        Debug.Log("Called On Collect but Ai cannot be collected");
+    }
+
+    [Command]
+    public override void OnMurder(CoherenceSync initiatingPlayerSync)
+    {
+        //base.OnMurder(initiatingPlayerSync);
+        GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
+
+        Debug.Log("Making the AI Die.");
         movement.StopMovement();
         animator.SetTrigger("Die");
         PlaySmokePoof();
     }
+
+    [Command]
+    public override void OnScare(CoherenceSync initiatingPlayerSync)
+    {
+        //base.OnScare(initiatingPlayerSync);
+        GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
+
+        Debug.Log("Making the AI scared.");
+
+        var movement = GetComponent<AiMovementController>();
+        if (movement != null)
+        {
+            // Move 0 cells in X (east), 10 cells in Y (north)
+            movement.MoveBy(0, 10);
+        }
+    }
+
+
+
 }

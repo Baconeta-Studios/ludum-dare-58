@@ -17,29 +17,29 @@ namespace Coherence.Generated
     using System.Runtime.InteropServices;
     using UnityEngine;
 
-    public struct _a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a : IEntityCommand
+    public struct _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a : IEntityCommand
     {
         [StructLayout(LayoutKind.Explicit)]
         public struct Interop
         {
             [FieldOffset(0)]
-            public System.Int32 stateNameHash;
+            public Entity initiatingPlayer;
         }
 
-        public static unsafe _a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a FromInterop(System.IntPtr data, System.Int32 dataSize) 
+        public static unsafe _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a FromInterop(System.IntPtr data, System.Int32 dataSize) 
         {
             if (dataSize != 4) {
                 throw new System.Exception($"Given data size is not equal to the struct size. ({dataSize} != 4) " +
-                    "for command with ID 31");
+                    "for command with ID 28");
             }
 
-            var orig = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a();
+            var orig = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a();
             var comp = (Interop*)data;
-            orig.stateNameHash = comp->stateNameHash;
+            orig.initiatingPlayer = comp->initiatingPlayer;
             return orig;
         }
 
-        public System.Int32 stateNameHash;
+        public Entity initiatingPlayer;
         
         public Entity Entity { get; set; }
         public Coherence.ChannelID ChannelID { get; set; }
@@ -48,7 +48,7 @@ namespace Coherence.Generated
         public uint SenderParticipant { get; set; }
         public ClientID SenderClientID { get; set; }
         public long Frame { get; set; }
-        public uint GetComponentType() => 31;
+        public uint GetComponentType() => 28;
         public bool UsesMeta { get; set; }
 
         public IEntityMessage Clone()
@@ -66,6 +66,13 @@ namespace Coherence.Generated
                 return err;
             }
             Entity = absoluteEntity;
+            err = mapper.MapToAbsoluteEntity(initiatingPlayer, false, out absoluteEntity);
+            if (err != IEntityMapper.Error.None)
+            {
+                return err;
+            }
+            this.initiatingPlayer = absoluteEntity;
+            
             return IEntityMapper.Error.None;
         }
         
@@ -77,19 +84,31 @@ namespace Coherence.Generated
                 return err;
             }
             Entity = relativeEntity;
+            err = mapper.MapToRelativeEntity(initiatingPlayer, false, out relativeEntity);
+            if (err != IEntityMapper.Error.None)
+            {
+                return err;
+            }
+            this.initiatingPlayer = relativeEntity;
+            
             return IEntityMapper.Error.None;
         }
 
         public HashSet<Entity> GetEntityRefs() {
-            return default;
+            return new HashSet<Entity> {
+                this.initiatingPlayer,
+            };
         }
 
         public void NullEntityRefs(Entity entity) {
+            if (this.initiatingPlayer == entity) {
+                this.initiatingPlayer = Entity.InvalidRelative;
+            }
         }
         
-        public _a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a(
+        public _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a(
             Entity entity,
-            System.Int32 stateNameHash
+            Entity initiatingPlayer
         )
         {
             Entity = entity;
@@ -101,24 +120,24 @@ namespace Coherence.Generated
             Frame = 0;
             UsesMeta = false;
 
-            this.stateNameHash = stateNameHash; 
+            this.initiatingPlayer = initiatingPlayer; 
         }
         
-        public static void Serialize(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a commandData, IOutProtocolBitStream bitStream)
+        public static void Serialize(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a commandData, IOutProtocolBitStream bitStream)
         {
-            bitStream.WriteIntegerRange(commandData.stateNameHash, 32, -2147483648);
+            bitStream.WriteEntity(commandData.initiatingPlayer);
         }
         
-        public static _a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a Deserialize(IInProtocolBitStream bitStream, Entity entity, MessageTarget target)
+        public static _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a Deserialize(IInProtocolBitStream bitStream, Entity entity, MessageTarget target)
         {
-            var datastateNameHash = bitStream.ReadIntegerRange(32, -2147483648);
+            var datainitiatingPlayer = bitStream.ReadEntity();
     
-            return new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_91e03de64fe54dcaa294b22f1e9ddf3a()
+            return new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_7a1960a7b48e442d8ab6f55ec1fa366a()
             {
                 Entity = entity,
                 Routing = target,
                 Target = target,
-                stateNameHash = datastateNameHash
+                initiatingPlayer = datainitiatingPlayer
             };   
         }
     }

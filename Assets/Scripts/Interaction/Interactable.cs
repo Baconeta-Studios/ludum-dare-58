@@ -63,71 +63,100 @@ public class Interactable : MonoBehaviour
     public void RequestCollect(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to collect from server");
-        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnCollect), Coherence.MessageTarget.StateAuthorityOnly);
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // TODO Tell all clients about the item being collected
+        // TODO Make sure the right client has received the item.
+
+        // for now tell ALL clients to process it like they collected it.
+        _sync.SendOrderedCommandToChildren<Interactable>(
+           nameof(OnCollect),
+           Coherence.MessageTarget.All,
+           playerSync
+       );
     }
 
     [Command]
     public void RequestInspect(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to inspect from server");
-        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnInspect), Coherence.MessageTarget.StateAuthorityOnly);
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // Tell all clients about the murder.
+        _sync.SendOrderedCommandToChildren<Interactable>(
+           nameof(OnInspect),
+           Coherence.MessageTarget.StateAuthorityOnly,
+           playerSync
+       );
     }
 
     [Command]
     public void RequestMurder(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to murder from server");
-        // TODO do we need to send the playerid?
-        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnMurder), Coherence.MessageTarget.StateAuthorityOnly);
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // Tell all clients about the murder.
+        _sync.SendOrderedCommandToChildren<Interactable>(
+           nameof(OnMurder),
+           Coherence.MessageTarget.All, // TODO server only knows murderers.
+           playerSync
+       );
     }
 
     [Command]
     public void RequestScare(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to scare from server");
-        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnScare), Coherence.MessageTarget.StateAuthorityOnly);
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // Tell only the AI owner about the scare to run the movements.
+        _sync.SendOrderedCommandToChildren<Interactable>(
+            nameof(OnScare),
+            Coherence.MessageTarget.StateAuthorityOnly,
+            playerSync
+        );
     }
 
     /* Server receives the request and processes and replies with a Command also. */
     [Command]
-    public void OnScare(){
-        // Server updates the AI to move and informs no one about the scare.
-
+    public virtual void OnScare(CoherenceSync initiatingPlayer)
+    {
+        // Server updates the one AI to move and informs no one about the scare.
         Debug.Log($": Scared {name}");
-        // TODO behaviour for Scare.
-        // Tell the AI Movement Controller to move to another room
+        // TO USE THIS Override it in a subclass and call base to keep the logs
     }
 
     [Command]
-    public void OnMurder(){
-        // Server tells ALL about the murder
-
+    public virtual void OnMurder(CoherenceSync initiatingPlayer)
+    {
+        // Server tells ALL clients about the murder
         Debug.Log($" Murdered {name}");
-        // TODO behaviour for Murder
-        // .... murders them?
-
+        // TO USE THIS Override it in a subclass and call base to keep the logs
     }
 
     [Command]
-    public void OnInspect(){
-        // Server tells Client whats inspected 
-
+    public virtual void OnInspect(CoherenceSync initiatingPlayer)
+    {
+        // Server tells only the owner Client whats inspected 
         Debug.Log($" Inspected {name}");
-        // TODO behaviour for inspect
-        AiInventory inventory = GetComponent<AiInventory>();
-        if(inventory)
-        {
-            inventory.OnInspect();
-        }
+        // TO USE THIS Override it in a subclass and call base to keep the logs
     }
 
     [Command]
-    public void OnCollect(){
+    public virtual void OnCollect(CoherenceSync initiatingPlayer)
+    {
         // Server tell ALL about the item being collected.
+        // TODO BUT doesn't make all the players animate
 
         Debug.Log($": Collected {name}");
         // TODO behaviour for collect
 
+        // TODO move this into a collectables class, but for now whatevers.
         Animator animator = GetComponent<Animator>();
         if (animator)
         {

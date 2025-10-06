@@ -5405,8 +5405,6 @@ MonoBehaviour:
   - rid: 2835214013850190003
   - rid: 2835214014418255966
   - rid: 2835214014418255968
-  - rid: 2835214014643437657
-  - rid: 2835214014643437658
   - rid: 2835214015028265057
   - rid: 2835214015028265058
   - rid: 2835214015028265059
@@ -5415,14 +5413,14 @@ MonoBehaviour:
   - rid: 2835214015028265063
   - rid: 2835214015028265064
   - rid: 2835214015028265065
-  - rid: 2835214015711150191
-  - rid: 2835214015711150192
-  - rid: 2835214018751234161
-  - rid: 2835214018751234162
-  - rid: 2835214018751234163
-  - rid: 2835214018751234164
-  - rid: 2835214018751234165
-  - rid: 2835214018751234166
+  - rid: 2835214019232268416
+  - rid: 2835214019232268417
+  - rid: 2835214019232268418
+  - rid: 2835214019232268419
+  - rid: 2835214019232268420
+  - rid: 2835214019232268421
+  - rid: 2835214019232268422
+  - rid: 2835214019232268423
   scenePrefabInstanceUUID: 
   coherenceUUID: 
   assetVersion: 
@@ -6466,88 +6464,6 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214014643437657
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214014643437659
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 8acdf03580754f9bae25569b94cf0858
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 7187185018167391222}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214014643437658
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214014643437660
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 5be0dbc1c1534fac9697b0a2aa22d0ad
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 7187185018167391222}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214014643437659
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: RequestMurder
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214014643437660
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: RpcOnMurder
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
     - rid: 2835214015028265057
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -6884,16 +6800,16 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214015711150191
+    - rid: 2835214019232268416
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214015711150193
+          rid: 2835214019232268424
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: a17c94fe97794550aff82b647579b4c9
+        guid: af125522109d4409b46634431fd819ea
         archetypeData:
           type: 0
           minRange: 0
@@ -6904,78 +6820,16 @@ MonoBehaviour:
         unityComponent: {fileID: 7187185018167391222}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214015711150192
+    - rid: 2835214019232268417
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214015711150194
+          rid: 2835214019232268425
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: 8860695bf11c4125b5b494741e819b6a
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214015711150193
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: OnScare
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214015711150194
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: OnScare
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214018751234161
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214018751234167
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 3f33b50e6975400abf9dac9b3855b3cd
+        guid: 354718ff04d64fefad2b2186b162dc16
         archetypeData:
           type: 0
           minRange: 0
@@ -6986,16 +6840,16 @@ MonoBehaviour:
         unityComponent: {fileID: 7187185018167391222}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214018751234162
+    - rid: 2835214019232268418
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214018751234168
+          rid: 2835214019232268426
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: b65fb4b4758c43beabf70babde3aa1b5
+        guid: 776bd05e4f9b47a4bac0bdece67c291d
         archetypeData:
           type: 0
           minRange: 0
@@ -7006,16 +6860,16 @@ MonoBehaviour:
         unityComponent: {fileID: 7187185018167391222}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214018751234163
+    - rid: 2835214019232268419
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214018751234169
+          rid: 2835214019232268427
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: 52e918a2381f44ad84be3280a7d7e294
+        guid: 27c844bca78c44a180298a31aa77b3e0
         archetypeData:
           type: 0
           minRange: 0
@@ -7026,16 +6880,16 @@ MonoBehaviour:
         unityComponent: {fileID: 7187185018167391222}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214018751234164
+    - rid: 2835214019232268420
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214018751234170
+          rid: 2835214019232268428
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: 413dcb322a8944898f4e8581fd0cf37d
+        guid: 1e2e594b7cf84ccb9dde946343d87212
         archetypeData:
           type: 0
           minRange: 0
@@ -7046,16 +6900,16 @@ MonoBehaviour:
         unityComponent: {fileID: 6379046287019923938}
         coherenceSync: {fileID: 0}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214018751234165
+    - rid: 2835214019232268421
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214018751234171
+          rid: 2835214019232268429
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: 4307dd5048f64df7b24c7d1820e93b44
+        guid: 7a1960a7b48e442d8ab6f55ec1fa366a
         archetypeData:
           type: 0
           minRange: 0
@@ -7066,16 +6920,16 @@ MonoBehaviour:
         unityComponent: {fileID: 6379046287019923938}
         coherenceSync: {fileID: 0}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214018751234166
+    - rid: 2835214019232268422
       type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214018751234172
+          rid: 2835214019232268430
         routing: 1
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: ea29f2c5b7274646978f339732dc52be
+        guid: 500f72bfdc014d6782a007c4aa45840b
         archetypeData:
           type: 0
           minRange: 0
@@ -7086,28 +6940,27 @@ MonoBehaviour:
         unityComponent: {fileID: 6379046287019923938}
         coherenceSync: {fileID: 0}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214018751234167
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+    - rid: 2835214019232268423
+      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
-        name: OnMurder
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214018751234168
+        descriptor:
+          rid: 2835214019232268431
+        routing: 1
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: c45d945bfa7749d39511f8ca8d7ae361
+        archetypeData:
+          type: 0
+          minRange: 0
+          maxRange: 0
+          sampleRate: 0
+          floatCompression: 0
+          fields: []
+        unityComponent: {fileID: 6379046287019923938}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 0}
+    - rid: 2835214019232268424
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: OnInspect
@@ -7116,7 +6969,8 @@ MonoBehaviour:
         enforcesLODingWhenFieldsOverriden: 0
         valueSyncCallbackName: 
         memberType: 8
-        parameterAssemblyTypes: []
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
         ownerType:
           assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
@@ -7128,7 +6982,7 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214018751234169
+    - rid: 2835214019232268425
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: OnCollect
@@ -7137,7 +6991,8 @@ MonoBehaviour:
         enforcesLODingWhenFieldsOverriden: 0
         valueSyncCallbackName: 
         memberType: 8
-        parameterAssemblyTypes: []
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
         ownerType:
           assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
@@ -7149,7 +7004,7 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214018751234170
+    - rid: 2835214019232268426
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: OnMurder
@@ -7158,7 +7013,52 @@ MonoBehaviour:
         enforcesLODingWhenFieldsOverriden: 0
         valueSyncCallbackName: 
         memberType: 8
-        parameterAssemblyTypes: []
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
+        ownerType:
+          assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 2835214019232268427
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: OnScare
+        monoAssemblyType: 
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 0
+        valueSyncCallbackName: 
+        memberType: 8
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
+        ownerType:
+          assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 2835214019232268428
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: OnScare
+        monoAssemblyType: 
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 0
+        valueSyncCallbackName: 
+        memberType: 8
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
         ownerType:
           assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
@@ -7170,7 +7070,29 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214018751234171
+    - rid: 2835214019232268429
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: OnMurder
+        monoAssemblyType: 
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 0
+        valueSyncCallbackName: 
+        memberType: 8
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
+        ownerType:
+          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 2835214019232268430
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: OnInspect
@@ -7179,7 +7101,8 @@ MonoBehaviour:
         enforcesLODingWhenFieldsOverriden: 0
         valueSyncCallbackName: 
         memberType: 8
-        parameterAssemblyTypes: []
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
         ownerType:
           assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
@@ -7191,7 +7114,7 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214018751234172
+    - rid: 2835214019232268431
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: OnCollect
@@ -7200,7 +7123,8 @@ MonoBehaviour:
         enforcesLODingWhenFieldsOverriden: 0
         valueSyncCallbackName: 
         memberType: 8
-        parameterAssemblyTypes: []
+        parameterAssemblyTypes:
+        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
         ownerType:
           assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
