@@ -56,8 +56,9 @@ namespace Coherence.Generated
                 case 29: return _b34815fde6e38e64986379d4f1497883_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 30: return _bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 31: return _cd55199613c8b184e879d7bae921a108_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 32: return _e61c5d2dfc4521841997842ff9788719_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 33: return _fa4c593e91513b645a84cc5724e1f032_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 32: return _e61c5d2dfc4521841997842ff9788719_5978856047403316304.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 33: return _e61c5d2dfc4521841997842ff9788719_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 34: return _fa4c593e91513b645a84cc5724e1f032_7358165678956324847.FromInterop(data, dataSize, simFrames, simFramesCount);
             }
 
             throw new ArgumentException($"Unkown component type {type}", nameof(type));
@@ -525,6 +526,17 @@ namespace Coherence.Generated
                 }
                 case 32:
                 {
+                    var orig = (_e61c5d2dfc4521841997842ff9788719_5978856047403316304)component;
+                    var val = new _e61c5d2dfc4521841997842ff9788719_5978856047403316304.Interop();
+
+                    val.canBeInteracted = orig.canBeInteracted ? (System.Byte)1 : (System.Byte)0;
+
+                    updater.UpdateComponent(entity, componentType, val, 1, component.FieldsMask, component.StoppedMask, frames);
+
+                    return;
+                }
+                case 33:
+                {
                     var orig = (_e61c5d2dfc4521841997842ff9788719_7358165678956324847)component;
                     var val = new _e61c5d2dfc4521841997842ff9788719_7358165678956324847.Interop();
 
@@ -541,7 +553,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 33:
+                case 34:
                 {
                     var orig = (_fa4c593e91513b645a84cc5724e1f032_7358165678956324847)component;
                     var val = new _fa4c593e91513b645a84cc5724e1f032_7358165678956324847.Interop();
