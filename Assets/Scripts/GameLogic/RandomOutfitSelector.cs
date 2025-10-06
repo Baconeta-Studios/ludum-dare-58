@@ -46,6 +46,15 @@ public class RandomOutfitSelector : MonoBehaviour
             int randomIndex = Random.Range(0, outfits.Length);
             currentOutfit = outfits[randomIndex];
 
+            if (randomIndex != 0)
+            {
+                //turn off the default outfit first
+                foreach (var obj in outfits[0].parts)
+                {
+                    if (obj != null) obj.SetActive(false);
+                }
+            }
+
             // Enable all parts of that outfit
             foreach (var obj in currentOutfit.parts)
             {
