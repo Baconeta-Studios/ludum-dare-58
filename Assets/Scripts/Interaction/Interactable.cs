@@ -63,14 +63,14 @@ public class Interactable : MonoBehaviour
     public void RequestCollect(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to collect from server");
-        _sync.SendCommand<AiInteractable>(nameof(OnCollect), Coherence.MessageTarget.StateAuthorityOnly);
+        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnCollect), Coherence.MessageTarget.StateAuthorityOnly);
     }
 
     [Command]
     public void RequestInspect(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to inspect from server");
-        _sync.SendCommand<AiInteractable>(nameof(OnInspect), Coherence.MessageTarget.StateAuthorityOnly);
+        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnInspect), Coherence.MessageTarget.StateAuthorityOnly);
     }
 
     [Command]
@@ -78,14 +78,14 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log("client requesting to murder from server");
         // TODO do we need to send the playerid?
-        _sync.SendCommand<AiInteractable>(nameof(OnMurder), Coherence.MessageTarget.StateAuthorityOnly);
+        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnMurder), Coherence.MessageTarget.StateAuthorityOnly);
     }
 
     [Command]
     public void RequestScare(GameObject initiatingPlayer)
     {
         Debug.Log("client requesting to scare from server");
-        _sync.SendCommand<AiInteractable>(nameof(OnScare), Coherence.MessageTarget.StateAuthorityOnly);
+        _sync.SendOrderedCommandToChildren<AiInteractable>(nameof(OnScare), Coherence.MessageTarget.StateAuthorityOnly);
     }
 
     /* Server receives the request and processes and replies with a Command also. */
@@ -99,20 +99,20 @@ public class Interactable : MonoBehaviour
     }
 
     [Command]
-    protected void OnMurder(GameObject initiatingPlayer){
+    public void OnMurder(){
         // Server tells ALL about the murder
 
-        Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
+        Debug.Log($" Murdered {name}");
         // TODO behaviour for Murder
         // .... murders them?
 
     }
 
     [Command]
-    protected void OnInspect(GameObject initiatingPlayer){
+    public void OnInspect(){
         // Server tells Client whats inspected 
 
-        Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
+        Debug.Log($" Inspected {name}");
         // TODO behaviour for inspect
         AiInventory inventory = GetComponent<AiInventory>();
         if(inventory)
@@ -122,10 +122,10 @@ public class Interactable : MonoBehaviour
     }
 
     [Command]
-    protected void OnCollect(GameObject initiatingPlayer){
+    public void OnCollect(){
         // Server tell ALL about the item being collected.
 
-        Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
+        Debug.Log($": Collected {name}");
         // TODO behaviour for collect
 
         Animator animator = GetComponent<Animator>();
