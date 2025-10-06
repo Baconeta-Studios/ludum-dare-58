@@ -66,3 +66,5 @@ MonoBehaviour:
   - {fileID: 2649406477038104199, guid: 903fe190c8617be4e8473c42776348b0, type: 3}
   allEnemies:
   - {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
+  CurrentState: 0
+  WinnerId: 

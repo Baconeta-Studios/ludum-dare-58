@@ -20,17 +20,24 @@ namespace Managers
         }
     }
 
+    public enum GameState
+    {
+        Playing,
+        Ended
+    }
+
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
 
-        [Header("Config")] [SerializeField] private int objectivesPerPlayer = 3;
+        [Header("Config")] 
+        [SerializeField] private int objectivesPerPlayer = 3;
 
-        [Tooltip("All collectible items in the level (assign in inspector or find at runtime)")] [SerializeField]
-        private List<CollectibleItem> allItems = new();
+        [Tooltip("All collectible items in the level (assign in inspector or find at runtime)")] 
+        [SerializeField] private List<CollectibleItem> allItems = new();
 
-        [Tooltip("All enemies in the level (stub for now)")] [SerializeField]
-        private List<GameObject> allEnemies = new();
+        [Tooltip("All enemies in the level (stub for now)")] 
+        [SerializeField] private List<GameObject> allEnemies = new();
 
         private Dictionary<string, List<Objective>> playerObjectives = new();
         private HashSet<string> collectedItemIds = new();
@@ -39,8 +46,15 @@ namespace Managers
         private List<CollectibleItem> assignedItems = new();
 
         private CoherenceSync _sync;
-        
+
         public static event Action ItemWasCollected;
+
+        // 🔹 New event for UI to listen to
+        public static event Action<GameState, string> OnGameStateChanged;
+
+        // 🔹 Synced variable for state (so all clients know if game ended)
+        public GameState CurrentState = GameState.Playing;
+        public string WinnerId = "";
 
         private void Awake()
         {
@@ -69,7 +83,6 @@ namespace Managers
             return null;
         }
 
-
         public void OnPlayerSpawned(string playerId)
         {
             if (!IsAuthority())
@@ -82,7 +95,6 @@ namespace Managers
                 playerObjectives[playerId] = AssignObjectives();
             }
 
-            // Convert IDs back to display names for logging
             var objectiveNames = new List<string>();
             foreach (var obj in playerObjectives[playerId])
             {
@@ -124,10 +136,6 @@ namespace Managers
                     objective.Collected = true;
                     Debug.Log($"Player {playerId} marked {item.ItemName} as collected");
                 }
-                else
-                {
-                    Debug.Log($"Player {playerId} collected {item.ItemName}, but it wasn’t on their list.");
-                }
             }
 
             ItemWasCollected?.Invoke();
@@ -137,7 +145,6 @@ namespace Managers
             PrintDebugState();
             CheckForGameOver();
         }
-
 
         public void KillEnemy(string enemyId)
         {
@@ -160,7 +167,7 @@ namespace Managers
                 {
                     var prefab = allItems.Find(i => i.PrefabId == obj.PrefabId);
                     string display = prefab != null ? prefab.ItemName : $"Unknown({obj.PrefabId})";
-                    if (obj.Collected) display = $"~~{display}~~"; // markdown-style strikeout
+                    if (obj.Collected) display = $"~~{display}~~";
                     objectiveStates.Add(display);
                 }
 
@@ -185,7 +192,6 @@ namespace Managers
             return _sync == null || _sync.HasStateAuthority;
         }
 
-        // Now returns names + collected status for UI
         public List<(string itemName, bool collected)> GetMyObjectivesForUI(string playerId)
         {
             var result = new List<(string, bool)>();
@@ -215,7 +221,6 @@ namespace Managers
                 if (allCollected)
                 {
                     Debug.Log($"GAME OVER! Player {playerId} has completed all objectives!");
-                    // TODO actual winner will be highest score (probably first to collect all)
                     EndGame(playerId);
                     return;
                 }
@@ -224,21 +229,41 @@ namespace Managers
             if (AllItemsCollected())
             {
                 Debug.Log($"GAME OVER! All items have been collected!");
-                // TODO actual winner will be highest score (probably first to collect all)
                 EndGame("todo");
             }
         }
 
         private void EndGame(string winnerId)
         {
+            if (!IsAuthority()) return;
+
             Debug.Log($"==> GAME ENDED. Winner: {winnerId}");
 
-            // TODO: stop player input, play cutscene, fade out, load end scene, etc.
+            // 🔹 Update synced state so all clients react
+            CurrentState = GameState.Ended;
+            WinnerId = winnerId;
+
+            // 🔹 Fire local event for UI systems
+            OnGameStateChanged?.Invoke(CurrentState, WinnerId);
+
+            // TODO: Stop player input, fade out, etc.
         }
 
         private bool AllItemsCollected()
         {
             return assignedItems.All(item => collectedItemIds.Contains(item.PrefabId));
+        }
+
+        public void MurderWasWitnessed(string murdererId, string witnessId)
+        {
+            if (!IsAuthority())
+            {
+                Debug.Log("Murder was witnessed but not server authority");
+                return;
+            }
+
+            Debug.LogWarning($"Murder was witnessed! Murderer={murdererId}, Witness={witnessId}");
+            // EndGame(murdererId);
         }
     }
 }

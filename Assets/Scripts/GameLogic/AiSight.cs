@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Coherence.Toolkit;
+using UnityEngine;
 
 namespace GameLogic
 {
@@ -17,11 +18,6 @@ namespace GameLogic
         private void Update()
         {
             HandleSight();
-
-            if (canSeePlayer && currentTarget is not null)
-            {
-                RotateTowards(currentTarget.position);
-            }
         }
 
         private void HandleSight()
@@ -40,17 +36,11 @@ namespace GameLogic
                     {
                         canSeePlayer = true;
                         currentTarget = player.transform;
+                        var sync = GetComponent<CoherenceSync>();
                         return;
                     }
                 }
             }
-        }
-
-        private void RotateTowards(Vector3 targetPos)
-        {
-            var dir = (targetPos - transform.position).normalized;
-            var lookRot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
-            //transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
         }
         
         public bool WitnessedMurder(Transform murderer)

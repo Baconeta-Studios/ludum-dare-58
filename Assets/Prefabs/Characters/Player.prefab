@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3609391790403875649}
   - component: {fileID: 7955879011431117328}
   - component: {fileID: 6457698963750268330}
+  - component: {fileID: 8262739135542739683}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -560,6 +561,8 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 6457698963750268330}
       lodStepsActive: 1
+    - component: {fileID: 8262739135542739683}
+      lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
   RigidbodyUpdateMode: 0
@@ -586,6 +589,7 @@ MonoBehaviour:
   - rid: 3824195019474206838
   - rid: 3824195019474206839
   - rid: 3824195020224987246
+  - rid: 3824195055429091459
   floatingOriginMode: 0
   floatingOriginParentedMode: 1
   references:
@@ -695,6 +699,10 @@ MonoBehaviour:
       type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
       data:
         component: {fileID: 3195892257274726233}
+    - rid: 3824195055429091459
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 6457698963750268330}
 --- !u!114 &6457698963750268330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +715,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9b3b96a4104dbda095d796891fa62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Movement.PlayerLogic
+--- !u!114 &8262739135542739683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3100423844219738655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6340b29b21554c5480bbca33909f5c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomOutfitSelector
+  outfits:
+  - outfitName: Trenchy
+    parts:
+    - {fileID: 5110898538809646977}
+    - {fileID: 2177456057418881378}
+  - outfitName: DressLass
+    parts:
+    - {fileID: 1056302436220818755}
+    - {fileID: 8912183515550271126}
+  - outfitName: WeirdGuy
+    parts:
+    - {fileID: 5084671883176297031}
+  - outfitName: WhoDressedHer
+    parts:
+    - {fileID: 1056302436220818755}
+  - outfitName: OkayFine
+    parts:
+    - {fileID: 5110898538809646977}
+    - {fileID: 8912183515550271126}
+  randomizeOnStart: 1
 --- !u!1001 &1307806160390010622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 869654845670600604, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1016911996961957354, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
       propertyPath: m_Layer
@@ -953,7 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6110203691779942783, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6875055028916037059, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
       propertyPath: m_Layer
@@ -1060,6 +1100,11 @@ MeshFilter:
 --- !u!33 &889818751477565627 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 2197483624621702725, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+  m_PrefabInstance: {fileID: 1307806160390010622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1056302436220818755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2057863271386407869, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
   m_PrefabInstance: {fileID: 1307806160390010622}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &1113034259889991939 stripped
@@ -1170,6 +1215,11 @@ MeshRenderer:
 --- !u!23 &2068871809925887863 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1049436798376116617, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+  m_PrefabInstance: {fileID: 1307806160390010622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2177456057418881378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 869654845670600604, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
   m_PrefabInstance: {fileID: 1307806160390010622}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2185479154064871878 stripped
@@ -1387,9 +1437,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6087503150310300889, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
   m_PrefabInstance: {fileID: 1307806160390010622}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5084671883176297031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6104102514162857145, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+  m_PrefabInstance: {fileID: 1307806160390010622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5107738990241933905 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6108032604166249647, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+  m_PrefabInstance: {fileID: 1307806160390010622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5110898538809646977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6110203691779942783, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
   m_PrefabInstance: {fileID: 1307806160390010622}
   m_PrefabAsset: {fileID: 0}
 --- !u!33 &5129518649307719847 stripped
@@ -1775,6 +1835,11 @@ Transform:
 --- !u!33 &8877896486973569378 stripped
 MeshFilter:
   m_CorrespondingSourceObject: {fileID: 7571357015551922076, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+  m_PrefabInstance: {fileID: 1307806160390010622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8912183515550271126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7604377956993626216, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
   m_PrefabInstance: {fileID: 1307806160390010622}
   m_PrefabAsset: {fileID: 0}
 --- !u!33 &8927452111713012743 stripped

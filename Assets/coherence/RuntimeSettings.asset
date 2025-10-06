@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b91f942a5214496b0e11eaedb54c36, type: 3}
   m_Name: RuntimeSettings
   m_EditorClassIdentifier: Coherence::Coherence.RuntimeSettings
-  schemaID: aa955616c59a9a495d9c8dacdfdd1cac5f2c5fb5
+  schemaID: 04505dd469ce87b8c3404c237477990c2c8c54b6
   versionInfo: {fileID: 11400000, guid: 2191b6f902c97477baa32a7919010503, type: 2}
   runtimeKey: 0f4fdfeadfca4043b63091b4cd9a6409
   simulatorSlug: 
