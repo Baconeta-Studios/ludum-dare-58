@@ -33,6 +33,7 @@ namespace Managers
         private Dictionary<string, List<Objective>> playerObjectives = new();
         private HashSet<string> collectedItemIds = new(); 
         private HashSet<string> deadEnemies = new();
+        private Queue<CollectibleItem> unassignedItems = new();
 
         private CoherenceSync _sync;
 
@@ -46,7 +47,22 @@ namespace Managers
         {
             Debug.Log("GameManager started. Items: " + allItems.Count +
                       " | Enemies: " + allEnemies.Count);
+            unassignedItems = new Queue<CollectibleItem>(allItems);
         }
+
+        public CollectibleItem GetNextItemForAI()
+        {
+            if (unassignedItems.Count > 0)
+            {
+                var item = unassignedItems.Dequeue();
+                Debug.Log($"Assigning {item.ItemName} to AI");
+                return item;
+            }
+
+            Debug.LogWarning("No more items left to assign to AI!");
+            return null;
+        }
+
 
         public void OnPlayerSpawned(string playerId)
         {

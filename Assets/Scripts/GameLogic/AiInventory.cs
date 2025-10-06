@@ -24,21 +24,28 @@ public class AiInventory : MonoBehaviour
     private Coroutine inspectionCoroutine;
     public GameObject bloodSpatter;
 
-    private void Awake(){
-        if (possibleItems.Length == 0)
+    private void Awake()
+    {
+        Invoke(nameof(SetupAIItem), 0.5f);
+    }
+
+    private void SetupAIItem()
+    {
+        var itemPrefab = Managers.GameManager.Instance.GetNextItemForAI();
+        if (itemPrefab != null)
         {
-            Debug.LogWarning($"{name} has no possible items");
-        }
-        else
-        {
-            
-            heldItem = Instantiate(possibleItems[Random.Range(0, possibleItems.Length)], transform);
+            heldItem = Instantiate(itemPrefab.gameObject, transform);
             heldItem.transform.position = inspectOrigin.position;
             heldItem.SetActive(false);
             initialScale = heldItem.transform.localScale;
-            Debug.Log($"{name} is holding {heldItem.name}");
+            Debug.Log($"{name} is holding {itemPrefab.ItemName}");
+        }
+        else
+        {
+            Debug.LogWarning($"{name} could not get an item to hold.");
         }
     }
+
 
     [ContextMenu("Inspect Item")]
     public void OnInspect(){
