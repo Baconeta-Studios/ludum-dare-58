@@ -1,8 +1,9 @@
 using Coherence.Toolkit;
 using FMODUnity;
+using GameLogic;
+using Managers;
 using Movement;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class AiInteractable : Interactable
 {
@@ -55,16 +56,15 @@ public class AiInteractable : Interactable
     [Command]
     public override void OnMurder(CoherenceSync initiatingPlayerSync)
     {
-        // Play card interaction sound with FMOD.
         RuntimeManager.PlayOneShot("event:/SFX/Weapons/Knife", transform.position);
-        
-        //base.OnMurder(initiatingPlayerSync);
-        GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
 
+        GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
         Debug.Log("Making the AI Die.");
         movement.StopMovement();
         animator.SetTrigger("Die");
         murderParticleSystem.Play();
+
+        ReportMurderWitnesses(initiatingPlayerSync, transform.position);
     }
 
     [Command]
@@ -83,6 +83,19 @@ public class AiInteractable : Interactable
         }
     }
 
+    private void ReportMurderWitnesses(CoherenceSync murdererSync, Vector3 murderLocation)
+    {
+        Collider[] nearbyAI = Physics.OverlapSphere(murderLocation, 100f, LayerMask.GetMask("Interactable"));
 
+        foreach (var col in nearbyAI)
+        {
+            var sight = col.GetComponent<AiSight>();
+            if (sight != null && sight.WitnessedMurder(murdererSync.transform))
+            {
+                Debug.Log($"{col.name} witnessed {murdererSync.name} commit a murder!");
+                GameManager.Instance.MurderWasWitnessed(murdererSync.name, col.name);
+            }
+        }
+    }
 
 }

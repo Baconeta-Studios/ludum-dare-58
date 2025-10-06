@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Coherence.Toolkit;
+using UnityEngine;
 
 namespace GameLogic
 {
@@ -40,6 +41,11 @@ namespace GameLogic
                     {
                         canSeePlayer = true;
                         currentTarget = player.transform;
+                        var sync = GetComponent<CoherenceSync>();
+                        if (sync != null && sync.HasStateAuthority)
+                        {
+                            Debug.Log("A player can be seen!!");
+                        }
                         return;
                     }
                 }

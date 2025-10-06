@@ -9893,8 +9893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c13adf29986457daf99dc75cfec8249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameLogic.AiSight
-  viewRange: 6
-  viewAngle: 90
+  viewRange: 10
+  viewAngle: 150
   playerMask:
     serializedVersion: 2
     m_Bits: 512

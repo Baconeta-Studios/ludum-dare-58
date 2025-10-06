@@ -240,5 +240,18 @@ namespace Managers
         {
             return assignedItems.All(item => collectedItemIds.Contains(item.PrefabId));
         }
+
+        public void MurderWasWitnessed(string murdererId, string witnessId)
+        {
+            if (!IsAuthority())
+            {
+                Debug.Log("Murder was witnessed but somehow this was not the server auth");
+                return;
+            }
+
+            Debug.LogWarning($"Murder was witnessed! Murderer={murdererId}, Witness={witnessId}");
+
+            //EndGame(murdererId); <== server authorise something spicy
+        }
     }
 }
