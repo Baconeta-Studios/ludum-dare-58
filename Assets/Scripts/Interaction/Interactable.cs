@@ -172,6 +172,9 @@ public class Interactable : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        if (_sync.HasStateAuthority)
+        {
+            Destroy(gameObject);
+        }
     }
 }
