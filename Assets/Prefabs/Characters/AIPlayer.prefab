@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1769806385750478476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 182136686492057218, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
+  m_PrefabInstance: {fileID: 1875900831862943758}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4053328785511087391}
+  m_Layer: 0
+  m_Name: 'Blood (Missing Prefab with guid: e27de4a604e9ea443863c3dd92c22069)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4053328785511087391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2470462783734156561, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
+  m_PrefabInstance: {fileID: 1875900831862943758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769806385750478476}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3723853178183722643}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &2997589419186998681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5230,14 +5261,6 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 4053328785511087391}
       lodStepsActive: 1
-    - component: {fileID: 8558872791946681679}
-      lodStepsActive: 1
-    - component: {fileID: 2544031687234526756}
-      lodStepsActive: 1
-    - component: {fileID: 8732485303989299666}
-      lodStepsActive: 1
-    - component: {fileID: 6379046287019923938}
-      lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 1
   RigidbodyUpdateMode: 0
@@ -5282,18 +5305,10 @@ MonoBehaviour:
   - rid: 2835214015028265058
   - rid: 2835214015028265059
   - rid: 2835214015028265060
-  - rid: 2835214015028265062
-  - rid: 2835214015028265063
-  - rid: 2835214015028265064
-  - rid: 2835214015028265065
   - rid: 2835214019232268416
   - rid: 2835214019232268417
   - rid: 2835214019232268418
   - rid: 2835214019232268419
-  - rid: 2835214019232268420
-  - rid: 2835214019232268421
-  - rid: 2835214019232268422
-  - rid: 2835214019232268423
   scenePrefabInstanceUUID: 
   coherenceUUID: 
   assetVersion: 
@@ -6417,86 +6432,6 @@ MonoBehaviour:
         unityComponent: {fileID: 7187185018167391222}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214015028265062
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214015028265072
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 406ab4a9d5154d819ed1b58f1691204d
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214015028265063
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214015028265073
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 27a87add317b4311909e77f5e889bcc9
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214015028265064
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214015028265074
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 41ba3a465b1b4141a56bf2d84a86b5dd
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214015028265065
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214015028265075
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 608df35b7d454a5283994961765e1033
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
     - rid: 2835214015028265067
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -6576,94 +6511,6 @@ MonoBehaviour:
         - UnityEngine.GameObject, UnityEngine
         ownerType:
           assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214015028265072
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: RequestCollect
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - UnityEngine.GameObject, UnityEngine
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214015028265073
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: RequestInspect
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - UnityEngine.GameObject, UnityEngine
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214015028265074
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: RequestMurder
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - UnityEngine.GameObject, UnityEngine
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214015028265075
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: RequestScare
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - UnityEngine.GameObject, UnityEngine
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         defaultSyncMode: 0
         CustomData:
@@ -6753,86 +6600,6 @@ MonoBehaviour:
         unityComponent: {fileID: 7187185018167391222}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 0}
-    - rid: 2835214019232268420
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214019232268428
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 1e2e594b7cf84ccb9dde946343d87212
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214019232268421
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214019232268429
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 7a1960a7b48e442d8ab6f55ec1fa366a
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214019232268422
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214019232268430
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 500f72bfdc014d6782a007c4aa45840b
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214019232268423
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214019232268431
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: c45d945bfa7749d39511f8ca8d7ae361
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 6379046287019923938}
-        coherenceSync: {fileID: 0}
-        interpolationSettings: {fileID: 0}
     - rid: 2835214019232268424
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -6912,94 +6679,6 @@ MonoBehaviour:
         - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
         ownerType:
           assemblyQualifiedName: AiInteractable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214019232268428
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: OnScare
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214019232268429
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: OnMurder
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214019232268430
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: OnInspect
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214019232268431
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: OnCollect
-        monoAssemblyType: 
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - Coherence.Toolkit.CoherenceSync, Coherence.Toolkit
-        ownerType:
-          assemblyQualifiedName: Interactable, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         defaultSyncMode: 0
         CustomData:
@@ -7421,42 +7100,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
---- !u!1 &1769806385750478476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 182136686492057218, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-  m_PrefabInstance: {fileID: 1875900831862943758}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &2544031687234526756 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4127195604889595434, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-  m_PrefabInstance: {fileID: 1875900831862943758}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4053328785511087391 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2470462783734156561, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-  m_PrefabInstance: {fileID: 1875900831862943758}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6379046287019923938 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4795881785383987692, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-  m_PrefabInstance: {fileID: 1875900831862943758}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769806385750478476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 233df6b6776cadc4d80de502fc9932dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Interactable
---- !u!33 &8558872791946681679 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 7840679724839873857, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-  m_PrefabInstance: {fileID: 1875900831862943758}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &8732485303989299666 stripped
-MeshCollider:
-  m_CorrespondingSourceObject: {fileID: 7149619165175028188, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-  m_PrefabInstance: {fileID: 1875900831862943758}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7186202037251621828
 PrefabInstance:
   m_ObjectHideFlags: 0

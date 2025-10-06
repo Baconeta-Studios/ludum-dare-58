@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
   m_Name: Blood
   m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceSyncConfig
-  id: e27de4a604e9ea443863c3dd92c22069
-  selfId: 62a1068d92b2a60478847c5ac2c9b199
-  editorTarget: {fileID: 182136686492057218, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
+  id: 74982f6012252ee49a284d3f7e96bbc3
+  selfId: 3f49814a69c3fe8488cf511fa744b9a5
+  editorTarget: {fileID: 2151187063688551955, guid: 74982f6012252ee49a284d3f7e96bbc3, type: 3}
   includeInSchema: 1
   objectProvider:
-    rid: 2835214021047877749
+    rid: 2835214021047877889
   objectInstantiator:
-    rid: 2835214021047877750
+    rid: 2835214021047877783
   references:
     version: 2
     RefIds:
-    - rid: 2835214021047877749
-      type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
-      data:
-        prefab: {fileID: 182136686492057218, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
-    - rid: 2835214021047877750
+    - rid: 2835214021047877783
       type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data: 
+    - rid: 2835214021047877889
+      type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data:
+        prefab: {fileID: 2151187063688551955, guid: 74982f6012252ee49a284d3f7e96bbc3, type: 3}
