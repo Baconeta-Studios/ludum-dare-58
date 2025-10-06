@@ -4,7 +4,27 @@ enum Movement_PlayerClickInteraction_InteractionType [bits "2", range-min "0", r
   Murder 2
   Scare 3
 
-component _09fc6bfcbc1174443b414da472ead246_7358165678956324847 [id "18"]
+enum AnimatorUpdateMode [bits "2", range-min "0", range-max "2"] 
+  Normal 0
+  Fixed 1
+  AnimatePhysics 1
+  UnscaledTime 2
+
+enum AnimatorCullingMode [bits "2", range-min "0", range-max "2"] 
+  AlwaysAnimate 0
+  CullUpdateTransforms 1
+  BasedOnRenderers 1
+  CullCompletely 2
+
+enum Managers_GameState [bits "1", range-min "0", range-max "1"] 
+  Playing 0
+  Ended 1
+
+component _09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704 [id "18"]
+  CurrentState Managers_GameState 
+  WinnerId String [bits "6"]
+
+component _09fc6bfcbc1174443b414da472ead246_7358165678956324847 [id "19"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -14,7 +34,7 @@ component _09fc6bfcbc1174443b414da472ead246_7358165678956324847 [id "18"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847 [id "19"]
+component _15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847 [id "20"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -24,7 +44,7 @@ component _15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847 [id "19"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _2e9a812656b76d04eb90df4854d1e30b_7358165678956324847 [id "20"]
+component _2e9a812656b76d04eb90df4854d1e30b_7358165678956324847 [id "21"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -34,7 +54,7 @@ component _2e9a812656b76d04eb90df4854d1e30b_7358165678956324847 [id "20"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _323c83c22c66e134cafda906dd653efe_7358165678956324847 [id "21"]
+component _323c83c22c66e134cafda906dd653efe_7358165678956324847 [id "22"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -44,7 +64,7 @@ component _323c83c22c66e134cafda906dd653efe_7358165678956324847 [id "21"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _54f15b9536fdd4f418278553359b147a_7358165678956324847 [id "22"]
+component _54f15b9536fdd4f418278553359b147a_7358165678956324847 [id "23"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -54,7 +74,7 @@ component _54f15b9536fdd4f418278553359b147a_7358165678956324847 [id "22"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _644fb43852fcb934c8446e7500c926a9_7358165678956324847 [id "23"]
+component _644fb43852fcb934c8446e7500c926a9_7358165678956324847 [id "24"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -64,7 +84,7 @@ component _644fb43852fcb934c8446e7500c926a9_7358165678956324847 [id "23"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847 [id "24"]
+component _8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847 [id "25"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -74,7 +94,7 @@ component _8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847 [id "24"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _903fe190c8617be4e8473c42776348b0_7358165678956324847 [id "25"]
+component _903fe190c8617be4e8473c42776348b0_7358165678956324847 [id "26"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -84,7 +104,7 @@ component _903fe190c8617be4e8473c42776348b0_7358165678956324847 [id "25"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _9f5bc27e05af2554b820330014ec60b3_7358165678956324847 [id "26"]
+component _9f5bc27e05af2554b820330014ec60b3_7358165678956324847 [id "27"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -94,7 +114,29 @@ component _9f5bc27e05af2554b820330014ec60b3_7358165678956324847 [id "26"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847 [id "27"]
+component _a1fa7cddf5d5ef94b8bacf8838c9a6fa_8174208910537896391 [id "28"]
+  bodyPosition Vector3 [compression "None"]
+  bodyRotation Quaternion [bits "32"]
+  fireEvents Bool [bits "1"]
+  rootPosition Vector3 [compression "None"]
+  rootRotation Quaternion [bits "32"]
+  animatePhysics Bool [bits "1"]
+  updateMode AnimatorUpdateMode 
+  applyRootMotion Bool [bits "1"]
+  stabilizeFeet Bool [bits "1"]
+  feetPivotActive Float [compression "None"]
+  speed Float [compression "None"]
+  cullingMode AnimatorCullingMode 
+  playbackTime Float [compression "None"]
+  recorderStartTime Float [compression "None"]
+  recorderStopTime Float [compression "None"]
+  layersAffectMassCenter Bool [bits "1"]
+  logWarnings Bool [bits "1"]
+  keepAnimatorStateOnDisable Bool [bits "1"]
+  writeDefaultValuesOnDisable Bool [bits "1"]
+  enabled Bool [bits "1"]
+
+component _a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847 [id "29"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -104,7 +146,7 @@ component _a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847 [id "27"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847 [id "28"]
+component _b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847 [id "30"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -114,7 +156,7 @@ component _b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847 [id "28"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _b34815fde6e38e64986379d4f1497883_7358165678956324847 [id "29"]
+component _b34815fde6e38e64986379d4f1497883_7358165678956324847 [id "31"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -124,7 +166,7 @@ component _b34815fde6e38e64986379d4f1497883_7358165678956324847 [id "29"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847 [id "30"]
+component _bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847 [id "32"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -134,7 +176,7 @@ component _bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847 [id "30"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _cd55199613c8b184e879d7bae921a108_7358165678956324847 [id "31"]
+component _cd55199613c8b184e879d7bae921a108_7358165678956324847 [id "33"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
@@ -144,10 +186,10 @@ component _cd55199613c8b184e879d7bae921a108_7358165678956324847 [id "31"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _e61c5d2dfc4521841997842ff9788719_5978856047403316304 [id "32"]
+component _e61c5d2dfc4521841997842ff9788719_5978856047403316304 [id "34"]
   canBeInteracted Bool [bits "1"]
 
-component _e61c5d2dfc4521841997842ff9788719_7358165678956324847 [id "33"]
+component _e61c5d2dfc4521841997842ff9788719_7358165678956324847 [id "35"]
   enabled Bool [bits "1"]
   isTrigger Bool [bits "1"]
   center Vector3 [compression "None"]
@@ -157,7 +199,7 @@ component _e61c5d2dfc4521841997842ff9788719_7358165678956324847 [id "33"]
   providesContacts Bool [bits "1"]
   layerOverridePriority Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _fa4c593e91513b645a84cc5724e1f032_7358165678956324847 [id "34"]
+component _fa4c593e91513b645a84cc5724e1f032_7358165678956324847 [id "36"]
   center Vector3 [compression "None"]
   size Vector3 [compression "None"]
   enabled Bool [bits "1"]
