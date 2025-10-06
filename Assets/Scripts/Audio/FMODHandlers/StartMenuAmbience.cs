@@ -10,14 +10,22 @@ namespace Audio.FMODHandlers
 
         void Start()
         {
+            RuntimeManager.LoadBank("StartMenu", true);
+            
             bgMusic = RuntimeManager.CreateInstance("event:/Ambience/NoirAmbience");
             bgMusic.start();
+            
+            RuntimeManager.UnloadBank("Gameplay");
         }
 
         void OnDestroy()
         {
+            RuntimeManager.LoadBank("Gameplay", true);
+            
             bgMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             bgMusic.release();
+            
+            RuntimeManager.UnloadBank("StartMenu");
         }
     }
 }
