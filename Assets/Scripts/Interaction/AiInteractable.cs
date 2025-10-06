@@ -9,6 +9,7 @@ public class AiInteractable : Interactable
     Animator animator;
     AiMovementController movement;
     public ParticleSystem smokeParticleSystem;
+    public ParticleSystem murderParticleSystem;
 
     private void Awake()
     {
@@ -63,7 +64,7 @@ public class AiInteractable : Interactable
         Debug.Log("Making the AI Die.");
         movement.StopMovement();
         animator.SetTrigger("Die");
-        PlaySmokePoof();
+        murderParticleSystem.Play();
     }
 
     [Command]

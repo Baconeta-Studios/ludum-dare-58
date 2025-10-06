@@ -50,7 +50,7 @@ namespace GameLogic
         {
             var dir = (targetPos - transform.position).normalized;
             var lookRot = Quaternion.LookRotation(new Vector3(dir.x, 0, dir.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, Time.deltaTime * rotateSpeed);
         }
         
         public bool WitnessedMurder(Transform murderer)
