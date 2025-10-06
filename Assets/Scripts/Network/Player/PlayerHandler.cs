@@ -64,9 +64,9 @@ public class PlayerHandler : MonoBehaviour
             return;
         }
 
-        // Decide hard +/- 1 for x and z
-        float xOffset = Random.value < 0.5f ? -1f : 1f;
-        float zOffset = Random.value < 0.5f ? -1f : 1f;
+        // Hard integer offset between -2 and 2
+        int xOffset = Random.Range(-2, 3); // -2, -1, 0, 1, 2
+        int zOffset = Random.Range(-2, 3);
 
         Vector3 spawnPos = initialPosition;
         spawnPos.x += xOffset;
