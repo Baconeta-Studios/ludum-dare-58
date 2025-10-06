@@ -1,3 +1,4 @@
+using Coherence.Toolkit;
 using Movement;
 using UnityEngine;
 
@@ -12,11 +13,10 @@ public class AiInteractable : Interactable
         movement = GetComponent<AiMovementController>();
         animator = GetComponent<Animator>();
     }
-    protected override void OnMurder(GameObject initiatingPlayer) 
-    {
-        movement.StopMovement();
-        animator.SetTrigger("Die");
-    }
+    //protected override void OnMurder(GameObject initiatingPlayer) 
+    //{
+    //    _sync.SendCommand<AiInteractable>(nameof(RequestMurder), Coherence.MessageTarget.AuthorityOnly);
+    //}
 
     public void PlaySmokePoof()
     {
@@ -27,5 +27,20 @@ public class AiInteractable : Interactable
     public void OnEndMurder()
     {
         Destroy(gameObject);
+    }
+
+    [Command]
+    public void RequestMurder()
+    {
+        // Owner decides to actually broadcast - here always broadcast
+        //_sync.SendCommand<AiInteractable>(nameof(RpcOnMurder), Coherence.MessageTarget.All);
+    }
+
+    [Command]
+    public void RpcOnMurder()
+    {
+        movement.StopMovement();
+        animator.SetTrigger("Die");
+        PlaySmokePoof();
     }
 }

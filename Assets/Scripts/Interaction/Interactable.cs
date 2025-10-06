@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Movement;
 using UnityEngine;
-
+using Coherence.Toolkit;
 
 public class Interactable : MonoBehaviour
 {
@@ -11,7 +11,15 @@ public class Interactable : MonoBehaviour
     public PlayerClickInteraction.InteractionType[] supportedInteractions;
     public bool doesMove = false;
     public bool occupiesCell;
-    
+    public CoherenceSync _sync;
+    private void Awake()
+    {
+        if (_sync == null)
+        {
+            Debug.LogError($"{name} has Interactable but no CoherenceSync attached!");
+        }
+    }
+
     public void OnValidate(){
         if (gameObject.layer != LayerMask.NameToLayer("Interactable"))
         {
@@ -30,39 +38,80 @@ public class Interactable : MonoBehaviour
         {
             switch (interactionType)
             {
+                // All interactions are requests to the server, which then decides what happesn and calls back to On* methods below for the client to do updates.
                 case PlayerClickInteraction.InteractionType.Collect:
-                    OnCollect(initiatingPlayer);
+                    RequestCollect(initiatingPlayer);
                     break;
                 
                 case PlayerClickInteraction.InteractionType.Inspect:
-                    OnInspect(initiatingPlayer);
+                    RequestInspect(initiatingPlayer);
                     break;
                 
                 case PlayerClickInteraction.InteractionType.Murder:
-                    OnMurder(initiatingPlayer);
+                    RequestMurder(initiatingPlayer);
                     break;
                 
                 case PlayerClickInteraction.InteractionType.Scare:
-                    OnScare(initiatingPlayer);
+                    RequestScare(initiatingPlayer);
                     break;
             }
         }
     }
 
-    protected virtual void OnScare(GameObject initiatingPlayer){
-        Debug.Log($"{initiatingPlayer.gameObject.name}: Scared {name}");
+    /* Client Calls Host to request iteractions occur and server then receives and processes */
+    [Command]
+    public void RequestCollect(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to collect from server");
+        _sync.SendCommand<AiInteractable>(nameof(OnCollect), Coherence.MessageTarget.StateAuthorityOnly);
+    }
+
+    [Command]
+    public void RequestInspect(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to inspect from server");
+        _sync.SendCommand<AiInteractable>(nameof(OnInspect), Coherence.MessageTarget.StateAuthorityOnly);
+    }
+
+    [Command]
+    public void RequestMurder(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to murder from server");
+        // TODO do we need to send the playerid?
+        _sync.SendCommand<AiInteractable>(nameof(OnMurder), Coherence.MessageTarget.StateAuthorityOnly);
+    }
+
+    [Command]
+    public void RequestScare(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to scare from server");
+        _sync.SendCommand<AiInteractable>(nameof(OnScare), Coherence.MessageTarget.StateAuthorityOnly);
+    }
+
+    /* Server receives the request and processes and replies with a Command also. */
+    [Command]
+    public void OnScare(){
+        // Server updates the AI to move and informs no one about the scare.
+
+        Debug.Log($": Scared {name}");
         // TODO behaviour for Scare.
         // Tell the AI Movement Controller to move to another room
     }
 
-    protected virtual void OnMurder(GameObject initiatingPlayer){
+    [Command]
+    protected void OnMurder(GameObject initiatingPlayer){
+        // Server tells ALL about the murder
+
         Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
         // TODO behaviour for Murder
         // .... murders them?
 
     }
 
-    protected virtual void OnInspect(GameObject initiatingPlayer){
+    [Command]
+    protected void OnInspect(GameObject initiatingPlayer){
+        // Server tells Client whats inspected 
+
         Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
         // TODO behaviour for inspect
         AiInventory inventory = GetComponent<AiInventory>();
@@ -72,7 +121,10 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    protected virtual void OnCollect(GameObject initiatingPlayer){
+    [Command]
+    protected void OnCollect(GameObject initiatingPlayer){
+        // Server tell ALL about the item being collected.
+
         Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
         // TODO behaviour for collect
 
