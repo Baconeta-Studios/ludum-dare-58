@@ -541,6 +541,9 @@ namespace Coherence.Samples.RoomsDialog
                 lastCreatedRoomUid = createdRoom.UniqueId;
                 RefreshRooms();
             }
+
+            var baseSession = FindFirstObjectByType<BaseSession>();
+            baseSession.CurrentRoomData = createdRoom;
         }
 
         private void OnCloudRoomsRegionsChanged(RequestResponse<IReadOnlyList<string>> requestResponse)
