@@ -13,6 +13,7 @@ public class AiInteractable : Interactable
     {
         movement = GetComponent<AiMovementController>();
         animator = GetComponent<Animator>();
+        animator.enabled = false;
     }
 
     public void PlaySmokePoof()
@@ -58,6 +59,7 @@ public class AiInteractable : Interactable
 
         Debug.Log("Making the AI Die.");
         movement.StopMovement();
+        animator.enabled = true;
         animator.SetTrigger("Die");
         PlaySmokePoof();
     }

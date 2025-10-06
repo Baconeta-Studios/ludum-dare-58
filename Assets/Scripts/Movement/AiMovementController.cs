@@ -49,16 +49,21 @@ namespace Movement
 
         private void Start()
         {
-            if (coherenceSync != null && coherenceSync.HasStateAuthority)
+            if (coherenceSync != null && HasAuthority())
             {
                 PlaceAtRandomCell();
                 PickNewDestination();
             }
         }
 
+        private bool HasAuthority()
+        {
+            return coherenceSync.HasStateAuthority;
+        }
+
         private void Update()
         {
-            if (canMove && coherenceSync && coherenceSync.HasStateAuthority)
+            if (canMove && coherenceSync && HasAuthority())
             {
                 if (_moving && _path.Count > 0)
                 {
@@ -157,18 +162,26 @@ namespace Movement
         {
             var target = _path.Peek().worldPosition;
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
-
-            var direction = (target - transform.position).normalized;
-            if (direction.sqrMagnitude > 0.001f)
-            {
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
-            }
+            RotateToOrient(target);
 
             if (Vector3.Distance(transform.position, target) < 0.01f)
             {
                 _path.Dequeue();
                 if (_path.Count == 0) _moving = false;
+            }
+        }
+
+        private void RotateToOrient(Vector3 target)
+        {
+            if(HasAuthority())
+            {
+
+                var direction = (target - transform.position).normalized;
+                if (direction.sqrMagnitude > 0.001f)
+                {
+                    var lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+                }
             }
         }
 
@@ -196,14 +209,7 @@ namespace Movement
             var height = Mathf.Sin(t * Mathf.PI) * jumpHeight;
             transform.position = new Vector3(horizontal.x, horizontal.y + height, horizontal.z);
 
-            var direction = (_jumpEnd - _jumpStart).normalized;
-            if (direction.sqrMagnitude > 0.001f)
-            {
-                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
-            }
-            
-            Debug.Log($"Authority rotating: {transform.rotation.eulerAngles}");
+            RotateToOrient(_jumpEnd);
 
             if (t >= 1f)
             {

@@ -4978,7 +4978,7 @@ MonoBehaviour:
   useJumpAnimation: 1
   jumpHeight: 0.2
   jumpSpeed: 2
-  rotateSpeed: 5
+  rotateSpeed: 900
   onlyWalkable: 1
   roomFilter: -1
   snapToGround: 1
@@ -5234,24 +5234,6 @@ MonoBehaviour:
   preserveChildren: 0
   bindings:
   - rid: 878349384412037296
-  - rid: 878349384412037300
-  - rid: 878349384838283968
-  - rid: 2835214013850189965
-  - rid: 2835214013850189967
-  - rid: 2835214013850189969
-  - rid: 2835214013850189971
-  - rid: 2835214013850189973
-  - rid: 2835214013850189975
-  - rid: 2835214013850189977
-  - rid: 2835214013850189979
-  - rid: 2835214013850189981
-  - rid: 2835214013850189983
-  - rid: 2835214013850189985
-  - rid: 2835214013850189987
-  - rid: 2835214013850189989
-  - rid: 2835214013850189991
-  - rid: 2835214013850189993
-  - rid: 2835214013850189995
   - rid: 2835214013850189997
   - rid: 2835214013850189999
   - rid: 2835214013850190003
@@ -5265,6 +5247,8 @@ MonoBehaviour:
   - rid: 2835214019232268417
   - rid: 2835214019232268418
   - rid: 2835214019232268419
+  - rid: 878349410026652185
+  - rid: 878349410934194176
   scenePrefabInstanceUUID: 
   coherenceUUID: 
   assetVersion: 
@@ -5327,61 +5311,16 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 878349384412037300
-      type: {class: RotationBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 878349384412037301
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: a34c951388e04e818055659166b9cbe4
-        archetypeData:
-          type: 8
-          minRange: 0
-          maxRange: 0
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 8
-            bits: 32
-            precision: 0.00000008381903171539307
-            floatCompression: 0
-        unityComponent: {fileID: 3723853178183722643}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
-    - rid: 878349384412037301
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: rotation
-        monoAssemblyType: UnityEngine.Quaternion, UnityEngine
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 1
-        valueSyncCallbackName: 
-        memberType: 64
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.TransformBindings.RotationBinding,
-            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 878349384838283968
+    - rid: 878349410026652185
       type: {class: ScaleBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 878349384838283969
+          rid: 878349410026652186
         routing: 0
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: 3114baa235fc449799701e4869099570
+        guid: 402bd84d6b114a6ebf82c47f156c3612
         archetypeData:
           type: 7
           minRange: 0
@@ -5396,7 +5335,7 @@ MonoBehaviour:
         unityComponent: {fileID: 3723853178183722643}
         coherenceSync: {fileID: 6988564652342590065}
         interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
-    - rid: 878349384838283969
+    - rid: 878349410026652186
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: localScale
@@ -5417,688 +5356,49 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 2835214013850189965
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+    - rid: 878349410934194176
+      type: {class: RotationBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 2835214013850189966
-        routing: 1
+          rid: 878349410934194177
+        routing: 0
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: b863d056c97d47fba178c858a64d1b5f
+        guid: 586fc3af6bd14055b95b98ec01d8cb53
         archetypeData:
-          type: 0
+          type: 8
           minRange: 0
           maxRange: 0
-          sampleRate: 0
+          sampleRate: 20
           floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
+          fields:
+          - type: 8
+            bits: 32
+            precision: 0.00000008381903171539307
+            floatCompression: 0
+        unityComponent: {fileID: 3723853178183722643}
         coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189966
+        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+    - rid: 878349410934194177
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
-        name: SetTrigger
-        monoAssemblyType: 
+        name: rotation
+        monoAssemblyType: UnityEngine.Quaternion, UnityEngine
         required: 0
-        enforcesLODingWhenFieldsOverriden: 0
+        enforcesLODingWhenFieldsOverriden: 1
         valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
+        memberType: 64
+        parameterAssemblyTypes: []
         ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
         defaultSyncMode: 0
         CustomData:
           rid: -2
         bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189967
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189968
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 0abcbd9f234748568fd3cf0c0d4015e0
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189968
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: SetTrigger
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189969
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189970
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: ce384ff9c5034caf97abaafdc07d6fd6
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189970
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: ResetTrigger
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189971
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189972
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 8e00e7ff7c1e4edf94510bb16afe5972
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189972
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: ResetTrigger
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189973
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189974
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 877b905e0630402ca0a0b932bffc3d03
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189974
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: PlayInFixedTime
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189975
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189976
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 4cad330df3b041179eff4cb8ab5129ff
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189976
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: PlayInFixedTime
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189977
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189978
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 26e718996e4b4ed9a118f1465eec38df
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189978
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: PlayInFixedTime
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        - System.Int32, mscorlib
-        - System.Single, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189979
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189980
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: e4859c2ffb8a48fcb7b07a710a131b1e
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189980
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: PlayInFixedTime
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        - System.Int32, mscorlib
-        - System.Single, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189981
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189982
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: fedb9c11aaff482dafe28f87e3407817
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189982
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: PlayInFixedTime
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189983
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189984
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 91e03de64fe54dcaa294b22f1e9ddf3a
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189984
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: PlayInFixedTime
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189985
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189986
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 14a556098e364510ab2ad96e990fd5db
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189986
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: Play
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189987
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189988
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: d6f23f679e094762b3749e480f971cb9
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189988
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: Play
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189989
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189990
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 0e4326067c3a48908e9f4b9460208b7e
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189990
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: Play
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.String, mscorlib
-        - System.Int32, mscorlib
-        - System.Single, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189991
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189992
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 4484767958be4480a28cfa0dc4fe879f
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189992
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: Play
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        - System.Int32, mscorlib
-        - System.Single, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189993
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189994
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 34fddbd082cf40d0946240816f67bb36
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189994
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: Play
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 2835214013850189995
-      type: {class: CommandBinding, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 2835214013850189996
-        routing: 1
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: a4cb52e3f7df4c398d7b6d82556866f4
-        archetypeData:
-          type: 0
-          minRange: 0
-          maxRange: 0
-          sampleRate: 0
-          floatCompression: 0
-          fields: []
-        unityComponent: {fileID: 8174208910537896391}
-        coherenceSync: {fileID: 6988564652342590065}
-        interpolationSettings: {fileID: 0}
-    - rid: 2835214013850189996
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: Play
-        monoAssemblyType: 
-        required: 0
-        enforcesLODingWhenFieldsOverriden: 0
-        valueSyncCallbackName: 
-        memberType: 8
-        parameterAssemblyTypes:
-        - System.Int32, mscorlib
-        ownerType:
-          assemblyQualifiedName: UnityEngine.Animator, UnityEngine.AnimationModule,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.CommandBinding, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.TransformBindings.RotationBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
     - rid: 2835214013850189997
@@ -6690,10 +5990,10 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3100423844219738655}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4a4b2281848805744b3631f594f2adf0, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
