@@ -213,10 +213,10 @@ MonoBehaviour:
     Assembly-CSharp
   isGlobal: 0
   approveAuthorityTransferRequests: 1
-  simulationType: 0
+  simulationType: 2
   authorityTransferConfig: -1
-  orphanedBehavior: 0
-  lifetimeType: 0
+  orphanedBehavior: 1
+  lifetimeType: 1
   uniquenessType: 0
   replacementStrategy: 0
   unsyncedNetworkEntityPriority: 0

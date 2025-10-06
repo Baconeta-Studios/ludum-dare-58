@@ -53,7 +53,7 @@ MonoBehaviour:
   supportedInteractions: 00000000
   doesMove: 0
   occupiesCell: 1
-  _sync: {fileID: 0}
+  _sync: {fileID: 8172704567653428911}
 --- !u!65 &2348801144650593770
 BoxCollider:
   m_ObjectHideFlags: 0
