@@ -46,9 +46,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Managers.GameManager
   objectivesPerPlayer: 3
   allItems:
-  - {fileID: 2649406477038104199, guid: 903fe190c8617be4e8473c42776348b0, type: 3}
-  - {fileID: -5312565131728558790, guid: 323c83c22c66e134cafda906dd653efe, type: 3}
-  - {fileID: -293633372205301804, guid: 8911663552b6d9e4dbc1193cf3782ce3, type: 3}
+  - {fileID: -293633372205301804, guid: 15368d1dc47e40c47bfa22cdc4f793a0, type: 3}
+  - {fileID: -293633372205301804, guid: 15368d1dc47e40c47bfa22cdc4f793a0, type: 3}
+  - {fileID: 2649406477038104199, guid: a52cb0c4df4eeed44b41c4bd39f8c8ce, type: 3}
+  - {fileID: 2649406477038104199, guid: a52cb0c4df4eeed44b41c4bd39f8c8ce, type: 3}
+  - {fileID: -293633372205301804, guid: cd55199613c8b184e879d7bae921a108, type: 3}
+  - {fileID: -293633372205301804, guid: cd55199613c8b184e879d7bae921a108, type: 3}
+  - {fileID: 2649406477038104199, guid: 644fb43852fcb934c8446e7500c926a9, type: 3}
+  - {fileID: 2649406477038104199, guid: 644fb43852fcb934c8446e7500c926a9, type: 3}
+  - {fileID: -293633372205301804, guid: b02c94a2e9c8be9408fcf3eb07f21aeb, type: 3}
+  - {fileID: -293633372205301804, guid: b02c94a2e9c8be9408fcf3eb07f21aeb, type: 3}
+  - {fileID: -293633372205301804, guid: 09fc6bfcbc1174443b414da472ead246, type: 3}
+  - {fileID: -293633372205301804, guid: 09fc6bfcbc1174443b414da472ead246, type: 3}
+  - {fileID: -293633372205301804, guid: b34815fde6e38e64986379d4f1497883, type: 3}
+  - {fileID: -293633372205301804, guid: b34815fde6e38e64986379d4f1497883, type: 3}
   - {fileID: 9134126786590491799, guid: bee86ad7bccc54d489028b5b80b1f12a, type: 3}
+  - {fileID: 9134126786590491799, guid: bee86ad7bccc54d489028b5b80b1f12a, type: 3}
+  - {fileID: -293633372205301804, guid: 8911663552b6d9e4dbc1193cf3782ce3, type: 3}
+  - {fileID: -293633372205301804, guid: 8911663552b6d9e4dbc1193cf3782ce3, type: 3}
+  - {fileID: 2649406477038104199, guid: 903fe190c8617be4e8473c42776348b0, type: 3}
+  - {fileID: 2649406477038104199, guid: 903fe190c8617be4e8473c42776348b0, type: 3}
   allEnemies:
   - {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}

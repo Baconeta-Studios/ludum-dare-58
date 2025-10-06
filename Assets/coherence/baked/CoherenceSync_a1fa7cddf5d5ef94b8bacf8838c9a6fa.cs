@@ -76,58 +76,7 @@ namespace Coherence.Generated
         }    
     }
     [UnityEngine.Scripting.Preserve]
-    public class Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_a34c951388e04e818055659166b9cbe4 : RotationBinding
-    {   
-        private global::UnityEngine.Transform CastedUnityComponent;
-
-        protected override void OnBindingCloned()
-        {
-    	    CastedUnityComponent = (global::UnityEngine.Transform)UnityComponent;
-        }
-
-        public override global::System.Type CoherenceComponentType => typeof(WorldOrientation);
-        public override string CoherenceComponentName => "WorldOrientation";
-        public override uint FieldMask => 0b00000000000000000000000000000001;
-
-        public override UnityEngine.Quaternion Value
-        {
-            get { return (UnityEngine.Quaternion)(coherenceSync.coherenceRotation); }
-            set { coherenceSync.coherenceRotation = (UnityEngine.Quaternion)(value); }
-        }
-
-        protected override (UnityEngine.Quaternion value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
-        {
-            var value = ((WorldOrientation)coherenceComponent).value;
-
-            var simFrame = ((WorldOrientation)coherenceComponent).valueSimulationFrame;
-            
-            return (value, simFrame);
-        }
-
-        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
-        {
-            var update = (WorldOrientation)coherenceComponent;
-            if (Interpolator.IsInterpolationNone)
-            {
-                update.value = Value;
-            }
-            else
-            {
-                update.value = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
-            }
-
-            update.valueSimulationFrame = simFrame;
-            
-            return update;
-        }
-
-        public override ICoherenceComponentData CreateComponentData()
-        {
-            return new WorldOrientation();
-        }    
-    }
-    [UnityEngine.Scripting.Preserve]
-    public class Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_3114baa235fc449799701e4869099570 : ScaleBinding
+    public class Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_402bd84d6b114a6ebf82c47f156c3612 : ScaleBinding
     {   
         private global::UnityEngine.Transform CastedUnityComponent;
 
@@ -177,6 +126,57 @@ namespace Coherence.Generated
             return new GenericScale();
         }    
     }
+    [UnityEngine.Scripting.Preserve]
+    public class Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_586fc3af6bd14055b95b98ec01d8cb53 : RotationBinding
+    {   
+        private global::UnityEngine.Transform CastedUnityComponent;
+
+        protected override void OnBindingCloned()
+        {
+    	    CastedUnityComponent = (global::UnityEngine.Transform)UnityComponent;
+        }
+
+        public override global::System.Type CoherenceComponentType => typeof(WorldOrientation);
+        public override string CoherenceComponentName => "WorldOrientation";
+        public override uint FieldMask => 0b00000000000000000000000000000001;
+
+        public override UnityEngine.Quaternion Value
+        {
+            get { return (UnityEngine.Quaternion)(coherenceSync.coherenceRotation); }
+            set { coherenceSync.coherenceRotation = (UnityEngine.Quaternion)(value); }
+        }
+
+        protected override (UnityEngine.Quaternion value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
+        {
+            var value = ((WorldOrientation)coherenceComponent).value;
+
+            var simFrame = ((WorldOrientation)coherenceComponent).valueSimulationFrame;
+            
+            return (value, simFrame);
+        }
+
+        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
+        {
+            var update = (WorldOrientation)coherenceComponent;
+            if (Interpolator.IsInterpolationNone)
+            {
+                update.value = Value;
+            }
+            else
+            {
+                update.value = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
+            }
+
+            update.valueSimulationFrame = simFrame;
+            
+            return update;
+        }
+
+        public override ICoherenceComponentData CreateComponentData()
+        {
+            return new WorldOrientation();
+        }    
+    }
 
     [UnityEngine.Scripting.Preserve]
     public class CoherenceSync_a1fa7cddf5d5ef94b8bacf8838c9a6fa : CoherenceSyncBaked
@@ -184,6 +184,19 @@ namespace Coherence.Generated
         private Entity entityId;
         private Logger logger = Coherence.Log.Log.GetLogger<CoherenceSync_a1fa7cddf5d5ef94b8bacf8838c9a6fa>();
         
+        private global::AiInteractable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e_CommandTarget;
+        private global::AiInteractable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589_CommandTarget;
+        private global::Interactable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c_CommandTarget;
+        private global::AiInteractable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea_CommandTarget;
+        private global::AiInteractable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16_CommandTarget;
+        private global::AiInteractable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d_CommandTarget;
+        private global::AiInteractable _a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0_CommandTarget;
         
         private InputBuffer<_a1fa7cddf5d5ef94b8bacf8838c9a6fa> inputBuffer;
         private _a1fa7cddf5d5ef94b8bacf8838c9a6fa currentInput;
@@ -197,14 +210,27 @@ namespace Coherence.Generated
         private readonly Dictionary<string, Binding> bakedValueBindings = new Dictionary<string, Binding>()
         {
 			["edf258fa46fb4f78a654625e915cb376"] = new Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_edf258fa46fb4f78a654625e915cb376(),
-			["a34c951388e04e818055659166b9cbe4"] = new Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_a34c951388e04e818055659166b9cbe4(),
-			["3114baa235fc449799701e4869099570"] = new Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_3114baa235fc449799701e4869099570(),
+			["402bd84d6b114a6ebf82c47f156c3612"] = new Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_402bd84d6b114a6ebf82c47f156c3612(),
+			["586fc3af6bd14055b95b98ec01d8cb53"] = new Binding_a1fa7cddf5d5ef94b8bacf8838c9a6fa_586fc3af6bd14055b95b98ec01d8cb53(),
         };
         
         private Dictionary<string, Action<CommandBinding, CommandsHandler>> bakedCommandBindings = new Dictionary<string, Action<CommandBinding, CommandsHandler>>();
         
         public CoherenceSync_a1fa7cddf5d5ef94b8bacf8838c9a6fa()
         {
+            bakedCommandBindings.Add("603bbcc77d4b47ebac12e74f6482cb0e", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e);
+            bakedCommandBindings.Add("2283c1247ea64c1db1c8b3e173e89139", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139);
+            bakedCommandBindings.Add("2c3bc9b5dc68465ab589a5ea764a7434", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434);
+            bakedCommandBindings.Add("162511d5b5314af3a48dc608a33cbf93", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93);
+            bakedCommandBindings.Add("6684c57b4da54db0a052a3fe8b036b3f", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f);
+            bakedCommandBindings.Add("3918d4656e384d0eaba7b46782de7267", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267);
+            bakedCommandBindings.Add("fb661e6b1f774146a948e90e5b5adbf9", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9);
+            bakedCommandBindings.Add("970f10b12056470cb3bdcb94a59c2589", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589);
+            bakedCommandBindings.Add("d5a8bf58b0e54974a9ddde324b0aa64c", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c);
+            bakedCommandBindings.Add("af125522109d4409b46634431fd819ea", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea);
+            bakedCommandBindings.Add("354718ff04d64fefad2b2186b162dc16", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16);
+            bakedCommandBindings.Add("776bd05e4f9b47a4bac0bdece67c291d", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d);
+            bakedCommandBindings.Add("27c844bca78c44a180298a31aa77b3e0", BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0);
         }
         
         public override Binding BakeValueBinding(Binding valueBinding)
@@ -225,11 +251,603 @@ namespace Coherence.Generated
                 commandBindingBaker.Invoke(commandBinding, commandsHandler);
             }
         }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e_CommandTarget = (global::AiInteractable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"AiInteractable.PlaySmokePoof",
+            	"()",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e,
+            	MessageTarget.StateAuthorityOnly,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e_CommandTarget;
+			target.PlaySmokePoof();
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139_CommandTarget = (global::AiInteractable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"AiInteractable.OnEndMurder",
+            	"()",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139,
+            	MessageTarget.StateAuthorityOnly,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139_CommandTarget;
+			target.OnEndMurder();
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.Destroy",
+            	"()",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434_CommandTarget;
+			target.Destroy();
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.OnValidate",
+            	"()",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93_CommandTarget;
+			target.OnValidate();
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.Interact",
+            	"(UnityEngine.GameObjectMovement.PlayerClickInteraction+InteractionType)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+            command.interactionType = (System.Int32)(int)requestArgs.Args[1];
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+            command.interactionType = (System.Int32)(int)requestArgs.Args[1];
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f_CommandTarget;
+			target.Interact(bridge.EntityIdToGameObject(command.initiatingPlayer),(Movement.PlayerClickInteraction.InteractionType)(command.interactionType));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.RequestCollect",
+            	"(UnityEngine.GameObject)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267_CommandTarget;
+			target.RequestCollect(bridge.EntityIdToGameObject(command.initiatingPlayer));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.RequestInspect",
+            	"(UnityEngine.GameObject)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9_CommandTarget;
+			target.RequestInspect(bridge.EntityIdToGameObject(command.initiatingPlayer));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.RequestMurder",
+            	"(UnityEngine.GameObject)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589_CommandTarget;
+			target.RequestMurder(bridge.EntityIdToGameObject(command.initiatingPlayer));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c_CommandTarget = (global::Interactable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"Interactable.RequestScare",
+            	"(UnityEngine.GameObject)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayer = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as UnityEngine.GameObject);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c_CommandTarget;
+			target.RequestScare(bridge.EntityIdToGameObject(command.initiatingPlayer));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea_CommandTarget = (global::AiInteractable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"AiInteractable.OnInspect",
+            	"(Coherence.Toolkit.CoherenceSync)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea_CommandTarget;
+			target.OnInspect(bridge.EntityIdToCoherenceSync(command.initiatingPlayerSync));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16_CommandTarget = (global::AiInteractable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"AiInteractable.OnCollect",
+            	"(Coherence.Toolkit.CoherenceSync)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16_CommandTarget;
+			target.OnCollect(bridge.EntityIdToCoherenceSync(command.initiatingPlayerSync));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d_CommandTarget = (global::AiInteractable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"AiInteractable.OnMurder",
+            	"(Coherence.Toolkit.CoherenceSync)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d_CommandTarget;
+			target.OnMurder(bridge.EntityIdToCoherenceSync(command.initiatingPlayerSync));
+        }
+        private void BakeCommandBinding__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0(CommandBinding commandBinding, CommandsHandler commandsHandler)
+        {
+            _a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0_CommandTarget = (global::AiInteractable)commandBinding.UnityComponent;
+            commandsHandler.AddBakedCommand(
+            	"AiInteractable.OnScare",
+            	"(Coherence.Toolkit.CoherenceSync)",
+            	SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0,
+            	ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0,
+            	MessageTarget.All,
+            	_a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0_CommandTarget,
+            	commandBinding.UsesMeta());
+        }
+        
+        private void SendCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+            command.UsesMeta = requestArgs.UsesMeta;
+            command.Target = requestArgs.Target;
+            command.Entity = entityId;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            client.SendCommand(command, requestArgs.ChannelID);
+        }
+        
+        private void ReceiveLocalCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0(GenericCommandRequestArgs requestArgs)
+        {
+            var command = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0();
+            command.Frame = requestArgs.Frame;
+            command.SenderClientID = requestArgs.Sender;
+
+            command.initiatingPlayerSync = (Entity)bridge.UnityObjectToEntityId(requestArgs.Args[0] as Coherence.Toolkit.CoherenceSync);
+
+            ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0(command);
+        }
+
+        private void ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0(_a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0 command)
+        {
+            var target = _a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0_CommandTarget;
+			target.OnScare(bridge.EntityIdToCoherenceSync(command.initiatingPlayerSync));
+        }
         
         public override void ReceiveCommand(IEntityCommand command)
         {
             switch (command)
             {
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_603bbcc77d4b47ebac12e74f6482cb0e(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2283c1247ea64c1db1c8b3e173e89139(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_2c3bc9b5dc68465ab589a5ea764a7434(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_162511d5b5314af3a48dc608a33cbf93(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_6684c57b4da54db0a052a3fe8b036b3f(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_3918d4656e384d0eaba7b46782de7267(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_fb661e6b1f774146a948e90e5b5adbf9(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_970f10b12056470cb3bdcb94a59c2589(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_d5a8bf58b0e54974a9ddde324b0aa64c(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_af125522109d4409b46634431fd819ea(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_354718ff04d64fefad2b2186b162dc16(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_776bd05e4f9b47a4bac0bdece67c291d(castedCommand);
+                    break;
+                case _a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0 castedCommand:
+                    ReceiveCommand__a1fa7cddf5d5ef94b8bacf8838c9a6fa_27c844bca78c44a180298a31aa77b3e0(castedCommand);
+                    break;
                 default:
                     logger.Warning(Coherence.Log.Warning.ToolkitBakedSyncReceiveCommandUnhandled,
                         $"CoherenceSync_a1fa7cddf5d5ef94b8bacf8838c9a6fa Unhandled command: {command.GetType()}.");

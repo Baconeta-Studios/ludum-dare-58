@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using FMODUnity;
 using Movement;
 using UnityEngine;
 
@@ -23,6 +24,9 @@ public class CardUIManager : MonoBehaviour {
     }
 
     private void OnLeftCardClicked(CardSlot clickedSlot) {
+        // Play card interaction sound with FMOD.
+        RuntimeManager.PlayOneShot("event:/SFX/Cards/CardSelection");
+        
         var handVisual = handSlot.CardVisual;
         var leftVisual = clickedSlot.CardVisual;
 

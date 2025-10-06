@@ -29,7 +29,7 @@ namespace Coherence.Generated
         {
             if (dataSize != 0) {
                 throw new System.Exception($"Given data size is not equal to the struct size. ({dataSize} != 0) " +
-                    "for input with ID 0");
+                    "for input with ID 4");
             }
 
             var orig = new _a1fa7cddf5d5ef94b8bacf8838c9a6fa();
@@ -37,7 +37,7 @@ namespace Coherence.Generated
             return orig;
         }
 
-        public uint GetComponentType() => 0;
+        public uint GetComponentType() => 4;
 
         public Entity Entity { get; set; }
         public Coherence.ChannelID ChannelID { get; set; }

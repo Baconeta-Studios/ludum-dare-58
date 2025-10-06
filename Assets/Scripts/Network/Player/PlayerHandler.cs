@@ -64,8 +64,16 @@ public class PlayerHandler : MonoBehaviour
             return;
         }
 
+        // Hard integer offset between -2 and 2
+        int xOffset = Random.Range(-2, 3); // -2, -1, 0, 1, 2
+        int zOffset = Random.Range(-2, 3);
+
+        Vector3 spawnPos = initialPosition;
+        spawnPos.x += xOffset;
+        spawnPos.z += zOffset;
+
         // Spawn the networked avatar
-        _player = Instantiate(prefabToSpawn, initialPosition, Quaternion.identity);
+        _player = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
 
         // Attach local-only camera
         if (_player.TryGetComponent<CoherenceSync>(out var sync) && sync.HasStateAuthority)

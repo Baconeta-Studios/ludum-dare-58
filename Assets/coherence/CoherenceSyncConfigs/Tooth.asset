@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
+  m_Name: Tooth
+  m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceSyncConfig
+  id: 15368d1dc47e40c47bfa22cdc4f793a0
+  selfId: 549e473062d4e0e42967e1d6b53c2849
+  editorTarget: {fileID: 10132813822857524, guid: 15368d1dc47e40c47bfa22cdc4f793a0, type: 3}
+  includeInSchema: 1
+  objectProvider:
+    rid: 3824195039256380057
+  objectInstantiator:
+    rid: 3824195039256380058
+  references:
+    version: 2
+    RefIds:
+    - rid: 3824195039256380057
+      type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data:
+        prefab: {fileID: 10132813822857524, guid: 15368d1dc47e40c47bfa22cdc4f793a0, type: 3}
+    - rid: 3824195039256380058
+      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data: 

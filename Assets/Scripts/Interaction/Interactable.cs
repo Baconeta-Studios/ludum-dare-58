@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using Managers;
 using Movement;
 using UnityEngine;
-
+using Coherence.Toolkit;
 
 public class Interactable : MonoBehaviour
 {
@@ -12,7 +11,15 @@ public class Interactable : MonoBehaviour
     public PlayerClickInteraction.InteractionType[] supportedInteractions;
     public bool doesMove = false;
     public bool occupiesCell;
-    
+    public CoherenceSync _sync;
+    private void Awake()
+    {
+        if (_sync == null)
+        {
+            Debug.LogError($"{name} has Interactable but no CoherenceSync attached!");
+        }
+    }
+
     public void OnValidate(){
         if (gameObject.layer != LayerMask.NameToLayer("Interactable"))
         {
@@ -31,52 +38,137 @@ public class Interactable : MonoBehaviour
         {
             switch (interactionType)
             {
+                // All interactions are requests to the server, which then decides what happesn and calls back to On* methods below for the client to do updates.
                 case PlayerClickInteraction.InteractionType.Collect:
-                    OnCollect(initiatingPlayer);
+                    RequestCollect(initiatingPlayer);
                     break;
                 
                 case PlayerClickInteraction.InteractionType.Inspect:
-                    OnInspect(initiatingPlayer);
+                    RequestInspect(initiatingPlayer);
                     break;
                 
                 case PlayerClickInteraction.InteractionType.Murder:
-                    OnMurder(initiatingPlayer);
+                    RequestMurder(initiatingPlayer);
                     break;
                 
                 case PlayerClickInteraction.InteractionType.Scare:
-                    OnScare(initiatingPlayer);
+                    RequestScare(initiatingPlayer);
                     break;
             }
         }
     }
 
-    protected virtual void OnScare(GameObject initiatingPlayer){
-        Debug.Log($"{initiatingPlayer.gameObject.name}: Scared {name}");
-        // TODO behaviour for Scare.
-        // Tell the AI Movement Controller to move to another room
+    /* Client Calls Host to request iteractions occur and server then receives and processes */
+    [Command]
+    public void RequestCollect(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to collect from server");
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // TODO Tell all clients about the item being collected
+        // TODO Make sure the right client has received the item.
+
+        // for now tell ALL clients to process it like they collected it.
+        _sync.SendOrderedCommandToChildren<Interactable>(
+           nameof(OnCollect),
+           Coherence.MessageTarget.All,
+           playerSync
+       );
     }
 
-    protected virtual void OnMurder(GameObject initiatingPlayer){
+    protected virtual void OnMurder(GameObject initiatingPlayer)
+    {
+        // Play card interaction sound with FMOD.
+        RuntimeManager.PlayOneShot("event:/SFX/Weapons/Knife", transform.position);
+
         Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
         // TODO behaviour for Murder
         // .... murders them?
+    }
+    
 
+    [Command]
+    public void RequestInspect(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to inspect from server");
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // Tell all clients about the murder.
+        _sync.SendOrderedCommandToChildren<AiInteractable>(
+           nameof(OnInspect),
+           Coherence.MessageTarget.All,
+           playerSync
+       );
     }
 
-    protected virtual void OnInspect(GameObject initiatingPlayer){
-        Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
-        // TODO behaviour for inspect
-        AiInventory inventory = GetComponent<AiInventory>();
-        if(inventory)
-        {
-            inventory.OnInspect();
-        }
+    [Command]
+    public void RequestMurder(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to murder from server");
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // Tell all clients about the murder.
+        _sync.SendOrderedCommandToChildren<AiInteractable>(
+           nameof(OnMurder),
+           Coherence.MessageTarget.All, // TODO server only knows murders
+           playerSync
+       );
     }
 
-    protected virtual void OnCollect(GameObject initiatingPlayer){
+    [Command]
+    public void RequestScare(GameObject initiatingPlayer)
+    {
+        Debug.Log("client requesting to scare from server");
+        var playerSync = initiatingPlayer.GetComponent<CoherenceSync>();
+        if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
+
+        // Tell only the AI owner about the scare to run the movements.
+        _sync.SendOrderedCommandToChildren<AiInteractable>(
+            nameof(OnScare),
+            Coherence.MessageTarget.StateAuthorityOnly,
+            playerSync
+        );
+    }
+
+    /* Server receives the request and processes and replies with a Command also. */
+    [Command]
+    public virtual void OnScare(CoherenceSync initiatingPlayer)
+    {
+        // Server updates the one AI to move and informs no one about the scare.
+        Debug.Log($": Scared {name}");
+        // TO USE THIS Override it in a subclass and call base to keep the logs
+    }
+
+    [Command]
+    public virtual void OnMurder(CoherenceSync initiatingPlayer)
+    {
+        // Server tells ALL clients about the murder
+        Debug.Log($" Murdered {name}");
+        // TO USE THIS Override it in a subclass and call base to keep the logs
+    }
+
+    [Command]
+    public virtual void OnInspect(CoherenceSync initiatingPlayer)
+    {
+        // Server tells only the owner Client whats inspected 
+        Debug.Log($" Inspected {name}");
+        // TO USE THIS Override it in a subclass and call base to keep the logs
+    }
+
+    [Command]
+    public virtual void OnCollect(CoherenceSync initiatingPlayer)
+    {
+        // Server tell ALL about the item being collected.
+        // TODO BUT doesn't make all the players animate
+
+        Debug.Log($": Collected {name}");
+        // TODO behaviour for collect
         Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
         GameManager.Instance.CollectItem(initiatingPlayer.name, GetComponent<CollectibleItem>());
-
+        // TODO move this into a collectables class, but for now whatevers.
         Animator animator = GetComponent<Animator>();
         if (animator)
         {
@@ -90,6 +182,9 @@ public class Interactable : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        if (_sync.HasStateAuthority)
+        {
+            Destroy(gameObject);
+        }
     }
 }
