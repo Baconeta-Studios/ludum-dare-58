@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Coherence.Toolkit;
 using Managers;
 using UnityEngine;
@@ -29,7 +28,7 @@ namespace Movement
         {
             string playerId = name;
             
-            _myObjectives = GameManager.Instance.GetMyObjectives(playerId);
+            _myObjectives = GameManager.Instance.GetMyObjectivesForUI(playerId);
 
             Debug.Log($"Player {playerId} objectives: {string.Join(", ", _myObjectives)}");
         }

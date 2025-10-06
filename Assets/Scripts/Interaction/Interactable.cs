@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Managers;
 using Movement;
 using UnityEngine;
 
@@ -74,7 +75,7 @@ public class Interactable : MonoBehaviour
 
     protected virtual void OnCollect(GameObject initiatingPlayer){
         Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
-        // TODO behaviour for collect
+        GameManager.Instance.CollectItem(initiatingPlayer.name, GetComponent<CollectibleItem>());
 
         Animator animator = GetComponent<Animator>();
         if (animator)
