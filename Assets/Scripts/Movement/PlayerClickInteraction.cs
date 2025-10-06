@@ -92,7 +92,7 @@ namespace Movement
                 }
             }
 
-            HoverHighlightCell(gridManager.GetCell(Vector3.zero));
+            //HoverHighlightCell(gridManager.GetCell(Vector3.zero));
 
             // process queued clicks AFTER EventSystem has updated
             if (clickQueued) {
