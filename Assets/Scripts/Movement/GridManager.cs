@@ -202,6 +202,12 @@ namespace Movement
                 case 3: return Color.yellow;
                 case 4: return Color.cyan;
                 case 5: return Color.magenta;
+                case 6: return Color.teal;
+                case 7: return Color.rosyBrown;
+                case 8: return Color.chocolate;
+                case 9: return Color.indigo;
+                case 10: return Color.olive;
+                case 11: return Color.salmon;
                 default: return Color.white;
             }
         }
