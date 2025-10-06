@@ -76,6 +76,108 @@ namespace Coherence.Generated
         }    
     }
     [UnityEngine.Scripting.Preserve]
+    public class Binding_cd55199613c8b184e879d7bae921a108_488c44529d2741f08e576e7364053b8c : RotationBinding
+    {   
+        private global::UnityEngine.Transform CastedUnityComponent;
+
+        protected override void OnBindingCloned()
+        {
+    	    CastedUnityComponent = (global::UnityEngine.Transform)UnityComponent;
+        }
+
+        public override global::System.Type CoherenceComponentType => typeof(WorldOrientation);
+        public override string CoherenceComponentName => "WorldOrientation";
+        public override uint FieldMask => 0b00000000000000000000000000000001;
+
+        public override UnityEngine.Quaternion Value
+        {
+            get { return (UnityEngine.Quaternion)(coherenceSync.coherenceRotation); }
+            set { coherenceSync.coherenceRotation = (UnityEngine.Quaternion)(value); }
+        }
+
+        protected override (UnityEngine.Quaternion value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
+        {
+            var value = ((WorldOrientation)coherenceComponent).value;
+
+            var simFrame = ((WorldOrientation)coherenceComponent).valueSimulationFrame;
+            
+            return (value, simFrame);
+        }
+
+        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
+        {
+            var update = (WorldOrientation)coherenceComponent;
+            if (Interpolator.IsInterpolationNone)
+            {
+                update.value = Value;
+            }
+            else
+            {
+                update.value = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
+            }
+
+            update.valueSimulationFrame = simFrame;
+            
+            return update;
+        }
+
+        public override ICoherenceComponentData CreateComponentData()
+        {
+            return new WorldOrientation();
+        }    
+    }
+    [UnityEngine.Scripting.Preserve]
+    public class Binding_cd55199613c8b184e879d7bae921a108_967922e05a9a482090a55d6b702db3da : ScaleBinding
+    {   
+        private global::UnityEngine.Transform CastedUnityComponent;
+
+        protected override void OnBindingCloned()
+        {
+    	    CastedUnityComponent = (global::UnityEngine.Transform)UnityComponent;
+        }
+
+        public override global::System.Type CoherenceComponentType => typeof(GenericScale);
+        public override string CoherenceComponentName => "GenericScale";
+        public override uint FieldMask => 0b00000000000000000000000000000001;
+
+        public override UnityEngine.Vector3 Value
+        {
+            get { return (UnityEngine.Vector3)(coherenceSync.coherenceLocalScale); }
+            set { coherenceSync.coherenceLocalScale = (UnityEngine.Vector3)(value); }
+        }
+
+        protected override (UnityEngine.Vector3 value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
+        {
+            var value = ((GenericScale)coherenceComponent).value;
+
+            var simFrame = ((GenericScale)coherenceComponent).valueSimulationFrame;
+            
+            return (value, simFrame);
+        }
+
+        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
+        {
+            var update = (GenericScale)coherenceComponent;
+            if (Interpolator.IsInterpolationNone)
+            {
+                update.value = Value;
+            }
+            else
+            {
+                update.value = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
+            }
+
+            update.valueSimulationFrame = simFrame;
+            
+            return update;
+        }
+
+        public override ICoherenceComponentData CreateComponentData()
+        {
+            return new GenericScale();
+        }    
+    }
+    [UnityEngine.Scripting.Preserve]
     public class Binding_cd55199613c8b184e879d7bae921a108_a4c92889c3bd4a76a9b2ee50a3e446f8 : Vector3Binding
     {   
         private global::UnityEngine.BoxCollider CastedUnityComponent;
@@ -506,6 +608,8 @@ namespace Coherence.Generated
         private readonly Dictionary<string, Binding> bakedValueBindings = new Dictionary<string, Binding>()
         {
 			["9725f6f302e3428f98487df72ae65c75"] = new Binding_cd55199613c8b184e879d7bae921a108_9725f6f302e3428f98487df72ae65c75(),
+			["488c44529d2741f08e576e7364053b8c"] = new Binding_cd55199613c8b184e879d7bae921a108_488c44529d2741f08e576e7364053b8c(),
+			["967922e05a9a482090a55d6b702db3da"] = new Binding_cd55199613c8b184e879d7bae921a108_967922e05a9a482090a55d6b702db3da(),
 			["a4c92889c3bd4a76a9b2ee50a3e446f8"] = new Binding_cd55199613c8b184e879d7bae921a108_a4c92889c3bd4a76a9b2ee50a3e446f8(),
 			["02823d66fb76433b90fa0d1cb313289a"] = new Binding_cd55199613c8b184e879d7bae921a108_02823d66fb76433b90fa0d1cb313289a(),
 			["f710247c2ba04d2fb57250210f85a70e"] = new Binding_cd55199613c8b184e879d7bae921a108_f710247c2ba04d2fb57250210f85a70e(),
