@@ -9897,7 +9897,7 @@ MonoBehaviour:
   viewAngle: 90
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   obstructionMask:
     serializedVersion: 2
     m_Bits: 1
