@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 169819878}
   - component: {fileID: 169819877}
   - component: {fileID: 169819876}
-  - component: {fileID: 169819879}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -215,18 +214,6 @@ MonoBehaviour:
           m_StringArgument: CreditsScreen
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 169819879}
-        m_TargetAssemblyTypeName: Analytics.TimingEventAnalytics, Assembly-CSharp
-        m_MethodName: StartTimingEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &169819877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,22 +252,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169819874}
   m_CullTransparentMesh: 1
---- !u!114 &169819879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169819874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52c5f21c6e7d4cb5bc29663b3a34a194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  analyticStartedName: creditsViewed
-  analyticEndedName: creditsClosed
-  analyticEndTimeName: timeOnCreditsScreen
-  sendStartEvent: 1
 --- !u!1 &194742539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,50 +1375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de5a04ab5ffb6aa48987a819cb910038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Audio.FMODHandlers.StartMenuAmbience
---- !u!1 &1841495423
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1841495424}
-  - component: {fileID: 1841495425}
-  m_Layer: 0
-  m_Name: UGS_Analytics
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1841495424
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841495423}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1841495425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841495423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e21c489f794df3e47ade276bbd22a899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1869197362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1541,18 +1468,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: SplashScreen
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 169819879}
-        m_TargetAssemblyTypeName: Analytics.TimingEventAnalytics, Assembly-CSharp
-        m_MethodName: EndTimingEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1869197365
@@ -2106,4 +2021,3 @@ SceneRoots:
   - {fileID: 2092781616}
   - {fileID: 1754853326}
   - {fileID: 726748197}
-  - {fileID: 1841495424}

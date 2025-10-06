@@ -30,10 +30,8 @@ public class GridPathfinder : MonoBehaviour {
             foreach (GridCell neighbor in GetNeighbors(current)) {
                 if (!neighbor.walkable || closedSet.Contains(neighbor)) continue;
 
-                // float stepCost = (neighbor.coordinates.x != current.coordinates.x &&
-                //                   neighbor.coordinates.y != current.coordinates.y) ? 1.414f : 1f;
-                
-                float stepCost = 1f;
+                float stepCost = (neighbor.coordinates.x == current.coordinates.x ||
+                                  neighbor.coordinates.y == current.coordinates.y) ? 1f : 1.414f;
 
                 float tentativeG = gScore[current] + stepCost;
 
@@ -71,6 +69,22 @@ public class GridPathfinder : MonoBehaviour {
             int ny = cell.coordinates.y + d.y;
 
             if (nx >= 0 && nx < gridManager.width && ny >= 0 && ny < gridManager.height) {
+                GridCell neighbor = gridManager.Grid[nx, ny];
+                
+                // Invalidate diagonal moves if the composite cardinal directions are impassable.
+                if (d.x != 0 && d.y != 0)
+                {
+                    // Get each cardinal neighbor.
+                    GridCell horizontal = gridManager.Grid[cell.coordinates.x + d.x, cell.coordinates.y];
+                    GridCell vertical = gridManager.Grid[cell.coordinates.x, cell.coordinates.y + d.y];
+
+                    // Invalidate invalid diagonal move.
+                    if (!horizontal.walkable || !vertical.walkable)
+                    {
+                        continue;
+                    }
+                }
+                
                 neighbors.Add(gridManager.Grid[nx, ny]);
             }
         }
