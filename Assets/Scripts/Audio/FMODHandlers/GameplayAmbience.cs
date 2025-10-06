@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Audio.FMODHandlers
 {
-    public class StartMenuAmbience : MonoBehaviour
+    public class GameplayAmbience : MonoBehaviour
     {
         private EventInstance bgMusic;
 
         void Start()
         {
-            RuntimeManager.LoadBank("StartMenu", true);
+            RuntimeManager.LoadBank("Gameplay", true);
             
-            bgMusic = RuntimeManager.CreateInstance("event:/Ambience/NoirAmbience");
+            bgMusic = RuntimeManager.CreateInstance("event:/Ambience/SpookyAmbience");
             bgMusic.start();
         }
 
@@ -21,7 +21,7 @@ namespace Audio.FMODHandlers
             bgMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             bgMusic.release();
             
-            RuntimeManager.UnloadBank("StartMenu");
+            RuntimeManager.UnloadBank("Gameplay");
         }
     }
 }
