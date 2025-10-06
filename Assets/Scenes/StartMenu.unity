@@ -1136,6 +1136,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: b7afa756b2e8b434cbf1b13845ad0795, type: 3}
+    - target: {fileID: 881244880269875210, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b7afa756b2e8b434cbf1b13845ad0795, type: 3}
     - target: {fileID: 894017883548050506, guid: 6899ff7d40b580c49b15d0c4dff6a5b4, type: 3}
       propertyPath: m_Text
       value: Enter a mansion name...
