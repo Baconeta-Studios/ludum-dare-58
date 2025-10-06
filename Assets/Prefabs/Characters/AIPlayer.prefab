@@ -6936,10 +6936,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blood
       objectReference: {fileID: 0}
-    - target: {fileID: 2151187063688551955, guid: 74982f6012252ee49a284d3f7e96bbc3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3000583841561624862, guid: 74982f6012252ee49a284d3f7e96bbc3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -200,7 +200,7 @@ MonoBehaviour:
     Assembly-CSharp
   isGlobal: 0
   approveAuthorityTransferRequests: 1
-  simulationType: 3
+  simulationType: 2
   authorityTransferConfig: 2
   orphanedBehavior: 1
   lifetimeType: 1
