@@ -43,15 +43,15 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 1, g: 0.8265537, b: 0.5896226, a: 1}
+  m_Color: {r: 1, g: 0.8509804, b: 0.6, a: 1}
   m_Intensity: 1
-  m_Range: 4.51
+  m_Range: 5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
+    m_Type: 1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -86,7 +86,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 0.25
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -110,6 +110,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9248896188924a040842a6a6084f826a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
-  minIntensity: 0.75
-  maxIntensity: 1.2
-  flickerSpeed: 2
+  flickerSpeed: 3
+  minIntensity: 1
+  maxIntensity: 1.25
+  minRange: 5
+  maxRange: 5.5
+  hueVariation: 0.007
+  satVariation: 0.03
