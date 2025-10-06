@@ -17,7 +17,7 @@ namespace Movement
         public float jumpSpeed = 5f;
 
         [Header("Rotation")]
-        public float rotateSpeed = 5f;   // How quickly the pawn turns
+        public float rotateSpeed = 5f;
 
         [Header("Spawn Placement")]
         [SerializeField] private bool onlyWalkable = true;
@@ -26,6 +26,11 @@ namespace Movement
         [SerializeField] private float rayStartHeight = 3f;
         [SerializeField] private float yOffset = 0f;
         [SerializeField] private LayerMask groundMask = ~0;
+
+        [Header("AI Behaviour")]
+        [Range(0f, 0.1f)]
+        [Tooltip("Chance per idle update tick that the AI will decide to move to a different room.")]
+        [SerializeField] private float crossRoomChance = 0.002f;
 
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
@@ -62,7 +67,7 @@ namespace Movement
                 }
                 else if (!_moving)
                 {
-                    if (Random.value < 0.01f)
+                    if (Random.value < 0.01f) // idle wander trigger
                     {
                         PickNewDestination();
                     }
@@ -72,11 +77,7 @@ namespace Movement
 
         private void PlaceAtRandomCell()
         {
-            if (gridManager == null || gridManager.Grid == null)
-            {
-                Debug.LogWarning($"{name}: GridManager not ready.");
-                return;
-            }
+            if (gridManager == null || gridManager.Grid == null) return;
 
             var candidates = new List<GridCell>();
             foreach (var cell in gridManager.Grid)
@@ -111,17 +112,37 @@ namespace Movement
         private void PickNewDestination()
         {
             var current = gridManager.GetCell(transform.position);
+            if (current == null) return;
 
-            var candidates = new List<GridCell>();
-            foreach (var cell in gridManager.Grid)
+            List<GridCell> candidates;
+
+            // Occasionally decide to move to a different room
+            if (Random.value < crossRoomChance)
             {
-                if (cell is { walkable: true } && cell.roomID == current.roomID)
+                candidates = new List<GridCell>();
+                foreach (var cell in gridManager.Grid)
                 {
-                    candidates.Add(cell);
+                    if (cell is { walkable: true } && cell.roomID != current.roomID)
+                    {
+                        candidates.Add(cell);
+                    }
+                }
+            }
+            else
+            {
+                // Normal wander within current room
+                candidates = new List<GridCell>();
+                foreach (var cell in gridManager.Grid)
+                {
+                    if (cell is { walkable: true } && cell.roomID == current.roomID)
+                    {
+                        candidates.Add(cell);
+                    }
                 }
             }
 
             if (candidates.Count == 0) return;
+
             var target = candidates[Random.Range(0, candidates.Count)];
 
             var newPath = pathfinder.FindPath(current, target);
@@ -132,6 +153,7 @@ namespace Movement
                 _moving = true;
             }
         }
+
 
         private void HandleSmooth()
         {
@@ -191,9 +213,6 @@ namespace Movement
             }
         }
 
-        public void StopMovement()
-        {
-            canMove = false;
-        }
+        public void StopMovement() => canMove = false;
     }
 }
