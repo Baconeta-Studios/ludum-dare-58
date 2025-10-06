@@ -1,4 +1,5 @@
 using Coherence.Toolkit;
+using FMODUnity;
 using Movement;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
@@ -54,6 +55,9 @@ public class AiInteractable : Interactable
     [Command]
     public override void OnMurder(CoherenceSync initiatingPlayerSync)
     {
+        // Play card interaction sound with FMOD.
+        RuntimeManager.PlayOneShot("event:/SFX/Weapons/Knife", transform.position);
+        
         //base.OnMurder(initiatingPlayerSync);
         GameObject initiatingPlayer = initiatingPlayerSync.gameObject;
 

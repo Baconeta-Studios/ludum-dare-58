@@ -143,7 +143,7 @@ namespace Movement
                 isJumping = true;
                 
                 // Play jumping sound with FMOD.
-                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Jumping");
+                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Jumping", transform.position);
             }
 
             // Check if this jump is orthogonal or diagonal.
@@ -172,7 +172,7 @@ namespace Movement
                 isJumping = false;
                 
                 // Play landing sound with FMOD.
-                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Landing");
+                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Landing", transform.position);
                 
                 if (path.Count == 0) {
                     ArrivedAtTarget();

@@ -80,7 +80,7 @@ public class Interactable : MonoBehaviour
     protected virtual void OnMurder(GameObject initiatingPlayer)
     {
         // Play card interaction sound with FMOD.
-        RuntimeManager.PlayOneShot("event:/SFX/Weapons/Knife");
+        RuntimeManager.PlayOneShot("event:/SFX/Weapons/Knife", transform.position);
 
         Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
         // TODO behaviour for Murder
