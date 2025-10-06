@@ -4,6 +4,19 @@ using UnityEngine;
 
 namespace Managers
 {
+    [System.Serializable]
+    public class Objective
+    {
+        public string PrefabId;
+        public bool Collected;
+
+        public Objective(string id)
+        {
+            PrefabId = id;
+            Collected = false;
+        }
+    }
+
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
@@ -17,7 +30,7 @@ namespace Managers
         [Tooltip("All enemies in the level (stub for now)")]
         [SerializeField] private List<GameObject> allEnemies = new();
 
-        private Dictionary<string, List<string>> playerObjectives = new();
+        private Dictionary<string, List<Objective>> playerObjectives = new();
         private HashSet<string> collectedItemIds = new(); 
         private HashSet<string> deadEnemies = new();
 
@@ -49,54 +62,55 @@ namespace Managers
 
             // Convert IDs back to display names for logging
             var objectiveNames = new List<string>();
-            foreach (var id in playerObjectives[playerId])
+            foreach (var obj in playerObjectives[playerId])
             {
-                var item = allItems.Find(i => i.PrefabId == id);
-                objectiveNames.Add(item != null ? item.ItemName : $"Unknown({id})");
+                var item = allItems.Find(i => i.PrefabId == obj.PrefabId);
+                objectiveNames.Add(item != null ? item.ItemName : $"Unknown({obj.PrefabId})");
             }
 
             Debug.Log($"Assigned objectives for {playerId}: {string.Join(", ", objectiveNames)}");
         }
 
-
-        private List<string> AssignObjectives()
+        private List<Objective> AssignObjectives()
         {
-            var result = new List<string>();
-            var pool = new List<CollectibleItem>(allItems); // catalog of prefabs
+            var result = new List<Objective>();
+            var pool = new List<CollectibleItem>(allItems);
 
             for (var i = 0; i < objectivesPerPlayer && pool.Count > 0; i++)
             {
                 int index = Random.Range(0, pool.Count);
-                result.Add(pool[index].PrefabId); // store type ID
+                result.Add(new Objective(pool[index].PrefabId));
                 pool.RemoveAt(index);
             }
 
             return result;
         }
 
-
         public void CollectItem(string playerId, CollectibleItem item)
         {
-            if (!IsAuthority())
+            if (!IsAuthority() || item == null) // TODO item is null when collecting blood
                 return;
 
             Debug.Log($"Player {playerId} collected {item.ItemName} (prefabId={item.PrefabId})");
             collectedItemIds.Add(item.PrefabId);
 
-            if (playerObjectives.ContainsKey(playerId) && playerObjectives[playerId].Contains(item.PrefabId))
+            if (playerObjectives.TryGetValue(playerId, out var objectives))
             {
-                playerObjectives[playerId].Remove(item.PrefabId);
-                Debug.Log($"Player {playerId} objectives left: {string.Join(", ", playerObjectives[playerId])}");
-            }
-            else
-            {
-                Debug.Log($"Player {playerId} collected {item.ItemName}, but it wasn’t on their list.");
+                var objective = objectives.Find(o => o.PrefabId == item.PrefabId);
+                if (objective != null && !objective.Collected)
+                {
+                    objective.Collected = true;
+                    Debug.Log($"Player {playerId} marked {item.ItemName} as collected");
+                }
+                else
+                {
+                    Debug.Log($"Player {playerId} collected {item.ItemName}, but it wasn’t on their list.");
+                }
             }
 
             item.gameObject.SetActive(false);
             PrintDebugState();
         }
-
 
         public void KillEnemy(string enemyId)
         {
@@ -114,14 +128,16 @@ namespace Managers
             Debug.Log("---- DEBUG STATE ----");
             foreach (var kvp in playerObjectives)
             {
-                var objectiveNames = new List<string>();
-                foreach (var id in kvp.Value)
+                var objectiveStates = new List<string>();
+                foreach (var obj in kvp.Value)
                 {
-                    var prefab = allItems.Find(i => i.PrefabId == id);
-                    objectiveNames.Add(prefab != null ? prefab.ItemName : $"Unknown({id})");
+                    var prefab = allItems.Find(i => i.PrefabId == obj.PrefabId);
+                    string display = prefab != null ? prefab.ItemName : $"Unknown({obj.PrefabId})";
+                    if (obj.Collected) display = $"~~{display}~~"; // markdown-style strikeout
+                    objectiveStates.Add(display);
                 }
 
-                Debug.Log($"Player {kvp.Key}: {kvp.Value.Count} objectives left ({string.Join(", ", objectiveNames)})");
+                Debug.Log($"Player {kvp.Key}: {objectiveStates.Count} objectives ({string.Join(", ", objectiveStates)})");
             }
 
             var collectedNames = new List<string>();
@@ -136,25 +152,27 @@ namespace Managers
             Debug.Log("---------------------");
         }
 
-
-
         private bool IsAuthority()
         {
             return _sync == null || _sync.HasStateAuthority;
         }
 
-        public List<string> GetMyObjectivesForUI(string playerId)
+        // Now returns names + collected status for UI
+        public List<(string itemName, bool collected)> GetMyObjectivesForUI(string playerId)
         {
-            var names = new List<string>();
-            if (playerObjectives.TryGetValue(playerId, out var ids))
+            var result = new List<(string, bool)>();
+
+            if (playerObjectives.TryGetValue(playerId, out var objectives))
             {
-                foreach (var id in ids)
+                foreach (var obj in objectives)
                 {
-                    var item = allItems.Find(i => i.PrefabId == id);
-                    if (item != null) names.Add(item.ItemName);
+                    var prefab = allItems.Find(i => i.PrefabId == obj.PrefabId);
+                    string name = prefab != null ? prefab.ItemName : $"Unknown({obj.PrefabId})";
+                    result.Add((name, obj.Collected));
                 }
             }
-            return names;
+
+            return result;
         }
     }
 }

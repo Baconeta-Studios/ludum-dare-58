@@ -7,7 +7,7 @@ namespace Movement
 {
     public class PlayerLogic : MonoBehaviour
     {
-        private List<string> _myObjectives;
+        private List<(string itemName, bool collected)> _myObjectives;
 
         private void Start()
         {
