@@ -29,15 +29,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10132813822857524}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1405721, y: -0, z: -0, w: 0.9900705}
-  m_LocalPosition: {x: 0, y: -0.01648584, z: -0.06048452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2653778783809611261}
   - {fileID: 1025927530596317555}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 16.162, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5978856047403316304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,10 +1228,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1439730007547781893, guid: 5f0136f6933caa0499fb5914564c04b8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 15b3458de66d6e24baeaf0a6f600aa24, type: 2}
     - target: {fileID: 919132149155446097, guid: 5f0136f6933caa0499fb5914564c04b8, type: 3}
       propertyPath: m_Name
       value: Perfume
       objectReference: {fileID: 0}
+    - target: {fileID: 1129496810705857465, guid: 5f0136f6933caa0499fb5914564c04b8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 853067435ddc5ce45a1f924e88d7c753, type: 2}
+    - target: {fileID: 8100320773420232829, guid: 5f0136f6933caa0499fb5914564c04b8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: af5a3aa1c294d16439fa13f7db98321e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
