@@ -589,6 +589,7 @@ MonoBehaviour:
   - rid: 3824195019474206838
   - rid: 3824195019474206839
   - rid: 3824195020224987246
+  - rid: 3824195055429091459
   floatingOriginMode: 0
   floatingOriginParentedMode: 1
   references:
@@ -698,6 +699,10 @@ MonoBehaviour:
       type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
       data:
         component: {fileID: 3195892257274726233}
+    - rid: 3824195055429091459
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 6457698963750268330}
 --- !u!114 &6457698963750268330
 MonoBehaviour:
   m_ObjectHideFlags: 0

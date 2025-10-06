@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Coherence.Toolkit;
+using UnityEngine;
 
 [System.Serializable]
 public class Outfit
@@ -22,7 +23,7 @@ public class RandomOutfitSelector : MonoBehaviour
 
     private void Start()
     {
-        if (randomizeOnStart)
+        if (randomizeOnStart && GetComponent<CoherenceSync>().HasStateAuthority)
         {
             SelectRandomOutfit();
         }
