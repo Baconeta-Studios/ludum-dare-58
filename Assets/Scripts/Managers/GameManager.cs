@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Coherence.Toolkit;
 using UnityEngine;
 
@@ -21,19 +22,19 @@ namespace Managers
     {
         public static GameManager Instance;
 
-        [Header("Config")]
-        [SerializeField] private int objectivesPerPlayer = 3;
+        [Header("Config")] [SerializeField] private int objectivesPerPlayer = 3;
 
-        [Tooltip("All collectible items in the level (assign in inspector or find at runtime)")]
-        [SerializeField] private List<CollectibleItem> allItems = new();
+        [Tooltip("All collectible items in the level (assign in inspector or find at runtime)")] [SerializeField]
+        private List<CollectibleItem> allItems = new();
 
-        [Tooltip("All enemies in the level (stub for now)")]
-        [SerializeField] private List<GameObject> allEnemies = new();
+        [Tooltip("All enemies in the level (stub for now)")] [SerializeField]
+        private List<GameObject> allEnemies = new();
 
         private Dictionary<string, List<Objective>> playerObjectives = new();
-        private HashSet<string> collectedItemIds = new(); 
+        private HashSet<string> collectedItemIds = new();
         private HashSet<string> deadEnemies = new();
         private Queue<CollectibleItem> unassignedItems = new();
+        private List<CollectibleItem> assignedItems = new();
 
         private CoherenceSync _sync;
 
@@ -56,6 +57,7 @@ namespace Managers
             {
                 var item = unassignedItems.Dequeue();
                 Debug.Log($"Assigning {item.ItemName} to AI");
+                assignedItems.Add(item);
                 return item;
             }
 
@@ -156,7 +158,8 @@ namespace Managers
                     objectiveStates.Add(display);
                 }
 
-                Debug.Log($"Player {kvp.Key}: {objectiveStates.Count} objectives ({string.Join(", ", objectiveStates)})");
+                Debug.Log(
+                    $"Player {kvp.Key}: {objectiveStates.Count} objectives ({string.Join(", ", objectiveStates)})");
             }
 
             var collectedNames = new List<string>();
@@ -193,7 +196,7 @@ namespace Managers
 
             return result;
         }
-        
+
         private void CheckForGameOver()
         {
             foreach (var kvp in playerObjectives)
@@ -206,12 +209,20 @@ namespace Managers
                 if (allCollected)
                 {
                     Debug.Log($"GAME OVER! Player {playerId} has completed all objectives!");
+                    // TODO actual winner will be highest score (probably first to collect all)
                     EndGame(playerId);
                     return;
                 }
             }
+
+            if (AllItemsCollected())
+            {
+                Debug.Log($"GAME OVER! All items have been collected!");
+                // TODO actual winner will be highest score (probably first to collect all)
+                EndGame("todo");
+            }
         }
-        
+
         private void EndGame(string winnerId)
         {
             Debug.Log($"==> GAME ENDED. Winner: {winnerId}");
@@ -219,5 +230,9 @@ namespace Managers
             // TODO: stop player input, play cutscene, fade out, load end scene, etc.
         }
 
+        private bool AllItemsCollected()
+        {
+            return assignedItems.All(item => collectedItemIds.Contains(item.PrefabId));
+        }
     }
 }
