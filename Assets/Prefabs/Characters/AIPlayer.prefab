@@ -26,12 +26,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2997589419186998681}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3723853178183722643}
+  m_Father: {fileID: 2221551919628552685}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &8541484337076017522
 ParticleSystem:
@@ -41,14 +41,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2997589419186998681}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -222,8 +222,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
-      maxColor: {r: 0.55345905, g: 0.55345905, b: 0.55345905, a: 1}
+      minColor: {r: 0.38364768, g: 0.38364768, b: 0.38364768, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.5
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -672,7 +672,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0.69, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1.74, y: 4.5, z: 1}
+    m_Scale: {x: 0.73, y: 2.78, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4840,7 +4840,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6d813f55103a6a94baa633e95513fe22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4933,7 +4933,6 @@ Transform:
   m_Children:
   - {fileID: 2221551919628552685}
   - {fileID: 978250679712878815}
-  - {fileID: 5320092469946773368}
   - {fileID: 3723560746152505616}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6127,6 +6126,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d33eb2b868c8064aa9acef1a092237a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3424778511746158814}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d33eb2b868c8064aa9acef1a092237a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5320092469946773368}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d33eb2b868c8064aa9acef1a092237a, type: 3}
 --- !u!33 &697205524994304618 stripped
@@ -6325,9 +6327,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2221551919628552685}
     m_Modifications:
+    - target: {fileID: 3838393385921301139, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
+      propertyPath: m_Range
+      value: 1.83
+      objectReference: {fileID: 0}
     - target: {fileID: 5493764018484482842, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.363
+      value: 0.077
       objectReference: {fileID: 0}
     - target: {fileID: 5493764018484482842, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6335,7 +6341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5493764018484482842, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.607
+      value: 0.234
       objectReference: {fileID: 0}
     - target: {fileID: 5493764018484482842, guid: eac0d75925f723243bda833b6dbafdf6, type: 3}
       propertyPath: m_LocalRotation.w
