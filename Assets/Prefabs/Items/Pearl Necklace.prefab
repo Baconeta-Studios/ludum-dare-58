@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e930232ff8c74a859f8438c8c32f5d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  itemName: Ring
-  prefabId: simple_ring
+  itemName: Pearl Necklace
+  prefabId: pearl_neckalce
 --- !u!1 &2008583442857715969
 GameObject:
   m_ObjectHideFlags: 0
