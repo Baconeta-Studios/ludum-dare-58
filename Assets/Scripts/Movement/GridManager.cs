@@ -195,7 +195,7 @@ namespace Movement
 
         private Color GetRoomColor(int roomID) {
             if (roomID < 0) return Color.gray;
-            switch (roomID % 6) {
+            switch (roomID % 12) {
                 case 0: return Color.red;
                 case 1: return Color.green;
                 case 2: return Color.blue;
