@@ -6,6 +6,8 @@ namespace Movement
 {
     public class AiMovementController : MonoBehaviour
     {
+        private bool canMove = true;
+
         [Header("Grid Movement")]
         public GridManager gridManager;
         public GridPathfinder pathfinder;
@@ -38,7 +40,7 @@ namespace Movement
 
         private void Update()
         {
-            if(coherenceSync && coherenceSync.HasStateAuthority)
+            if(canMove && coherenceSync && coherenceSync.HasStateAuthority)
             {
                 if (_moving && _path.Count > 0)
                 {
@@ -136,6 +138,11 @@ namespace Movement
                 _isJumping = false;
                 if (_path.Count == 0) _moving = false;
             }
+        }
+
+        public void StopMovement()
+        {
+            canMove = false;
         }
     }
 }
