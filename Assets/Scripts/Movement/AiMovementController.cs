@@ -1,5 +1,6 @@
 using Coherence.Toolkit;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 namespace Movement
@@ -187,6 +188,9 @@ namespace Movement
 
                 _jumpProgress = 0f;
                 _isJumping = true;
+                
+                // Play jumping sound with FMOD.
+                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Jumping");
             }
 
             // Check if this jump is orthogonal or diagonal.
@@ -216,6 +220,10 @@ namespace Movement
             {
                 _path.Dequeue();
                 _isJumping = false;
+                
+                // Play landing sound with FMOD.
+                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Landing");
+                
                 if (_path.Count == 0) _moving = false;
             }
         }
