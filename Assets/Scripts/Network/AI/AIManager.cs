@@ -1,29 +1,94 @@
+using System.Collections;
 using Coherence.Toolkit;
+using Movement;
+using System.Collections.Generic;
+using Coherence;
 using UnityEngine;
 
 public class AIManager : MonoBehaviour
 {
-    [SerializeField]
-    public CoherenceSync coherenceSync;
+    [Header("Networking")]
+    [SerializeField] private CoherenceSync coherenceSync;
 
-    public GameObject aiPrefab; 
+    [Header("AI Settings")]
+    [SerializeField] private GameObject aiPrefab;
+    [SerializeField, Min(1)] private int numberToSpawn = 1;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Grid Spawn Settings")]
+    [Tooltip("If true, only walkable cells will be considered.")]
+    [SerializeField] private bool onlyWalkable = true;
+    [Tooltip("If true, spawn in random grid cells. If false, spawn sequentially through grid.")]
+    [SerializeField] private bool randomizeCells = true;
+    [Tooltip("Optional Room ID filter (set -1 for any room).")]
+    [SerializeField] private int roomFilter = -1;
+
+    [Header("Parenting")]
+    [SerializeField] private Transform aiParent;
+
+    private GridManager gridManager;
+
+    private void Awake()
     {
-        if (coherenceSync.HasStateAuthority)
+        // Auto-find grid in the scene
+        gridManager = FindFirstObjectByType<GridManager>();
+
+        if (gridManager == null)
         {
-            // Ignore for Simulators and hosts.
-            Debug.Log("I'm the server");
-            Instantiate(aiPrefab);
-        } else {
-            Debug.Log("I'm the client");
+            Debug.LogError("AIManager: No GridManager found in the scene!");
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        if (coherenceSync != null && coherenceSync.HasStateAuthority)
+        {
+            Debug.Log("AIManager: I have state authority, spawning AI...");
+            SpawnOnGrid();
+        }
+        else
+        {
+            Debug.Log("AIManager: I’m a client, not spawning AI.");
+        }
+    }
+
+    private void SpawnOnGrid()
+    {
+        if (gridManager == null || gridManager.Grid == null)
+        {
+            Debug.LogWarning("AIManager: GridManager not ready.");
+            return;
+        }
+
+        List<GridCell> validCells = new List<GridCell>();
+
+        foreach (var cell in gridManager.Grid)
+        {
+            if (cell == null) continue;
+            if (onlyWalkable && !cell.walkable) continue;
+            if (roomFilter >= 0 && cell.roomID != roomFilter) continue;
+
+            validCells.Add(cell);
+        }
+
+        if (validCells.Count == 0)
+        {
+            Debug.LogWarning("AIManager: No valid grid cells found for spawning.");
+            return;
+        }
+
+        for (int i = 0; i < numberToSpawn; i++)
+        {
+            GridCell chosenCell = randomizeCells
+                ? validCells[Random.Range(0, validCells.Count)]
+                : validCells[i % validCells.Count];
+
+            SpawnOne(chosenCell.worldPosition, Quaternion.identity);
+        }
+    }
+
+    private void SpawnOne(Vector3 pos, Quaternion rot)
+    {
+        // location based spawning is not working as expected
+        var ai = Instantiate(aiPrefab);
     }
 }

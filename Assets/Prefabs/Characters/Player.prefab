@@ -715,6 +715,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3723853178183722643}
     m_Modifications:
+    - target: {fileID: 869654845670600604, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057863271386407869, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4532345008550358966, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -759,7 +767,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterMesh
       objectReference: {fileID: 0}
+    - target: {fileID: 6104102514162857145, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6110203691779942783, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604377956993626216, guid: 90f7fffe0355ec943858b22be5e990a2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

@@ -17,7 +17,20 @@ namespace Movement
         public float jumpSpeed = 5f;
 
         [Header("Rotation")]
-        public float rotateSpeed = 5f;   // How quickly the pawn turn
+        public float rotateSpeed = 5f;
+
+        [Header("Spawn Placement")]
+        [SerializeField] private bool onlyWalkable = true;
+        [SerializeField] private int roomFilter = -1;
+        [SerializeField] private bool snapToGround = true;
+        [SerializeField] private float rayStartHeight = 3f;
+        [SerializeField] private float yOffset = 0f;
+        [SerializeField] private LayerMask groundMask = ~0;
+
+        [Header("AI Behaviour")]
+        [Range(0f, 0.1f)]
+        [Tooltip("Chance per idle update tick that the AI will decide to move to a different room.")]
+        [SerializeField] private float crossRoomChance = 0.002f;
 
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
@@ -27,7 +40,8 @@ namespace Movement
         private float _jumpProgress;
         private CoherenceSync coherenceSync;
 
-        private void Awake(){
+        private void Awake()
+        {
             gridManager ??= FindFirstObjectByType<GridManager>();
             pathfinder ??= FindFirstObjectByType<GridPathfinder>();
             coherenceSync = GetComponent<CoherenceSync>();
@@ -35,12 +49,16 @@ namespace Movement
 
         private void Start()
         {
-            PickNewDestination();
+            if (coherenceSync != null && coherenceSync.HasStateAuthority)
+            {
+                PlaceAtRandomCell();
+                PickNewDestination();
+            }
         }
 
         private void Update()
         {
-            if(canMove && coherenceSync && coherenceSync.HasStateAuthority)
+            if (canMove && coherenceSync && coherenceSync.HasStateAuthority)
             {
                 if (_moving && _path.Count > 0)
                 {
@@ -57,16 +75,69 @@ namespace Movement
             }
         }
 
-        private void PickNewDestination()
+        private void PlaceAtRandomCell()
         {
-            var current = gridManager.GetCell(transform.position);
+            if (gridManager == null || gridManager.Grid == null) return;
 
             var candidates = new List<GridCell>();
             foreach (var cell in gridManager.Grid)
             {
-                if (cell is { walkable: true } && cell.roomID == current.roomID)
+                if (cell == null) continue;
+                if (onlyWalkable && !cell.walkable) continue;
+                if (roomFilter >= 0 && cell.roomID != roomFilter) continue;
+                candidates.Add(cell);
+            }
+
+            if (candidates.Count == 0) return;
+
+            var chosen = candidates[Random.Range(0, candidates.Count)];
+            var pos = chosen.worldPosition;
+
+            if (snapToGround)
+            {
+                var origin = pos + Vector3.up * rayStartHeight;
+                if (Physics.Raycast(origin, Vector3.down, out var hit, rayStartHeight * 2f, groundMask, QueryTriggerInteraction.Ignore))
                 {
-                    candidates.Add(cell);
+                    pos = hit.point + Vector3.up * yOffset;
+                }
+                else
+                {
+                    pos += Vector3.up * yOffset;
+                }
+            }
+
+            transform.position = pos;
+        }
+
+        private void PickNewDestination()
+        {
+            var current = gridManager.GetCell(transform.position);
+            if (current == null) return;
+
+            List<GridCell> candidates;
+
+            // Occasionally decide to move to a different room
+            if (Random.value < crossRoomChance)
+            {
+                candidates = new List<GridCell>();
+                foreach (var cell in gridManager.Grid)
+                {
+                    if (cell is { walkable: true } && cell.roomID != current.roomID)
+                    {
+                        candidates.Add(cell);
+                    }
+                }
+            }
+            else
+            {
+                // Normal wander within current room
+                candidates = new List<GridCell>();
+                foreach (var cell in gridManager.Grid)
+                {
+                    if (cell is { walkable: true } && cell.roomID == current.roomID)
+                    {
+                        candidates.Add(cell);
+                    }
                 }
             }
 
