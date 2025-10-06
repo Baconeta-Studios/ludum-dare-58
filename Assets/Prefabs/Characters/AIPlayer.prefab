@@ -9871,7 +9871,7 @@ MonoBehaviour:
   useJumpAnimation: 1
   jumpHeight: 0.2
   jumpSpeed: 2
-  rotateSpeed: 900
+  rotateSpeed: 10
   onlyWalkable: 1
   roomFilter: -1
   snapToGround: 1
