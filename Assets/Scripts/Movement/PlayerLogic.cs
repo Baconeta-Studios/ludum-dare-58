@@ -10,6 +10,7 @@ namespace Movement
     public class PlayerLogic : MonoBehaviour
     {
         private UIMurderabilia _myUIMurderabilia;
+        [SerializeField] private string playerUuid;
         
         private void OnEnable()
         {
@@ -26,22 +27,28 @@ namespace Movement
         private void Start()
         {
             _myUIMurderabilia = FindAnyObjectByType<UIMurderabilia>();
+            playerUuid = Guid.NewGuid().ToString();
+
             if (TryGetComponent<CoherenceSync>(out var sync) && sync.HasStateAuthority)
             {
                 Debug.Log("Sync object found- start player spawning system");
-                GameManager.Instance.OnPlayerSpawned(name);
+                GameManager.Instance.OnPlayerSpawned(playerUuid);
                 
                 Invoke(nameof(SetupPlayer), 1f);
             }
             else if (sync == null)
             {
-                GameManager.Instance.OnPlayerSpawned(name);
+                GameManager.Instance.OnPlayerSpawned(playerUuid);
+            }
+            else
+            {
+                Invoke(nameof(SetupPlayer), 1f);
             }
         }
 
         private void SetupPlayer()
         {
-            string playerId = name;
+            string playerId = playerUuid;
             
             _myObjectives = GameManager.Instance.GetMyObjectivesForUI(playerId);
             _myUIMurderabilia.UpdateCollectionUI(_myObjectives);
@@ -50,7 +57,7 @@ namespace Movement
 
         private void UpdateUIMurderabilia()
         {
-            var items = GameManager.Instance.GetMyObjectivesForUI(name);
+            var items = GameManager.Instance.GetMyObjectivesForUI(playerUuid);
             _myUIMurderabilia.UpdateCollectionUI(items);
         }
     }

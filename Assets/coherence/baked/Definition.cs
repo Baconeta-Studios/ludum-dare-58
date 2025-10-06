@@ -20,7 +20,7 @@ namespace Coherence.Generated
 
     public class Definition : IDefinition
     {
-        public const string schemaId = "4e2bf0d324614a1a510e5eede2144f848705da79";
+        public const string schemaId = "04505dd469ce87b8c3404c237477990c2c8c54b6";
         public const uint InternalWorldPosition = 0;
         public const uint InternalWorldOrientation = 1;
         public const uint InternalLocalUserComponent = 2;
@@ -39,25 +39,24 @@ namespace Coherence.Generated
         public const uint InternalScene = 15;
         public const uint InternalAssetId = 16;
         public const uint InternalGenericScale = 17;
-        public const uint Internal_09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704 = 18;
-        public const uint Internal_09fc6bfcbc1174443b414da472ead246_7358165678956324847 = 19;
-        public const uint Internal_15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847 = 20;
-        public const uint Internal_2e9a812656b76d04eb90df4854d1e30b_7358165678956324847 = 21;
-        public const uint Internal_323c83c22c66e134cafda906dd653efe_7358165678956324847 = 22;
-        public const uint Internal_54f15b9536fdd4f418278553359b147a_7358165678956324847 = 23;
-        public const uint Internal_644fb43852fcb934c8446e7500c926a9_7358165678956324847 = 24;
-        public const uint Internal_8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847 = 25;
-        public const uint Internal_903fe190c8617be4e8473c42776348b0_7358165678956324847 = 26;
-        public const uint Internal_9f5bc27e05af2554b820330014ec60b3_7358165678956324847 = 27;
-        public const uint Internal_a1fa7cddf5d5ef94b8bacf8838c9a6fa_8174208910537896391 = 28;
-        public const uint Internal_a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847 = 29;
-        public const uint Internal_b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847 = 30;
-        public const uint Internal_b34815fde6e38e64986379d4f1497883_7358165678956324847 = 31;
-        public const uint Internal_bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847 = 32;
-        public const uint Internal_cd55199613c8b184e879d7bae921a108_7358165678956324847 = 33;
-        public const uint Internal_e61c5d2dfc4521841997842ff9788719_5978856047403316304 = 34;
-        public const uint Internal_e61c5d2dfc4521841997842ff9788719_7358165678956324847 = 35;
-        public const uint Internal_fa4c593e91513b645a84cc5724e1f032_7358165678956324847 = 36;
+        public const uint Internal_09fc6bfcbc1174443b414da472ead246_7358165678956324847 = 18;
+        public const uint Internal_15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847 = 19;
+        public const uint Internal_2e9a812656b76d04eb90df4854d1e30b_7358165678956324847 = 20;
+        public const uint Internal_323c83c22c66e134cafda906dd653efe_7358165678956324847 = 21;
+        public const uint Internal_54f15b9536fdd4f418278553359b147a_7358165678956324847 = 22;
+        public const uint Internal_644fb43852fcb934c8446e7500c926a9_7358165678956324847 = 23;
+        public const uint Internal_8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847 = 24;
+        public const uint Internal_903fe190c8617be4e8473c42776348b0_7358165678956324847 = 25;
+        public const uint Internal_9f5bc27e05af2554b820330014ec60b3_7358165678956324847 = 26;
+        public const uint Internal_a1fa7cddf5d5ef94b8bacf8838c9a6fa_8174208910537896391 = 27;
+        public const uint Internal_a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847 = 28;
+        public const uint Internal_b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847 = 29;
+        public const uint Internal_b34815fde6e38e64986379d4f1497883_7358165678956324847 = 30;
+        public const uint Internal_bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847 = 31;
+        public const uint Internal_cd55199613c8b184e879d7bae921a108_7358165678956324847 = 32;
+        public const uint Internal_e61c5d2dfc4521841997842ff9788719_5978856047403316304 = 33;
+        public const uint Internal_e61c5d2dfc4521841997842ff9788719_7358165678956324847 = 34;
+        public const uint Internal_fa4c593e91513b645a84cc5724e1f032_7358165678956324847 = 35;
         public const uint InternalAuthorityRequest = 0;
         public const uint InternalAuthorityTransfer = 1;
         public const uint InternalQuerySynced = 2;
@@ -249,25 +248,24 @@ namespace Coherence.Generated
             { 15, "Scene" },
             { 16, "AssetId" },
             { 17, "GenericScale" },
-            { 18, "_09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704" },
-            { 19, "_09fc6bfcbc1174443b414da472ead246_7358165678956324847" },
-            { 20, "_15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847" },
-            { 21, "_2e9a812656b76d04eb90df4854d1e30b_7358165678956324847" },
-            { 22, "_323c83c22c66e134cafda906dd653efe_7358165678956324847" },
-            { 23, "_54f15b9536fdd4f418278553359b147a_7358165678956324847" },
-            { 24, "_644fb43852fcb934c8446e7500c926a9_7358165678956324847" },
-            { 25, "_8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847" },
-            { 26, "_903fe190c8617be4e8473c42776348b0_7358165678956324847" },
-            { 27, "_9f5bc27e05af2554b820330014ec60b3_7358165678956324847" },
-            { 28, "_a1fa7cddf5d5ef94b8bacf8838c9a6fa_8174208910537896391" },
-            { 29, "_a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847" },
-            { 30, "_b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847" },
-            { 31, "_b34815fde6e38e64986379d4f1497883_7358165678956324847" },
-            { 32, "_bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847" },
-            { 33, "_cd55199613c8b184e879d7bae921a108_7358165678956324847" },
-            { 34, "_e61c5d2dfc4521841997842ff9788719_5978856047403316304" },
-            { 35, "_e61c5d2dfc4521841997842ff9788719_7358165678956324847" },
-            { 36, "_fa4c593e91513b645a84cc5724e1f032_7358165678956324847" },
+            { 18, "_09fc6bfcbc1174443b414da472ead246_7358165678956324847" },
+            { 19, "_15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847" },
+            { 20, "_2e9a812656b76d04eb90df4854d1e30b_7358165678956324847" },
+            { 21, "_323c83c22c66e134cafda906dd653efe_7358165678956324847" },
+            { 22, "_54f15b9536fdd4f418278553359b147a_7358165678956324847" },
+            { 23, "_644fb43852fcb934c8446e7500c926a9_7358165678956324847" },
+            { 24, "_8911663552b6d9e4dbc1193cf3782ce3_7358165678956324847" },
+            { 25, "_903fe190c8617be4e8473c42776348b0_7358165678956324847" },
+            { 26, "_9f5bc27e05af2554b820330014ec60b3_7358165678956324847" },
+            { 27, "_a1fa7cddf5d5ef94b8bacf8838c9a6fa_8174208910537896391" },
+            { 28, "_a52cb0c4df4eeed44b41c4bd39f8c8ce_7358165678956324847" },
+            { 29, "_b02c94a2e9c8be9408fcf3eb07f21aeb_7358165678956324847" },
+            { 30, "_b34815fde6e38e64986379d4f1497883_7358165678956324847" },
+            { 31, "_bee86ad7bccc54d489028b5b80b1f12a_7358165678956324847" },
+            { 32, "_cd55199613c8b184e879d7bae921a108_7358165678956324847" },
+            { 33, "_e61c5d2dfc4521841997842ff9788719_5978856047403316304" },
+            { 34, "_e61c5d2dfc4521841997842ff9788719_7358165678956324847" },
+            { 35, "_fa4c593e91513b645a84cc5724e1f032_7358165678956324847" },
         };
 
         public static string ComponentNameForTypeId(uint typeId)
@@ -492,8 +490,6 @@ namespace Coherence.Generated
                     return AssetId.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case InternalGenericScale:
                     return GenericScale.Deserialize(referenceSimulationFrame, inProtocolStream);
-                case Internal_09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704:
-                    return _09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case Internal_09fc6bfcbc1174443b414da472ead246_7358165678956324847:
                     return _09fc6bfcbc1174443b414da472ead246_7358165678956324847.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case Internal_15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847:
@@ -577,8 +573,6 @@ namespace Coherence.Generated
                     return AssetId.Serialize((AssetId)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case InternalGenericScale:
                     return GenericScale.Serialize((GenericScale)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
-                case Internal_09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704:
-                    return _09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704.Serialize((_09a3cf2fc0f6dc340bab238a1f23cad5_7517697408792799704)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case Internal_09fc6bfcbc1174443b414da472ead246_7358165678956324847:
                     return _09fc6bfcbc1174443b414da472ead246_7358165678956324847.Serialize((_09fc6bfcbc1174443b414da472ead246_7358165678956324847)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case Internal_15368d1dc47e40c47bfa22cdc4f793a0_7358165678956324847:
