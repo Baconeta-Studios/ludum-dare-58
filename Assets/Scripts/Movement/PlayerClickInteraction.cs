@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -134,11 +135,15 @@ namespace Movement
                 }
             }
             
+            // Initiate a jump.
             if (!isJumping) {
                 jumpStart = transform.position;
                 jumpEnd = path.Peek().worldPosition;
                 jumpProgress = 0f;
                 isJumping = true;
+                
+                // Play jumping sound with FMOD.
+                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Jumping");
             }
 
             // Check if this jump is orthogonal or diagonal.
@@ -161,10 +166,14 @@ namespace Movement
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
             }
             
+            // Complete a jump.
             if (t >= 1f) {
                 path.Dequeue();
                 isJumping = false;
-
+                
+                // Play landing sound with FMOD.
+                RuntimeManager.PlayOneShot("event:/SFX/Pieces/Landing");
+                
                 if (path.Count == 0) {
                     ArrivedAtTarget();
                 }

@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
+using Managers;
 using Movement;
 using UnityEngine;
 using Coherence.Toolkit;
-using Managers;
 
 public class Interactable : MonoBehaviour
 {
@@ -77,6 +76,17 @@ public class Interactable : MonoBehaviour
            playerSync
        );
     }
+
+    protected virtual void OnMurder(GameObject initiatingPlayer)
+    {
+        // Play card interaction sound with FMOD.
+        RuntimeManager.PlayOneShot("event:/SFX/Weapons/Knife");
+
+        Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
+        // TODO behaviour for Murder
+        // .... murders them?
+    }
+    
 
     [Command]
     public void RequestInspect(GameObject initiatingPlayer)
