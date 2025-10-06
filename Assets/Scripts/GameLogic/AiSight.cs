@@ -18,7 +18,7 @@ namespace GameLogic
         {
             HandleSight();
 
-            if (canSeePlayer && currentTarget != null)
+            if (canSeePlayer && currentTarget is not null)
             {
                 RotateTowards(currentTarget.position);
             }
@@ -29,8 +29,8 @@ namespace GameLogic
             canSeePlayer = false;
             currentTarget = null;
 
-            var players = Physics.OverlapSphere(transform.position, viewRange, playerMask);
-            foreach (var player in players)
+            var playersInSight = Physics.OverlapSphere(transform.position, viewRange, playerMask);
+            foreach (var player in playersInSight)
             {
                 var dirToTarget = (player.transform.position - transform.position).normalized;
                 if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2f)
