@@ -5145,6 +5145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   possibleItems:
   - {fileID: 10132813822857524, guid: 8911663552b6d9e4dbc1193cf3782ce3, type: 3}
+  - {fileID: 10132813822857524, guid: 323c83c22c66e134cafda906dd653efe, type: 3}
+  - {fileID: 10132813822857524, guid: bee86ad7bccc54d489028b5b80b1f12a, type: 3}
+  - {fileID: 10132813822857524, guid: 903fe190c8617be4e8473c42776348b0, type: 3}
   heldItem: {fileID: 0}
   inspectOrigin: {fileID: 978250679712878815}
   inspectionDuration: 3

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5978856047403316304}
   - component: {fileID: 7358165678956324847}
   - component: {fileID: 688843898646513435}
-  - component: {fileID: 1465306441026040564}
+  - component: {fileID: 2649406477038104199}
   m_Layer: 11
-  m_Name: PlaceholderItem
+  m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1465306441026040564
+--- !u!114 &2649406477038104199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e930232ff8c74a859f8438c8c32f5d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  itemName: PlaceHolder
-  UniqueId: 
+  itemName: Hat
+  prefabId: simple_hat
 --- !u!1 &2008583442857715969
 GameObject:
   m_ObjectHideFlags: 0
