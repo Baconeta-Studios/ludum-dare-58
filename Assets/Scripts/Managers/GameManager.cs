@@ -104,7 +104,7 @@ namespace Managers
 
         public void CollectItem(string playerId, CollectibleItem item)
         {
-            if (!IsAuthority() || item == null) // TODO item is null when collecting blood
+            if (!IsAuthority())
                 return;
 
             Debug.Log($"Player {playerId} collected {item.ItemName} (prefabId={item.PrefabId})");
@@ -125,8 +125,11 @@ namespace Managers
             }
 
             item.gameObject.SetActive(false);
+
             PrintDebugState();
+            CheckForGameOver();
         }
+
 
         public void KillEnemy(string enemyId)
         {
@@ -190,5 +193,31 @@ namespace Managers
 
             return result;
         }
+        
+        private void CheckForGameOver()
+        {
+            foreach (var kvp in playerObjectives)
+            {
+                var playerId = kvp.Key;
+                var objectives = kvp.Value;
+
+                bool allCollected = objectives.TrueForAll(o => o.Collected);
+
+                if (allCollected)
+                {
+                    Debug.Log($"GAME OVER! Player {playerId} has completed all objectives!");
+                    EndGame(playerId);
+                    return;
+                }
+            }
+        }
+        
+        private void EndGame(string winnerId)
+        {
+            Debug.Log($"==> GAME ENDED. Winner: {winnerId}");
+
+            // TODO: stop player input, play cutscene, fade out, load end scene, etc.
+        }
+
     }
 }
