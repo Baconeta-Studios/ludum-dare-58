@@ -204,8 +204,6 @@ namespace Movement
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
             }
-            
-            Debug.Log($"Authority rotating: {transform.rotation.eulerAngles}");
 
             if (t >= 1f)
             {

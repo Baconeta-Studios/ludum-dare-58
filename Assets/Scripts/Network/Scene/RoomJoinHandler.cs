@@ -1,20 +1,18 @@
 using Coherence.Cloud;
 using Coherence.Toolkit;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Eflatun.SceneReference;
-    
 public class RoomJoinHandler : MonoBehaviour
 {
     public CoherenceBridge bridge;
-    public SceneReference scene;
-
-    private void Awake()
+    public SceneAsset sceneToLoad;
+    void Awake()
     {
         bridge.onConnected.AddListener(OnBridgeConnected);
     }
 
-    private void OnDestroy()
+    void OnDestroy()
     {
         bridge.onConnected.RemoveListener(OnBridgeConnected);
     }
@@ -26,8 +24,8 @@ public class RoomJoinHandler : MonoBehaviour
 
     private void OnBridgeConnected(CoherenceBridge b)
     {
-        Debug.Log("Bridge connected ï¿½ likely in room now");
+        Debug.Log("Bridge connected — likely in room now");
         // Optionally verify room state here
-        SceneManager.LoadScene(scene.Name);
+        SceneManager.LoadScene(sceneToLoad.name);
     }
 }

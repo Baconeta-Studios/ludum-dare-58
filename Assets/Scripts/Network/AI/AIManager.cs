@@ -1,6 +1,8 @@
+using System.Collections;
 using Coherence.Toolkit;
 using Movement;
 using System.Collections.Generic;
+using Coherence;
 using UnityEngine;
 
 public class AIManager : MonoBehaviour
@@ -74,13 +76,17 @@ public class AIManager : MonoBehaviour
             return;
         }
 
-        for (var i = 0; i < numberToSpawn; i++)
+        for (int i = 0; i < numberToSpawn; i++)
         {
-            SpawnOne();
+            GridCell chosenCell = randomizeCells
+                ? validCells[Random.Range(0, validCells.Count)]
+                : validCells[i % validCells.Count];
+
+            SpawnOne(chosenCell.worldPosition, Quaternion.identity);
         }
     }
 
-    private void SpawnOne()
+    private void SpawnOne(Vector3 pos, Quaternion rot)
     {
         // location based spawning is not working as expected
         var ai = Instantiate(aiPrefab);
