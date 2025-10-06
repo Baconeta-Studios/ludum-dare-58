@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Coherence.Toolkit;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Managers
 {
@@ -37,6 +39,8 @@ namespace Managers
         private List<CollectibleItem> assignedItems = new();
 
         private CoherenceSync _sync;
+        
+        public static event Action ItemWasCollected;
 
         private void Awake()
         {
@@ -125,6 +129,8 @@ namespace Managers
                     Debug.Log($"Player {playerId} collected {item.ItemName}, but it wasn’t on their list.");
                 }
             }
+
+            ItemWasCollected?.Invoke();
 
             item.gameObject.SetActive(false);
 
