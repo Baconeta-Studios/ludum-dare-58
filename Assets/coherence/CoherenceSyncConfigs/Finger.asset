@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
+  m_Name: Finger
+  m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceSyncConfig
+  id: b02c94a2e9c8be9408fcf3eb07f21aeb
+  selfId: 6345fc70b7dff49448f7a2b4c969c965
+  editorTarget: {fileID: 10132813822857524, guid: b02c94a2e9c8be9408fcf3eb07f21aeb, type: 3}
+  includeInSchema: 1
+  objectProvider:
+    rid: 3824195039256380065
+  objectInstantiator:
+    rid: 3824195039256380066
+  references:
+    version: 2
+    RefIds:
+    - rid: 3824195039256380065
+      type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data:
+        prefab: {fileID: 10132813822857524, guid: b02c94a2e9c8be9408fcf3eb07f21aeb, type: 3}
+    - rid: 3824195039256380066
+      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data: 
