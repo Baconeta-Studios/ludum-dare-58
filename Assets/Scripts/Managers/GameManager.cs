@@ -104,7 +104,7 @@ namespace Managers
 
         public void CollectItem(string playerId, CollectibleItem item)
         {
-            if (!IsAuthority())
+            if (!IsAuthority() || item == null)
                 return;
 
             Debug.Log($"Player {playerId} collected {item.ItemName} (prefabId={item.PrefabId})");
