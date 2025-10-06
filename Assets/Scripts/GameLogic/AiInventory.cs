@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
+// TODO we should be setting this data and everything from the GameManager so that we can
+// track everything in the world (probably)
 public class AiInventory : MonoBehaviour
 {
     public GameObject[] possibleItems;
