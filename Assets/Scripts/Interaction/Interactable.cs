@@ -85,7 +85,7 @@ public class Interactable : MonoBehaviour
         if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
 
         // Tell all clients about the murder.
-        _sync.SendOrderedCommandToChildren<Interactable>(
+        _sync.SendOrderedCommandToChildren<AiInteractable>(
            nameof(OnInspect),
            Coherence.MessageTarget.StateAuthorityOnly,
            playerSync
@@ -100,9 +100,9 @@ public class Interactable : MonoBehaviour
         if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
 
         // Tell all clients about the murder.
-        _sync.SendOrderedCommandToChildren<Interactable>(
+        _sync.SendOrderedCommandToChildren<AiInteractable>(
            nameof(OnMurder),
-           Coherence.MessageTarget.All, // TODO server only knows murderers.
+           Coherence.MessageTarget.All, // TODO server only knows murders
            playerSync
        );
     }
@@ -115,7 +115,7 @@ public class Interactable : MonoBehaviour
         if (playerSync == null) { Debug.LogError("Initiating player missing CoherenceSync"); return; }
 
         // Tell only the AI owner about the scare to run the movements.
-        _sync.SendOrderedCommandToChildren<Interactable>(
+        _sync.SendOrderedCommandToChildren<AiInteractable>(
             nameof(OnScare),
             Coherence.MessageTarget.StateAuthorityOnly,
             playerSync
