@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 
+// TODO we should be setting this data and everything from the GameManager so that we can
+// track everything in the world (probably)
 public class AiInventory : MonoBehaviour
 {
     public GameObject[] possibleItems;
@@ -20,23 +21,31 @@ public class AiInventory : MonoBehaviour
 
     [Header("Particles")] 
     public ParticleSystem inspectionParticles;
-
     private Coroutine inspectionCoroutine;
-    private void Awake(){
-        if (possibleItems.Length == 0)
+    public GameObject bloodSpatter;
+
+    private void Awake()
+    {
+        Invoke(nameof(SetupAIItem), 0.5f);
+    }
+
+    private void SetupAIItem()
+    {
+        var itemPrefab = Managers.GameManager.Instance.GetNextItemForAI();
+        if (itemPrefab != null)
         {
-            Debug.LogWarning($"{name} has no possible items");
-        }
-        else
-        {
-            
-            heldItem = Instantiate(possibleItems[Random.Range(0, possibleItems.Length)], transform);
+            heldItem = Instantiate(itemPrefab.gameObject, transform);
             heldItem.transform.position = inspectOrigin.position;
             heldItem.SetActive(false);
             initialScale = heldItem.transform.localScale;
-            Debug.Log($"{name} is holding {heldItem.name}");
+            Debug.Log($"{name} is holding {itemPrefab.ItemName}");
+        }
+        else
+        {
+            Debug.LogWarning($"{name} could not get an item to hold.");
         }
     }
+
 
     [ContextMenu("Inspect Item")]
     public void OnInspect(){
@@ -79,5 +88,40 @@ public class AiInventory : MonoBehaviour
         heldItem.SetActive(false);
         inspectionCoroutine = null;
         yield return null;
+    }
+
+    public void DropCollectable()
+    {
+        if (inspectionCoroutine != null)
+        {
+            StopCoroutine(inspectionCoroutine);
+        }
+
+        // drop the held collectable
+        DropItem(heldItem, Vector3.zero);
+
+        // drop the COLLECTABLE evidence (blood spatter)
+        DropItem(bloodSpatter, new Vector3(90, 0, 0));
+
+    }
+
+    private void DropItem(GameObject thingToDrop, Vector3 orientation)
+    {
+        // Set the position of the COLLECTABLE item.
+        thingToDrop.transform.position = transform.position;
+        thingToDrop.transform.rotation = Quaternion.Euler(orientation);
+        thingToDrop.transform.localScale = Vector3.one;
+        thingToDrop.transform.SetParent(null);
+        thingToDrop.SetActive(true);
+        Collider collider = thingToDrop.GetComponent<Collider>();
+        if (collider)
+        {
+            collider.enabled = true;
+        }
+        Interactable interactComponent = thingToDrop.GetComponent<Interactable>();
+        if (interactComponent)
+        {
+            interactComponent.canBeInteracted = true;
+        }
     }
 }
