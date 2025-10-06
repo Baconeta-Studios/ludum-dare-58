@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Managers;
 using Movement;
 using UnityEngine;
 using Coherence.Toolkit;
@@ -127,7 +128,7 @@ public class Interactable : MonoBehaviour
     public virtual void OnScare(CoherenceSync initiatingPlayer)
     {
         // Server updates the one AI to move and informs no one about the scare.
-        Debug.Log($": Scared {name}");
+        Debug.Log($"{initiatingPlayer.gameObject.name}: Scared {name}");
         // TO USE THIS Override it in a subclass and call base to keep the logs
     }
 
@@ -135,7 +136,7 @@ public class Interactable : MonoBehaviour
     public virtual void OnMurder(CoherenceSync initiatingPlayer)
     {
         // Server tells ALL clients about the murder
-        Debug.Log($" Murdered {name}");
+        Debug.Log($"{initiatingPlayer.gameObject.name}: Murdered {name}");
         // TO USE THIS Override it in a subclass and call base to keep the logs
     }
 
@@ -143,7 +144,7 @@ public class Interactable : MonoBehaviour
     public virtual void OnInspect(CoherenceSync initiatingPlayer)
     {
         // Server tells only the owner Client whats inspected 
-        Debug.Log($" Inspected {name}");
+        Debug.Log($"{initiatingPlayer.gameObject.name}: Inspected {name}");
         // TO USE THIS Override it in a subclass and call base to keep the logs
     }
 
@@ -153,8 +154,9 @@ public class Interactable : MonoBehaviour
         // Server tell ALL about the item being collected.
         // TODO BUT doesn't make all the players animate
 
-        Debug.Log($": Collected {name}");
-        // TODO behaviour for collect
+        Debug.Log($"{initiatingPlayer.gameObject.name}: Collected {name}");
+        GameManager.Instance.CollectItem(initiatingPlayer.name, GetComponent<CollectibleItem>());
+
 
         // TODO move this into a collectables class, but for now whatevers.
         Animator animator = GetComponent<Animator>();

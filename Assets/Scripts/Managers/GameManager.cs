@@ -1,39 +1,70 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Coherence.Toolkit;
 using UnityEngine;
 
 namespace Managers
 {
+    [System.Serializable]
+    public class Objective
+    {
+        public string PrefabId;
+        public bool Collected;
+
+        public Objective(string id)
+        {
+            PrefabId = id;
+            Collected = false;
+        }
+    }
+
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
 
-        [Header("Debug Config")] [SerializeField]
-        private int objectivesPerPlayer = 3;
+        [Header("Config")] [SerializeField] private int objectivesPerPlayer = 3;
 
-        [SerializeField]
-        private List<string> allItemIds = new List<string>() { "item_1", "item_2", "item_3", "item_4" };
+        [Tooltip("All collectible items in the level (assign in inspector or find at runtime)")] [SerializeField]
+        private List<CollectibleItem> allItems = new();
 
-        [SerializeField] private List<string> allEnemyIds = new List<string>() { "enemy_1", "enemy_2" };
+        [Tooltip("All enemies in the level (stub for now)")] [SerializeField]
+        private List<GameObject> allEnemies = new();
 
-        private Dictionary<string, List<string>> playerObjectives = new();
-        private HashSet<string> collectedItems = new(); // global log only
+        private Dictionary<string, List<Objective>> playerObjectives = new();
+        private HashSet<string> collectedItemIds = new();
         private HashSet<string> deadEnemies = new();
+        private Queue<CollectibleItem> unassignedItems = new();
+        private List<CollectibleItem> assignedItems = new();
 
         private CoherenceSync _sync;
 
         private void Awake()
         {
             Instance = this;
-
             TryGetComponent(out _sync);
         }
 
         private void Start()
         {
-            Debug.Log("GameManager started. Items: " + string.Join(", ", allItemIds) +
-                      " | Enemies: " + string.Join(", ", allEnemyIds));
+            Debug.Log("GameManager started. Items: " + allItems.Count +
+                      " | Enemies: " + allEnemies.Count);
+            unassignedItems = new Queue<CollectibleItem>(allItems);
         }
+
+        public CollectibleItem GetNextItemForAI()
+        {
+            if (unassignedItems.Count > 0)
+            {
+                var item = unassignedItems.Dequeue();
+                Debug.Log($"Assigning {item.ItemName} to AI");
+                assignedItems.Add(item);
+                return item;
+            }
+
+            Debug.LogWarning("No more items left to assign to AI!");
+            return null;
+        }
+
 
         public void OnPlayerSpawned(string playerId)
         {
@@ -47,44 +78,60 @@ namespace Managers
                 playerObjectives[playerId] = AssignObjectives();
             }
 
-            Debug.Log($"Assigned objectives for {playerId}: {string.Join(", ", playerObjectives[playerId])}");
+            // Convert IDs back to display names for logging
+            var objectiveNames = new List<string>();
+            foreach (var obj in playerObjectives[playerId])
+            {
+                var item = allItems.Find(i => i.PrefabId == obj.PrefabId);
+                objectiveNames.Add(item != null ? item.ItemName : $"Unknown({obj.PrefabId})");
+            }
+
+            Debug.Log($"Assigned objectives for {playerId}: {string.Join(", ", objectiveNames)}");
         }
 
-        private List<string> AssignObjectives()
+        private List<Objective> AssignObjectives()
         {
-            var result = new List<string>();
-            var pool = new List<string>(allItemIds);
+            var result = new List<Objective>();
+            var pool = new List<CollectibleItem>(allItems);
 
             for (var i = 0; i < objectivesPerPlayer && pool.Count > 0; i++)
             {
                 int index = Random.Range(0, pool.Count);
-                result.Add(pool[index]);
-                pool.RemoveAt(index); // ensure no duplicates
+                result.Add(new Objective(pool[index].PrefabId));
+                pool.RemoveAt(index);
             }
 
             return result;
         }
 
-        public void CollectItem(string playerId, string itemId)
+        public void CollectItem(string playerId, CollectibleItem item)
         {
-            if (!IsAuthority())
+            if (!IsAuthority() || item == null)
                 return;
 
-            Debug.Log($"Player {playerId} collected {itemId}");
-            collectedItems.Add(itemId);
+            Debug.Log($"Player {playerId} collected {item.ItemName} (prefabId={item.PrefabId})");
+            collectedItemIds.Add(item.PrefabId);
 
-            if (playerObjectives.ContainsKey(playerId) && playerObjectives[playerId].Contains(itemId))
+            if (playerObjectives.TryGetValue(playerId, out var objectives))
             {
-                playerObjectives[playerId].Remove(itemId);
-                Debug.Log($"Player {playerId} objectives left: {string.Join(", ", playerObjectives[playerId])}");
+                var objective = objectives.Find(o => o.PrefabId == item.PrefabId);
+                if (objective is { Collected: false })
+                {
+                    objective.Collected = true;
+                    Debug.Log($"Player {playerId} marked {item.ItemName} as collected");
+                }
+                else
+                {
+                    Debug.Log($"Player {playerId} collected {item.ItemName}, but it wasn’t on their list.");
+                }
             }
-            else
-            {
-                Debug.Log($"Player {playerId} collected {itemId}, but it wasn’t on their list.");
-            }
+
+            item.gameObject.SetActive(false);
 
             PrintDebugState();
+            CheckForGameOver();
         }
+
 
         public void KillEnemy(string enemyId)
         {
@@ -102,10 +149,27 @@ namespace Managers
             Debug.Log("---- DEBUG STATE ----");
             foreach (var kvp in playerObjectives)
             {
-                Debug.Log($"Player {kvp.Key}: {kvp.Value.Count} objectives left ({string.Join(", ", kvp.Value)})");
+                var objectiveStates = new List<string>();
+                foreach (var obj in kvp.Value)
+                {
+                    var prefab = allItems.Find(i => i.PrefabId == obj.PrefabId);
+                    string display = prefab != null ? prefab.ItemName : $"Unknown({obj.PrefabId})";
+                    if (obj.Collected) display = $"~~{display}~~"; // markdown-style strikeout
+                    objectiveStates.Add(display);
+                }
+
+                Debug.Log(
+                    $"Player {kvp.Key}: {objectiveStates.Count} objectives ({string.Join(", ", objectiveStates)})");
             }
 
-            Debug.Log("Collected items (global log): " + string.Join(", ", collectedItems));
+            var collectedNames = new List<string>();
+            foreach (var id in collectedItemIds)
+            {
+                var prefab = allItems.Find(i => i.PrefabId == id);
+                collectedNames.Add(prefab != null ? prefab.ItemName : $"Unknown({id})");
+            }
+
+            Debug.Log("Collected items: " + string.Join(", ", collectedNames));
             Debug.Log("Dead enemies: " + string.Join(", ", deadEnemies));
             Debug.Log("---------------------");
         }
@@ -115,17 +179,60 @@ namespace Managers
             return _sync == null || _sync.HasStateAuthority;
         }
 
-        public List<string> GetMyObjectives(string playerId)
+        // Now returns names + collected status for UI
+        public List<(string itemName, bool collected)> GetMyObjectivesForUI(string playerId)
+        {
+            var result = new List<(string, bool)>();
+
+            if (playerObjectives.TryGetValue(playerId, out var objectives))
+            {
+                foreach (var obj in objectives)
+                {
+                    var prefab = allItems.Find(i => i.PrefabId == obj.PrefabId);
+                    string name = prefab != null ? prefab.ItemName : $"Unknown({obj.PrefabId})";
+                    result.Add((name, obj.Collected));
+                }
+            }
+
+            return result;
+        }
+
+        private void CheckForGameOver()
         {
             foreach (var kvp in playerObjectives)
             {
-                if (kvp.Key.Contains(playerId))
+                var playerId = kvp.Key;
+                var objectives = kvp.Value;
+
+                bool allCollected = objectives.TrueForAll(o => o.Collected);
+
+                if (allCollected)
                 {
-                    return kvp.Value;
+                    Debug.Log($"GAME OVER! Player {playerId} has completed all objectives!");
+                    // TODO actual winner will be highest score (probably first to collect all)
+                    EndGame(playerId);
+                    return;
                 }
             }
-            Debug.Log("Somehow no objectives exist for player " + playerId);
-            return null;
+
+            if (AllItemsCollected())
+            {
+                Debug.Log($"GAME OVER! All items have been collected!");
+                // TODO actual winner will be highest score (probably first to collect all)
+                EndGame("todo");
+            }
+        }
+
+        private void EndGame(string winnerId)
+        {
+            Debug.Log($"==> GAME ENDED. Winner: {winnerId}");
+
+            // TODO: stop player input, play cutscene, fade out, load end scene, etc.
+        }
+
+        private bool AllItemsCollected()
+        {
+            return assignedItems.All(item => collectedItemIds.Contains(item.PrefabId));
         }
     }
 }

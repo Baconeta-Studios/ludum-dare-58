@@ -6,12 +6,20 @@
 
     [CustomEditor(typeof(GridManager))]
     public class GridManagerEditor : Editor {
-        private GridManager _gridManager;
+        private static GridManager _gridManager;
 
+        
         private void OnEnable() {
-            _gridManager = (GridManager)target;
+            if (!_gridManager)
+            {
+                _gridManager = (GridManager)target;
+            }
+            else
+            {
+                DestroyImmediate(this);
+            }
         }
-
+        
         private void OnSceneGUI() {
             var e = Event.current;
 
@@ -28,15 +36,19 @@
                         } else if (e.button == 1) {
                             // Right-click → cycle room ID
                             if (cell.roomID < 0) cell.roomID = 0;
-                            else cell.roomID = (cell.roomID + 1) % 6; // 6 sample colours
+                            else cell.roomID = (cell.roomID + 1) % 12;
                         }
-
-                        // EditorUtility.SetDirty(_gridManager);
                     }
                 }
                 e.Use(); // mark event as used so Unity doesn't also select things
             }
         }
+
+        [MenuItem("Tools/GridSystem/Bake")]
+        public static void Bake(){
+            EditorUtility.SetDirty(_gridManager);
+        }
+
     }
 
 }
