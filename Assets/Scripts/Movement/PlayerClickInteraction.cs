@@ -141,7 +141,14 @@ namespace Movement
                 isJumping = true;
             }
 
-            jumpProgress += Time.deltaTime * jumpSpeed;
+            // Check if this jump is orthogonal or diagonal.
+            Vector3 jumpVector = jumpEnd - jumpStart;
+            bool isDiagonal = Mathf.Abs(jumpVector.x) >  0.01f && Mathf.Abs(jumpVector.z) > 0.01f;
+
+            // Reduce jump speed if this jump is diagonal.
+            float modifiedJumpSpeed = isDiagonal ? jumpSpeed / 1.414f : jumpSpeed;
+            
+            jumpProgress += Time.deltaTime * modifiedJumpSpeed;
             float t = Mathf.Clamp01(jumpProgress);
 
             Vector3 horizontal = Vector3.Lerp(jumpStart, jumpEnd, t);
