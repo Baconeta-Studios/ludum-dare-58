@@ -71,6 +71,22 @@ public class GridPathfinder : MonoBehaviour {
             int ny = cell.coordinates.y + d.y;
 
             if (nx >= 0 && nx < gridManager.width && ny >= 0 && ny < gridManager.height) {
+                GridCell neighbor = gridManager.Grid[nx, ny];
+                
+                // Invalidate diagonal moves if the composite cardinal directions are impassable.
+                if (d.x != 0 && d.y != 0)
+                {
+                    // Get each cardinal neighbor.
+                    GridCell horizontal = gridManager.Grid[cell.coordinates.x + d.x, cell.coordinates.y];
+                    GridCell vertical = gridManager.Grid[cell.coordinates.x, cell.coordinates.y + d.y];
+
+                    // Invalidate invalid diagonal move.
+                    if (!horizontal.walkable || !vertical.walkable)
+                    {
+                        continue;
+                    }
+                }
+                
                 neighbors.Add(gridManager.Grid[nx, ny]);
             }
         }
