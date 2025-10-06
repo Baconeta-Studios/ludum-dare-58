@@ -28,7 +28,7 @@
                         } else if (e.button == 1) {
                             // Right-click → cycle room ID
                             if (cell.roomID < 0) cell.roomID = 0;
-                            else cell.roomID = (cell.roomID + 1) % 6; // 6 sample colours
+                            else cell.roomID = (cell.roomID + 1) % 12;
                         }
 
                         // EditorUtility.SetDirty(_gridManager);
