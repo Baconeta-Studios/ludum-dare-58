@@ -6170,6 +6170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7939538126938630945, guid: 5c6cbc8172686a84f8ca2e6a7f732578, type: 3}
+      propertyPath: numberToSpawn
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
