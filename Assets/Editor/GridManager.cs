@@ -16,7 +16,7 @@
             }
             else
             {
-                Destroy(this);
+                DestroyImmediate(this);
             }
         }
         
