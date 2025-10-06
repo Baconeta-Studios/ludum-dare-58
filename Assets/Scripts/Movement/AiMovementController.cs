@@ -17,7 +17,15 @@ namespace Movement
         public float jumpSpeed = 5f;
 
         [Header("Rotation")]
-        public float rotateSpeed = 5f;   // How quickly the pawn turn
+        public float rotateSpeed = 5f;   // How quickly the pawn turns
+
+        [Header("Spawn Placement")]
+        [SerializeField] private bool onlyWalkable = true;
+        [SerializeField] private int roomFilter = -1;
+        [SerializeField] private bool snapToGround = true;
+        [SerializeField] private float rayStartHeight = 3f;
+        [SerializeField] private float yOffset = 0f;
+        [SerializeField] private LayerMask groundMask = ~0;
 
         private Queue<GridCell> _path = new Queue<GridCell>();
         private bool _moving = false;
@@ -27,7 +35,8 @@ namespace Movement
         private float _jumpProgress;
         private CoherenceSync coherenceSync;
 
-        private void Awake(){
+        private void Awake()
+        {
             gridManager ??= FindFirstObjectByType<GridManager>();
             pathfinder ??= FindFirstObjectByType<GridPathfinder>();
             coherenceSync = GetComponent<CoherenceSync>();
@@ -35,12 +44,16 @@ namespace Movement
 
         private void Start()
         {
-            PickNewDestination();
+            if (coherenceSync != null && coherenceSync.HasStateAuthority)
+            {
+                PlaceAtRandomCell();
+                PickNewDestination();
+            }
         }
 
         private void Update()
         {
-            if(canMove && coherenceSync && coherenceSync.HasStateAuthority)
+            if (canMove && coherenceSync && coherenceSync.HasStateAuthority)
             {
                 if (_moving && _path.Count > 0)
                 {
@@ -55,6 +68,44 @@ namespace Movement
                     }
                 }
             }
+        }
+
+        private void PlaceAtRandomCell()
+        {
+            if (gridManager == null || gridManager.Grid == null)
+            {
+                Debug.LogWarning($"{name}: GridManager not ready.");
+                return;
+            }
+
+            var candidates = new List<GridCell>();
+            foreach (var cell in gridManager.Grid)
+            {
+                if (cell == null) continue;
+                if (onlyWalkable && !cell.walkable) continue;
+                if (roomFilter >= 0 && cell.roomID != roomFilter) continue;
+                candidates.Add(cell);
+            }
+
+            if (candidates.Count == 0) return;
+
+            var chosen = candidates[Random.Range(0, candidates.Count)];
+            var pos = chosen.worldPosition;
+
+            if (snapToGround)
+            {
+                var origin = pos + Vector3.up * rayStartHeight;
+                if (Physics.Raycast(origin, Vector3.down, out var hit, rayStartHeight * 2f, groundMask, QueryTriggerInteraction.Ignore))
+                {
+                    pos = hit.point + Vector3.up * yOffset;
+                }
+                else
+                {
+                    pos += Vector3.up * yOffset;
+                }
+            }
+
+            transform.position = pos;
         }
 
         private void PickNewDestination()

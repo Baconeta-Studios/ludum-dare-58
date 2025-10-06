@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9208117928265625096}
   m_Layer: 0
-  m_Name: NETWORKING
+  m_Name: Networking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +104,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9208117928265625096}
     m_Modifications:
+    - target: {fileID: 2333878319854424757, guid: 663b276f8d722b54ca72d78d646bb5c8, type: 3}
+      propertyPath: initialPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333878319854424757, guid: 663b276f8d722b54ca72d78d646bb5c8, type: 3}
+      propertyPath: initialPosition.y
+      value: -0.000000017484556
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333878319854424757, guid: 663b276f8d722b54ca72d78d646bb5c8, type: 3}
+      propertyPath: initialPosition.z
+      value: -17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3489547871810279185, guid: 663b276f8d722b54ca72d78d646bb5c8, type: 3}
       propertyPath: m_Name
       value: PlayerHandler
