@@ -1,8 +1,6 @@
-using System.Collections;
 using Coherence.Toolkit;
 using Movement;
 using System.Collections.Generic;
-using Coherence;
 using UnityEngine;
 
 public class AIManager : MonoBehaviour
