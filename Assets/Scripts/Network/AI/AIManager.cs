@@ -1,6 +1,8 @@
+using System.Collections;
 using Coherence.Toolkit;
 using Movement;
 using System.Collections.Generic;
+using Coherence;
 using UnityEngine;
 
 public class AIManager : MonoBehaviour
@@ -87,22 +89,6 @@ public class AIManager : MonoBehaviour
     private void SpawnOne(Vector3 pos, Quaternion rot)
     {
         // location based spawning is not working as expected
-        GameObject ai = Instantiate(aiPrefab);
-        Debug.Log($"AIManager: Spawned {ai.name}");
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (gridManager == null || gridManager.Grid == null) return;
-
-        Gizmos.color = Color.red;
-        foreach (var cell in gridManager.Grid)
-        {
-            if (cell == null) continue;
-            if (onlyWalkable && !cell.walkable) continue;
-            if (roomFilter >= 0 && cell.roomID != roomFilter) continue;
-
-            Gizmos.DrawWireCube(cell.worldPosition, new Vector3(gridManager.cellSize, 0.1f, gridManager.cellSize));
-        }
+        var ai = Instantiate(aiPrefab);
     }
 }

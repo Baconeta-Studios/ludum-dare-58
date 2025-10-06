@@ -47,6 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AIManager
   coherenceSync: {fileID: 6921138255310130368}
   aiPrefab: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
+  numberToSpawn: 1
+  onlyWalkable: 1
+  randomizeCells: 1
+  roomFilter: -1
+  aiParent: {fileID: 0}
 --- !u!114 &6921138255310130368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +142,8 @@ MonoBehaviour:
   coherenceUUID: 
   assetVersion: 
   coherenceTag: 
-  componentActions: []
+  componentActions:
+  - rid: 3824195039256379533
   floatingOriginMode: 0
   floatingOriginParentedMode: 1
   references:
@@ -190,3 +196,7 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 3824195039256379533
+      type: {class: DisableBehaviourComponentAction, ns: Coherence.Toolkit.ComponentActions, asm: Coherence.Toolkit}
+      data:
+        component: {fileID: 7939538126938630945}

@@ -19,7 +19,7 @@ MonoBehaviour:
   objectProvider:
     rid: 878349384838284108
   objectInstantiator:
-    rid: 878349384838284109
+    rid: 3824195039256379550
   references:
     version: 2
     RefIds:
@@ -27,6 +27,6 @@ MonoBehaviour:
       type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
         prefab: {fileID: 3100423844219738655, guid: a1fa7cddf5d5ef94b8bacf8838c9a6fa, type: 3}
-    - rid: 878349384838284109
+    - rid: 3824195039256379550
       type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data: 
