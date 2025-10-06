@@ -81,8 +81,7 @@ public class DoorClickHandler : MonoBehaviour
     {
         // Get the room from the list of assumed rooms. 
 
-        IReadOnlyList<string> availableRegions = await _cloud.Rooms.RefreshRegionsAsync();
-        CloudRoomsService roomsService = _cloud.Rooms.GetRoomServiceForRegion(availableRegions[0]);
+        CloudRoomsService roomsService = _cloud.Rooms.GetRoomServiceForRegion(BaseSession.Instance.CurrentRoomData.Host.Region);
 
         // Call unlist with UniqueId and Secret
         roomsService.UnlistRoom(currentRoomData.UniqueId, currentRoomData.Secret, response =>
