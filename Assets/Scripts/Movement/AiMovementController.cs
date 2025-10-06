@@ -67,7 +67,7 @@ namespace Movement
                 }
                 else if (!_moving)
                 {
-                    if (Random.value < 0.01f) // idle wander trigger
+                    if (Random.value < 0.01f)
                     {
                         PickNewDestination();
                     }
@@ -142,7 +142,6 @@ namespace Movement
             }
 
             if (candidates.Count == 0) return;
-
             var target = candidates[Random.Range(0, candidates.Count)];
 
             var newPath = pathfinder.FindPath(current, target);
@@ -153,7 +152,6 @@ namespace Movement
                 _moving = true;
             }
         }
-
 
         private void HandleSmooth()
         {
@@ -204,6 +202,8 @@ namespace Movement
                 Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
             }
+            
+            Debug.Log($"Authority rotating: {transform.rotation.eulerAngles}");
 
             if (t >= 1f)
             {
@@ -213,6 +213,42 @@ namespace Movement
             }
         }
 
-        public void StopMovement() => canMove = false;
+        // Used by Steve to test scare, moves the AI a given offset.
+        public void MoveBy(int xOffset, int yOffset)
+        {
+            if (!coherenceSync || !coherenceSync.HasStateAuthority)
+                return;
+
+            var currentCell = gridManager.GetCell(transform.position);
+            if (currentCell == null)
+                return;
+
+            // Calculate the target position by adding the offsets to the current position
+            Vector3 targetPosition = currentCell.worldPosition + new Vector3(xOffset, 0, yOffset);
+
+            // Retrieve the target cell based on the calculated position
+            var targetCell = gridManager.GetCell(targetPosition);
+            if (targetCell == null || !targetCell.walkable)
+                return;
+
+            // Find a path to the target cell
+            var newPath = pathfinder.FindPath(currentCell, targetCell);
+            if (newPath == null || newPath.Count <= 1)
+                return;
+
+            // Remove the current cell from the path if it's the starting point
+            if (newPath[0] == currentCell)
+                newPath.RemoveAt(0);
+
+            // Set the new path and initiate movement
+            _path = new Queue<GridCell>(newPath);
+            _moving = true;
+            canMove = true;
+        }
+
+        public void StopMovement()
+        {
+            canMove = false;
+        }
     }
 }
