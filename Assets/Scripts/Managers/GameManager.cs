@@ -113,7 +113,7 @@ namespace Managers
             if (playerObjectives.TryGetValue(playerId, out var objectives))
             {
                 var objective = objectives.Find(o => o.PrefabId == item.PrefabId);
-                if (objective != null && !objective.Collected)
+                if (objective is { Collected: false })
                 {
                     objective.Collected = true;
                     Debug.Log($"Player {playerId} marked {item.ItemName} as collected");
