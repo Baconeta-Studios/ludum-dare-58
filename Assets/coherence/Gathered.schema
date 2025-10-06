@@ -124,5 +124,29 @@ command _a1fa7cddf5d5ef94b8bacf8838c9a6fa_fedb9c11aaff482dafe28f87e3407817 [id "
   stateNameHash Int 
   layer Int 
 
+command _e27de4a604e9ea443863c3dd92c22069_5ca8468799f04bb08cf3b81f0036144b [id "43", routing "All"]
+  initiatingPlayer Entity [client-type "Coherence.Toolkit.CoherenceSync"]
+
+command _e27de4a604e9ea443863c3dd92c22069_81b31f8e7a2d48bd9fdf573e9e783497 [id "44", routing "All"]
+  initiatingPlayer Entity [client-type "Coherence.Toolkit.CoherenceSync"]
+
+command _e27de4a604e9ea443863c3dd92c22069_8d2fc773b92445ada86a4dd1ccf2f71f [id "45", routing "All"]
+  initiatingPlayer Entity [client-type "GameObject"]
+
+command _e27de4a604e9ea443863c3dd92c22069_af006724d82d470981eb91ecfd58b9ef [id "46", routing "All"]
+  initiatingPlayer Entity [client-type "Coherence.Toolkit.CoherenceSync"]
+
+command _e27de4a604e9ea443863c3dd92c22069_c67e044ec7e140f2a8961a0cbe05892c [id "47", routing "All"]
+  initiatingPlayer Entity [client-type "Coherence.Toolkit.CoherenceSync"]
+
+command _e27de4a604e9ea443863c3dd92c22069_e03ce5cf0e6243a4af4fb1e2247252d5 [id "48", routing "All"]
+  initiatingPlayer Entity [client-type "GameObject"]
+
+command _e27de4a604e9ea443863c3dd92c22069_ebdaa5e2280e44f4881ab63c7de64b1a [id "49", routing "All"]
+  initiatingPlayer Entity [client-type "GameObject"]
+
+command _e27de4a604e9ea443863c3dd92c22069_f91bd6ef360d4258972f3a65c1445538 [id "50", routing "All"]
+  initiatingPlayer Entity [client-type "GameObject"]
+
 input _a1fa7cddf5d5ef94b8bacf8838c9a6fa [id "0"]
 

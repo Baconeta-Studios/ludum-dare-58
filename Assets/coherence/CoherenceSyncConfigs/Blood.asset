@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
+  m_Name: Blood
+  m_EditorClassIdentifier: Coherence.Toolkit::Coherence.Toolkit.CoherenceSyncConfig
+  id: e27de4a604e9ea443863c3dd92c22069
+  selfId: 62a1068d92b2a60478847c5ac2c9b199
+  editorTarget: {fileID: 182136686492057218, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
+  includeInSchema: 1
+  objectProvider:
+    rid: 2835214021047877749
+  objectInstantiator:
+    rid: 2835214021047877750
+  references:
+    version: 2
+    RefIds:
+    - rid: 2835214021047877749
+      type: {class: DirectReferenceProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data:
+        prefab: {fileID: 182136686492057218, guid: e27de4a604e9ea443863c3dd92c22069, type: 3}
+    - rid: 2835214021047877750
+      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data: 
