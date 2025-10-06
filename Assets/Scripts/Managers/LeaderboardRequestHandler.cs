@@ -12,9 +12,9 @@ namespace Managers
         public bool allowSubmitScoreInEditor;
         public bool doYouReallyWantToSubmitInEditor;
 
-        private const string RootUri = "";
-        private const string GetScoresUriSingleplayer = RootUri + "/api/leaderboards/singleplayer";
-        private const string GetScoresUriMultiplayer = RootUri + "/api/leaderboards/multiplayer";
+        private const string RootUri = "http://5.78.45.57:3000";
+        private const string GetScoresUriSingleplayer = RootUri + "/api/individual/singleplayer";
+        private const string GetScoresUriMultiplayer = RootUri + "/api/individual/multiplayer";
         private const string SubmitScoreUriSingleplayer = RootUri + "/api/leaderboards/singleplayer?user={0}&score={1}";
         private const string SubmitScoreUriMultiplayer = RootUri + "/api/leaderboards/multiplayer?user={0}&score={1}";
 
