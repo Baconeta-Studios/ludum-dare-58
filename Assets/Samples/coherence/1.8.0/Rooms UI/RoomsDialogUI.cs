@@ -82,8 +82,22 @@ namespace Coherence.Samples.RoomsDialog
         private int RoomMaxPlayers => int.TryParse(roomLimitInputField.text, out var limit) ? limit : 10;
         private bool IsCloudModeEnabled
         {
-            get => !lanOnlineToggle.isOn;
-            set => lanOnlineToggle.isOn = !value;
+            get
+            {
+                if (lanOnlineToggle)
+                {
+                    return !lanOnlineToggle.isOn;
+                }
+
+                return true;
+            }
+            set
+            {
+                if (lanOnlineToggle)
+                {
+                    lanOnlineToggle.isOn = !value;
+                }
+            }
         }
 
         private void SetUIState(UIState state)
@@ -156,7 +170,7 @@ namespace Coherence.Samples.RoomsDialog
 
         private async void Start()
         {
-            lanOnlineToggle.onValueChanged.AddListener(OnModeChanged);
+            lanOnlineToggle?.onValueChanged.AddListener(OnModeChanged);
             joinRoomButton.onClick.AddListener(() => JoinRoom(roomsListView.Selection.RoomData));
             showCreateRoomPanelButton.onClick.AddListener(ShowCreateRoomPanel);
             hideCreateRoomPanelButton.onClick.AddListener(HideCreateRoomPanel);
@@ -726,8 +740,15 @@ namespace Coherence.Samples.RoomsDialog
             noCloudPlaceholder.SetActive(!localMode && !IsLoggedIn);
             HideCreateRoomPanel();
 
-            cloudText.font = localMode ? normalFont : boldFont;
-            lanText.font = localMode ? boldFont : normalFont;
+            if (cloudText)
+            {
+                cloudText.font = localMode ? normalFont : boldFont;
+            }
+
+            if (lanText)
+            {
+                lanText.font = localMode ? boldFont : normalFont;
+            }
 
             if (localMode)
             {
